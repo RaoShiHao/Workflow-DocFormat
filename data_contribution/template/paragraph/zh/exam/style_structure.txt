@@ -1,0 +1,10 @@
+ExamTitle:考试标题
+ExamInstructions:考试说明
+PartHeading:大题型标题
+SectionHeading:小题型标题
+PassageHeading:材料标题
+PassageContext:材料正文
+QuestionStem:题干
+QuestionOptions:选项
+FigureCaption:图片名
+TableCaption:表格名

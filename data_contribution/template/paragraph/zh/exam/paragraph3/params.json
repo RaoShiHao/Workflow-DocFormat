@@ -1,0 +1,243 @@
+[
+    {
+        "style_name": "EXAMTITLE",
+        "paragraph_list": [
+            1
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Arial Black",
+                "NameAscii": "Arial Black",
+                "Size": 18.0,
+                "Bold": -1
+            },
+            "advanced_font": {
+                "AllCaps": -1
+            },
+            "alignment": {
+                "alignment": "center"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 28.0
+                },
+                "before_spacing": 20.0,
+                "after_spacing": 16.0
+            }
+        }
+    },
+    {
+        "style_name": "ExamInstructions",
+        "paragraph_list": [
+            2
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Times New Roman",
+                "NameAscii": "Times New Roman",
+                "Italic": -1,
+                "Underline": 1
+            },
+            "alignment": {
+                "alignment": "justify"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 12.0,
+                    "rule": "single"
+                }
+            }
+        }
+    },
+    {
+        "style_name": "PartHeading",
+        "paragraph_list": [
+            3
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "黑体",
+                "NameAscii": "黑体",
+                "Size": 16.0,
+                "Bold": -1
+            },
+            "alignment": {
+                "alignment": "center"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 24.0
+                },
+                "before_spacing": 12.0,
+                "after_spacing": 6.0
+            }
+        }
+    },
+    {
+        "style_name": "SectionHeading",
+        "paragraph_list": [
+            4
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "幼圆",
+                "NameAscii": "幼圆",
+                "Size": 14.0,
+                "Bold": -1,
+                "Italic": -1
+            },
+            "alignment": {
+                "alignment": "left"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 20.0
+                },
+                "before_spacing": 10.0,
+                "after_spacing": 4.0
+            }
+        }
+    },
+    {
+        "style_name": "PassageHeading",
+        "paragraph_list": [
+            5
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "仿宋",
+                "NameAscii": "仿宋",
+                "Size": 12.0
+            },
+            "alignment": {
+                "alignment": "left"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 12.0,
+                    "rule": "single"
+                },
+                "before_spacing": 12.0,
+                "after_spacing": 6.0
+            }
+        }
+    },
+    {
+        "style_name": "PassageContext",
+        "paragraph_list": [
+            6
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Cambria",
+                "NameAscii": "Cambria",
+                "Size": 12.0
+            },
+            "alignment": {
+                "alignment": "justify"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 18.0
+                },
+                "after_spacing": 6.0
+            },
+            "indent": {
+                "firstline_indent": 24.0
+            }
+        }
+    },
+    {
+        "style_name": "QuestionStem",
+        "paragraph_list": [
+            7
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Trebuchet MS",
+                "NameAscii": "Trebuchet MS",
+                "Bold": -1
+            },
+            "alignment": {
+                "alignment": "left"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 16.0
+                },
+                "before_spacing": 4.0,
+                "after_spacing": 4.0
+            }
+        }
+    },
+    {
+        "style_name": "QuestionOptions",
+        "paragraph_list": [
+            8
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Times New Roman",
+                "NameAscii": "Times New Roman"
+            },
+            "advanced_font": {
+                "Spacing": -0.5
+            },
+            "alignment": {
+                "alignment": "left"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 12.0,
+                    "rule": "single"
+                }
+            }
+        }
+    },
+    {
+        "style_name": "FigureCaption",
+        "paragraph_list": [
+            9
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Tahoma",
+                "NameAscii": "Tahoma",
+                "Size": 12.0,
+                "Italic": -1
+            },
+            "alignment": {
+                "alignment": "center"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 16.0
+                }
+            }
+        }
+    },
+    {
+        "style_name": "TableCaption",
+        "paragraph_list": [
+            10
+        ],
+        "settings": {
+            "base_font": {
+                "Name": "Book Antiqua",
+                "NameAscii": "Book Antiqua",
+                "Size": 9.0
+            },
+            "advanced_font": {
+                "Spacing": 1.5
+            },
+            "alignment": {
+                "alignment": "center"
+            },
+            "spacing": {
+                "line_spacing": {
+                    "value": 16.0
+                }
+            }
+        }
+    }
+]

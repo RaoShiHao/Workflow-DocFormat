@@ -1,0 +1,64 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "left": 108.0,
+                "right": 72.0
+            },
+            "gutter": {
+                "gutter": 36.0,
+                "gutter_pos": 0
+            },
+            "paper": {
+                "size": 4,
+                "width": 612.0,
+                "height": 1008.0
+            },
+            "grid": {
+                "layout_mode": 1,
+                "lines_page": 35.0,
+                "chars_line": 36.0
+            },
+            "columns": {
+                "first_column_width": 396.0
+            },
+            "header_footer_layout": {
+                "different_first_page": true,
+                "footer_distance": 54.150001525878906
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 1,
+                    "name": "宋体",
+                    "size": 10.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "paragraph": "案号：[XXXX]XX字第XX号",
+                    "format": {
+                        "name": "宋体",
+                        "size": 12.0,
+                        "alignment": 1
+                    }
+                },
+                "first": {
+                    "paragraph": "[文书类型]案号：[XXXX]XX字第XX号",
+                    "format": {
+                        "name": "宋体",
+                        "size": 12.0,
+                        "alignment": 1
+                    },
+                    "border_line": 1
+                }
+            }
+        }
+    }
+]

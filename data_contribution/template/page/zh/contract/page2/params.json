@@ -1,0 +1,52 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 70.9000015258789,
+                "bottom": 56.70000076293945,
+                "left": 56.70000076293945,
+                "right": 56.70000076293945
+            },
+            "gutter": {
+                "gutter": 14.199999809265137,
+                "gutter_pos": 0
+            },
+            "paper": {
+                "size": 7,
+                "width": 595.2999877929688,
+                "height": 841.9000244140625
+            },
+            "grid": {
+                "layout_mode": 2,
+                "lines_page": 35.0,
+                "chars_line": 33.0
+            },
+            "columns": {
+                "first_column_width": 467.70001220703125
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 1,
+                    "name": "楷体",
+                    "size": 12.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "format": {
+                        "name": "等线",
+                        "size": 9.0,
+                        "alignment": 1
+                    }
+                }
+            }
+        }
+    }
+]

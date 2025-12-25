@@ -1,0 +1,53 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 51.04999923706055,
+                "bottom": 51.04999923706055,
+                "left": 85.05000305175781,
+                "right": 85.05000305175781
+            },
+            "gutter": {
+                "gutter": 22.700000762939453,
+                "gutter_pos": 0
+            },
+            "paper": {
+                "size": 11,
+                "width": 515.9500122070312,
+                "height": 728.5499877929688
+            },
+            "grid": {
+                "layout_mode": 1,
+                "lines_page": 23.0,
+                "chars_line": 32.0
+            },
+            "columns": {
+                "first_column_width": 323.1499938964844
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 2,
+                    "name": "楷体",
+                    "size": 10.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "paragraph": "XX大学XX专业XX课程其中测试卷",
+                    "format": {
+                        "name": "宋体",
+                        "size": 11.0,
+                        "alignment": 0
+                    }
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 70.9000015258789,
+                "bottom": 56.70000076293945,
+                "left": 85.05000305175781,
+                "right": 70.9000015258789
+            },
+            "paper": {
+                "size": 11,
+                "width": 515.9500122070312,
+                "height": 728.5499877929688
+            },
+            "grid": {
+                "layout_mode": 2,
+                "lines_page": 35.0
+            },
+            "columns": {
+                "first_column_width": 360.0
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 1,
+                    "name": "等线",
+                    "size": 9.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "paragraph": "Personal Correspondence-Date: [填写日期]",
+                    "format": {
+                        "name": "",
+                        "size": 12.0,
+                        "alignment": 1
+                    },
+                    "border_line": 3
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,60 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 70.9000015258789,
+                "bottom": 70.9000015258789,
+                "left": 70.9000015258789,
+                "right": 70.9000015258789
+            },
+            "gutter": {
+                "gutter": 28.350000381469727,
+                "gutter_pos": 0
+            },
+            "paper": {
+                "size": 6,
+                "width": 1190.699951171875,
+                "height": 841.9500122070312,
+                "orientation": 1
+            },
+            "grid": {
+                "layout_mode": 1,
+                "lines_page": 32.0,
+                "chars_line": 35.0
+            },
+            "columns": {
+                "column_count": 2,
+                "spacing": 42.599998474121094,
+                "first_column_width": 488.95001220703125
+            },
+            "header_footer_layout": {
+                "footer_distance": 51.04999923706055,
+                "header_distance": 51.04999923706055
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 1,
+                    "name": "Times New Roman",
+                    "size": 12.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "paragraph": "XX合同模板",
+                    "format": {
+                        "name": "微软雅黑",
+                        "size": 12.0,
+                        "alignment": 1
+                    }
+                }
+            }
+        }
+    }
+]

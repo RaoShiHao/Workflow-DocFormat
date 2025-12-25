@@ -1,0 +1,12 @@
+[
+    {
+        "paper": "页面使用 A4 纸张，宽度 21 cm，高度 29.7 cm。",
+        "margin": "页面边距为上 2.5 cm、下 2.5 cm、左 2.5 cm、右 2.5 cm。",
+        "header_content": "",
+        "footer_content": "页码使用阿拉伯数字格式，居中对齐，从 0 开始编号，延续上一节，并设置为 Times New Roman 字体 11 号。",
+        "header_footer_layout": "页脚距离页面边缘为 1.5 cm。",
+        "gutter": "装订线宽度为 1 cm，靠左侧布置。",
+        "grid": "文档网格设为指定行和字符网格，每页 45 行，每行 40 字符。",
+        "columns": ""
+    }
+]

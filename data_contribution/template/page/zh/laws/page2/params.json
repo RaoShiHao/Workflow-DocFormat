@@ -1,0 +1,65 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 104.9000015258789,
+                "bottom": 99.25,
+                "left": 79.4000015258789,
+                "right": 99.25
+            },
+            "gutter": {
+                "gutter": 28.350000381469727,
+                "gutter_pos": 0
+            },
+            "paper": {
+                "size": 7,
+                "height": 841.9500122070312
+            },
+            "grid": {
+                "layout_mode": 1,
+                "lines_page": 42.0,
+                "chars_line": 40.0
+            },
+            "columns": {
+                "first_column_width": 388.3500061035156
+            },
+            "header_footer_layout": {
+                "different_first_page": true,
+                "footer_distance": 42.54999923706055
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 0,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 1,
+                    "name": "楷体",
+                    "size": 10.5
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "paragraph": "XX法民终字第XX号",
+                    "format": {
+                        "name": "宋体",
+                        "size": 12.0,
+                        "alignment": 1
+                    }
+                },
+                "first": {
+                    "paragraph": "XX省XX市中级人民法院民事判决书",
+                    "format": {
+                        "name": "宋体",
+                        "size": 12.0,
+                        "alignment": 1
+                    },
+                    "border_line": 1
+                }
+            }
+        }
+    }
+]

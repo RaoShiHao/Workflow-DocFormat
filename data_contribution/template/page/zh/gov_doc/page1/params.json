@@ -1,0 +1,69 @@
+[
+    {
+        "style_name": 0,
+        "section_list": [
+            1
+        ],
+        "settings": {
+            "margin": {
+                "top": 104.9000015258789,
+                "bottom": 99.25,
+                "left": 79.4000015258789,
+                "right": 73.69999694824219
+            },
+            "paper": {
+                "size": 7,
+                "height": 841.9500122070312
+            },
+            "grid": {
+                "layout_mode": 1,
+                "lines_page": 22.0,
+                "chars_line": 28.0
+            },
+            "columns": {
+                "first_column_width": 442.25
+            },
+            "header_footer_layout": {
+                "different_odd_even": true,
+                "footer_distance": 79.4000015258789,
+                "header_distance": 42.54999923706055
+            },
+            "footer_content": {
+                "primary": {
+                    "format": 57,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 0,
+                    "name": "宋体",
+                    "size": 14.0
+                },
+                "even": {
+                    "format": 57,
+                    "start": 0,
+                    "continue": true,
+                    "alignment": 2,
+                    "name": "宋体",
+                    "size": 14.0
+                }
+            },
+            "header_content": {
+                "primary": {
+                    "format": {
+                        "name": "等线",
+                        "size": 9.0,
+                        "alignment": 1
+                    }
+                },
+                "even": {
+                    "paragraph": "",
+                    "format": {
+                        "name": "等线",
+                        "size": 9.0,
+                        "alignment": 1
+                    },
+                    "border_line": null
+                }
+            }
+        }
+    }
+]
