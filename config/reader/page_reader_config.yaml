@@ -1,0 +1,476 @@
+name: PageReaderTool
+description:
+  zh: "PageReaderTool提供的阅读当前文档页面格式的工具"
+  en: "PageReaderTool provides tools for read the page format for document"
+
+properties_template:
+  zh:
+    paper:
+      size:
+        value: null
+        description: "纸张大小代码（类型：int）。可选值包括：0: 10×14 英寸 | 1: 11×17 英寸 | 2: 信纸（Letter）| 4: 法律纸 | 5: 行政纸 | 6: A3 | 7: A4 | 9: A5 | 10: B4 | 11: B5 | 41: 自定义大小"
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "页面宽度设置（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "页面高度设置（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      orientation:
+        value: null
+        description: "页面方向（类型：int）。0 表示纵向，1 表示横向"
+
+    margin:
+      top:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "上边距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      bottom:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "下边距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      left:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "左边距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      right:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "右边距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+
+    header_content:
+      first:
+        text:
+          value: null
+          description: "首页页眉文本内容（类型：string）"
+        alignment:
+          value: null
+          description: "首页页眉对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+        name:
+          value: null
+          description: "首页页眉字体名称（类型：string），如“宋体”、“Times New Roman”"
+        size:
+          value: null
+          description: "首页页眉字体大小（类型：float，单位：磅）"
+        border_line:
+          value: null
+          description: "页眉底部边框样式（类型：int）。可选值：0=无边框，1=单实线，2=点线，3=小虚线，4=大虚线，5=点划线，6=点划点线，7=双实线，8=三实线"
+      primary:
+        text:
+          value: null
+          description: "常规页眉文本内容（类型：string）"
+        alignment:
+          value: null
+          description: "常规页眉对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+        name:
+          value: null
+          description: "常规页眉字体名称（类型：string），如“宋体”、“Times New Roman”"
+        size:
+          value: null
+          description: "常规页眉字体大小（类型：float，单位：磅）字体大小（类型：整数）常见中文字号与其对应的英文磅值（point, pt）如下：初号为 42pt，小初为 36pt，一号为 26pt，小一为 24pt，二号为 22pt，小二为 18pt，三号为 16pt，小三为 15pt，四号为 14pt，小四为 12pt，五号为 10.5pt，小五为 9pt，六号为 7.5pt，小六为 6.5pt，七号为 5.5pt，八号为 5pt。"
+        border_line:
+          value: null
+          description: "页眉底部边框样式（类型：int）。参考 first.border_line"
+      even:
+        text:
+          value: null
+          description: "偶数页页眉文本内容（类型：string）"
+        alignment:
+          value: null
+          description: "偶数页眉对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+        name:
+          value: null
+          description: "偶数页眉字体名称（类型：string），如“宋体”、“Times New Roman”"
+        size:
+          value: null
+          description: "偶数页眉字体大小（类型：float，单位：磅）"
+        border_line:
+          value: null
+          description: "页眉底部边框样式（类型：int）。参考 first.border_line"
+
+    footer_content:
+      primary:
+        page_number:
+          format:
+            value: null
+            description: "常规页脚的页码格式代码（类型：int），支持的取值为：0=阿拉伯数字（1, 2, 3）,1=大写罗马数字（I, II, III）,2=小写罗马数字（i, ii, iii）,3大写英文字母（A, B, C）,4 = 小写英文字母（a, b, c）,13 = 中文数目编号（一、二、三）,38 = 中文大写编号（壹、贰、叁）,30 = 中文天干（甲、乙、丙）,31 = 中文地支（子、丑、寅）,57 = 阿拉伯数字带中横线（如 - 1 -）"
+          alignment:
+            value: null
+            description: "常规页脚页码对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+          start:
+            value: null
+            description: "常规页脚的起始页码（类型：int），如设置为1则从第一页编号"
+          continue:
+            value: null
+            description: "常规页脚是否延续上一节页码（类型：bool）"
+          name:
+            value: null
+            description: "常规页脚页码字体名称（类型：string），如“宋体”、“Times New Roman”"
+          size:
+            value: null
+            description: "常规页脚页码字体大小（类型：float，单位：磅）"
+      first:
+        page_number:
+          format:
+            value: null
+            description: "常规页脚的页码格式代码（类型：int），支持的取值为：0=阿拉伯数字（1, 2, 3）,1=大写罗马数字（I, II, III）,2=小写罗马数字（i, ii, iii）,3大写英文字母（A, B, C）,4 = 小写英文字母（a, b, c）,13 = 中文数目编号（一、二、三）,38 = 中文大写编号（壹、贰、叁）,30 = 中文天干（甲、乙、丙）,31 = 中文地支（子、丑、寅）,57 = 阿拉伯数字带中横线（如 - 1 -）"
+          alignment:
+            value: null
+            description: "首页页码对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+          start:
+            value: null
+            description: "首页起始页码（类型：int）"
+          continue:
+            value: null
+            description: "首页是否延续上一节页码（类型：bool）"
+          name:
+            value: null
+            description: "首页页码字体名称（类型：string）"
+          size:
+            value: null
+            description: "首页页码字体大小（类型：float，单位：磅）"
+      even:
+        page_number:
+          format:
+            value: null
+            description: "常规页脚的页码格式代码（类型：int），支持的取值为：0=阿拉伯数字（1, 2, 3）,1=大写罗马数字（I, II, III）,2=小写罗马数字（i, ii, iii）,3大写英文字母（A, B, C）,4 = 小写英文字母（a, b, c）,13 = 中文数目编号（一、二、三）,38 = 中文大写编号（壹、贰、叁）,30 = 中文天干（甲、乙、丙）,31 = 中文地支（子、丑、寅）,57 = 阿拉伯数字带中横线（如 - 1 -）"
+          alignment:
+            value: null
+            description: "偶数页页码对齐方式（类型：int）。0=左对齐，1=居中，2=右对齐"
+          start:
+            value: null
+            description: "偶数页起始页码（类型：int）"
+          continue:
+            value: null
+            description: "偶数页是否延续上一节页码（类型：bool）"
+          name:
+            value: null
+            description: "偶数页页码字体名称（类型：string）"
+          size:
+            value: null
+            description: "偶数页页码字体大小（类型：float，单位：磅）"
+
+    header_footer_layout:
+      different_first_page:
+        value: null
+        description: "是否启用首页不同页脚（类型：int）。0 表示不启用，-1 表示启用"
+      different_odd_even:
+        value: null
+        description: "是否启用奇偶页不同页脚（类型：int）。0 表示不启用，-1 表示启用"
+      footer_distance:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "页眉距页面顶部的距离（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      header_distance:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "页眉距页面顶部的距离（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+
+    gutter:
+      gutter:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "装订线宽度（类型：float）。支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      gutter_pos:
+        value: null
+        description: "装订线位置（类型：int）。0 表示靠左，1 表示靠上"
+
+    grid:
+      layout_mode:
+        value: null
+        description: "文档网格布局模式（类型：int）。0=无网格，1=指定行和字符网格，2=只指定行网格，3=文字对齐字符网络"
+      lines_page:
+        value: null
+        description: "每页行数（类型：int，范围1-43）"
+      chars_line:
+        value: null
+        description: "每行字符数（类型：int，范围1-48）"
+
+    columns:
+      column_count:
+        value: null
+        description: "分栏数量（类型：int，例如1表示单栏，2表示双栏）"
+      evenly_spaced:
+        value: null
+        description: "是否平均分配栏宽和间距（类型：int）。-1 表示启用，0 表示关闭"
+      column_width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "第一栏宽度设置（类型：float），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "栏间距设置（类型：float），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。9999999代表未分栏"
+      line_between:
+        value: null
+        description: "是否在栏之间显示分隔线（类型：int）。-1 表示启用，0 表示关闭"
+
+  en:
+    paper:
+      size:
+        value: null
+        description: "Paper size code (int). Available values: 0: 10×14 inches, 1: 11×17 inches, 2: Letter, 4: Legal,5: Executive, 6: A3, 7: A4, 9: A5, 10: B4, 11: B5, 41: Custom size"
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Page width (numeric), supports multiple units. Fields represent values in pt, cm, mm, and inches. Default unit is pt."
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Page height (numeric), supports multiple units. Fields represent values in pt, cm, mm, and inches. Default unit is pt."
+      orientation:
+        value: null
+        description: "Page orientation (int). 0 = Portrait, 1 = Landscape"
+
+    margin:
+      top:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Top margin (numeric), supports multiple units. Default unit is pt."
+      bottom:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Bottom margin (numeric), supports multiple units. Default unit is pt."
+      left:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Left margin (numeric), supports multiple units. Default unit is pt."
+      right:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Right margin (numeric), supports multiple units. Default unit is pt."
+
+    header_content:
+      first:
+        text:
+          value: null
+          description: "Header text content on the first page (Type: string)"
+        alignment:
+          value: null
+          description: "Header alignment on the first page (Type: int). 0=Left-aligned, 1=Centered, 2=Right-aligned"
+        name:
+          value: null
+          description: "Header font name on the first page (Type: string), e.g., 'SimSun', 'Times New Roman'"
+        size:
+          value: null
+          description: "Header font size on the first page (Type: float, Unit: points)"
+        border_line:
+          value: null
+          description: "Header bottom border style (Type: int). Options: 0=No border, 1=Single solid line, 2=Dotted line, 3=Small dashed line, 4=Large dashed line, 5=Dash-dot line, 6=Dash-dot-dot line, 7=Double solid line, 8=Triple solid line"
+      primary:
+        text:
+          value: null
+          description: "Regular header text content (Type: string)"
+        alignment:
+          value: null
+          description: "Regular header alignment (Type: int). 0=Left-aligned, 1=Centered, 2=Right-aligned"
+        name:
+          value: null
+          description: "Regular header font name (Type: string), e.g., 'SimSun', 'Times New Roman'"
+        size:
+          value: null
+          description: "Regular header font size (Type: float, Unit: points). Common Chinese font sizes and their corresponding point values: 初号=42pt, 小初=36pt, 一号=26pt, 小一=24pt, 二号=22pt, 小二=18pt, 三号=16pt, 小三=15pt, 四号=14pt, 小四=12pt, 五号=10.5pt, 小五=9pt, 六号=7.5pt, 小六=6.5pt, 七号=5.5pt, 八号=5pt"
+        border_line:
+          value: null
+          description: "Header bottom border style (Type: int). Refer to first.border_line"
+      even:
+        text:
+          value: null
+          description: "Even page header text content (Type: string)"
+        alignment:
+          value: null
+          description: "Even page header alignment (Type: int). 0=Left-aligned, 1=Centered, 2=Right-aligned"
+        name:
+          value: null
+          description: "Even page header font name (Type: string), e.g., 'SimSun', 'Times New Roman'"
+        size:
+          value: null
+          description: "Even page header font size (Type: float, Unit: points)"
+        border_line:
+          value: null
+          description: "Header bottom border style (Type: int). Refer to first.border_line"
+
+    footer_content:
+      primary:
+        page_number:
+          format:
+            value: null
+            description: "Page number format code for default footer (int).Supported values include: 0 = Arabic numerals (1, 2, 3),1 = Uppercase Roman numerals (I, II, III),2 = Lowercase Roman numerals (i, ii, iii),3 = Uppercase English letters (A, B, C),4 = Lowercase English letters (a, b, c),13 = Chinese counting numbers（一、二、三）,38 = Chinese capital numbers（壹、贰、叁）,30 = Chinese Heavenly Stems（甲、乙、丙）,31 = Chinese Earthly Branches（子、丑、寅）,57 = Arabic numerals with hyphens (e.g., - 1 -),"
+          alignment:
+            value: null
+            description: "Page number alignment (int). 0 = Left, 1 = Center, 2 = Right"
+          start:
+            value: null
+            description: "Starting page1 number (int), e.g., 1 for first page1"
+          continue:
+            value: null
+            description: "Whether to continue page1 numbering from previous section (bool)"
+          name:
+            value: null
+            description: "Font name for page1 number (string), e.g., 'Times New Roman'"
+          size:
+            value: null
+            description: "Font size for page1 number (float, in points). Common Chinese font sizes and their approximate equivalents in points (pt) are as follows:
+Chuhao (初号): 42pt, Xiao Chuhao (小初): 36pt, Yihao (一号): 26pt, Xiao Yihao (小一): 24pt, Erhao (二号): 22pt, Xiao Erhao (小二): 18pt, Sanhao (三号): 16pt, Xiao Sanhao (小三): 15pt, Sihao (四号): 14pt, Xiao Sihao (小四): 12pt, Wuhao (五号): 10.5pt, Xiao Wuhao (小五): 9pt, Liuhao (六号): 7.5pt, Xiao Liuhao (小六): 6.5pt, Qihao (七号): 5.5pt, and Bahao (八号): 5pt."
+      first:
+        page_number:
+          format:
+            value: null
+            description: "Page number format code for default footer (int).Supported values include: 0 = Arabic numerals (1, 2, 3),1 = Uppercase Roman numerals (I, II, III),2 = Lowercase Roman numerals (i, ii, iii),3 = Uppercase English letters (A, B, C),4 = Lowercase English letters (a, b, c),13 = Chinese counting numbers（一、二、三）,38 = Chinese capital numbers（壹、贰、叁）,30 = Chinese Heavenly Stems（甲、乙、丙）,31 = Chinese Earthly Branches（子、丑、寅）,57 = Arabic numerals with hyphens (e.g., - 1 -),"
+          alignment:
+            value: null
+            description: "Page number alignment for first page1 (int). 0 = Left, 1 = Center, 2 = Right"
+          start:
+            value: null
+            description: "Starting page1 number for first page1 (int)"
+          continue:
+            value: null
+            description: "Whether first page1 continues numbering from previous section (bool)"
+          name:
+            value: null
+            description: "Font name for first page1 number (string)"
+          size:
+            value: null
+            description: "Font size for first page1 number (float, in points)"
+      even:
+        page_number:
+          format:
+            value: null
+            description: "Page number format code for default footer (int).Supported values include: 0 = Arabic numerals (1, 2, 3),1 = Uppercase Roman numerals (I, II, III),2 = Lowercase Roman numerals (i, ii, iii),3 = Uppercase English letters (A, B, C),4 = Lowercase English letters (a, b, c),13 = Chinese counting numbers（一、二、三）,38 = Chinese capital numbers（壹、贰、叁）,30 = Chinese Heavenly Stems（甲、乙、丙）,31 = Chinese Earthly Branches（子、丑、寅）,57 = Arabic numerals with hyphens (e.g., - 1 -),"
+          alignment:
+            value: null
+            description: "Page number alignment for even pages (int). 0 = Left, 1 = Center, 2 = Right"
+          start:
+            value: null
+            description: "Starting page1 number for even pages (int)"
+          continue:
+            value: null
+            description: "Whether even page1 continues numbering from previous section (bool)"
+          name:
+            value: null
+            description: "Font name for even page1 number (string)"
+          size:
+            value: null
+            description: "Font size for even page1 number (float, in points) "
+
+    header_footer_layout:
+      different_first_page:
+        value: null
+        description: "Enable different first page1 header (int). 0 = disabled, -1 = enabled"
+      different_odd_even:
+        value: null
+        description: "Enable different headers for odd and even pages (int). 0 = disabled, -1 = enabled"
+      header_distance:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Distance from header to top of page1 (numeric), supports multiple units. Default unit is pt."
+      footer_distance:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Distance from footer to bottom of page1 (numeric), supports multiple units. Default unit is pt."
+
+    gutter:
+      gutter:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Gutter width (float), supports multiple units. Default unit is pt."
+      gutter_pos:
+        value: null
+        description: "Gutter position (int). 0 = Left, 1 = Top"
+
+    grid:
+      layout_mode:
+        value: null
+        description: "Document grid layout mode (type: int). 0 = No grid, 1 = Specify line and character grid, 2 = Line grid only, 3 = Align text to character grid"
+      lines_page:
+        value: null
+        description: "Number of lines per page1 (int, range 1–43)"
+      chars_line:
+        value: null
+        description: "Number of characters per line (int, range 1–48)"
+
+    columns:
+      column_count:
+        value: null
+        description: "Number of columns (int), e.g., 1 = single column, 2 = double column"
+      evenly_spaced:
+        value: null
+        description: "Evenly distribute column width and spacing (int). -1 = enabled, 0 = disabled"
+      column_width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Width of the first column (float), supports multiple units. Default unit is pt."
+      spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Spacing between columns (float), supports multiple units. Default unit is pt. 9999999 represents no column division"
+      line_between:
+        value: null
+        description: "Show separator line between columns (int). -1 = enabled, 0 = disabled"

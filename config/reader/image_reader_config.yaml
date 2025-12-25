@@ -1,0 +1,72 @@
+properties_template:
+  zh:
+    size:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          percent: null
+        description: "图片宽度（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches、percent）下的数值。默认单位为 pt。"
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "图片高度（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+      lock_aspect_ratio:
+        value: null
+        description: "图片锁定长宽比（类型：int）。0 表示不启用锁定，-1 表示启用锁定"
+
+    alignment:
+      value: null
+      description: "图片对齐方式（类型：字符串），可选值：left（左对齐）、center（居中）、right（右对齐）"
+
+    pagination:
+      keep_with_next:
+        value: null
+        description: "与下段同页（类型：整数），0 表示关闭，-1 表示启用"
+      keep_together:
+        value: null
+        description: "段中不分页（类型：整数），0 表示关闭，-1 表示启用"
+      page_break_before:
+        value: null
+        description: "段前分页（类型：整数），0 表示关闭，-1 表示启用"
+
+  en:
+    size:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          percent: null
+        description: "Image width (type: numeric), supports multiple units. Fields represent values in pt, cm, mm, inches,and percent. Default unit is pt."
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Image height (type: numeric), supports multiple units. Fields represent values in pt, cm, mm, and inches. Default unit is pt."
+      lock_aspect_ratio:
+        value: null
+        description: "Lock image aspect ratio (type: int). 0 means disabled, -1 means enabled."
+
+    alignment:
+      value: null
+      description: "Image alignment (type: string). Options: left, center, right"
+
+    pagination:
+      keep_with_next:
+        value: null
+        description: "Keep with next (type: integer). 0 = disabled, -1 = enabled"
+      keep_together:
+        value: null
+        description: "Keep lines together (type: integer). 0 = disabled, -1 = enabled"
+      page_break_before:
+        value: null
+        description: "Page break before (type: integer). 0 = disabled, -1 = enabled"

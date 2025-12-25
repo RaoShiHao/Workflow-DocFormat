@@ -1,0 +1,181 @@
+name: TableReaderTool
+description:
+  zh: "TableReaderTool提供的阅读当前文档页面格式的工具"
+  en: "TableReaderTool provides tools for read the table format for document"
+
+properties_template:
+  zh:
+    column_width:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "列宽度值，支持pt/cm/mm/inches四种单位。99999表示自动列宽(rule: auto)。"
+      rule:
+        value: null
+        description: "列宽规则：auto(自动)、at_least(最小宽度)、exactly(固定宽度)"
+
+    row_height:
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "行高度值，支持pt/cm/mm/inches四种单位。99999表示自动行高(rule: auto)。"
+      rule:
+        value: null
+        description: "行高规则：auto(自动)、at_least(最小高度)、exactly(固定高度)"
+
+    cell_horizontal_align:
+      value: null
+      description: "cell水平对齐方式（类型：字符串），可选值：top（靠上）、center（居中）、bottom（底端对齐）"
+
+    table_width:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          percent: null
+        description: "表格宽度值，支持pt/cm/mm/inches/percent五种单位。99999表示自动表宽（rule: auto）。"
+      rule:
+        value: null
+        description: '表格宽度规则：fixed(固定宽度)、auto(自适应宽度，不区分"auto_content"，"auto_window")'
+
+    table_height:
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "表格高度值，支持pt/cm/mm/inches四种单位。99999表示自动行高（rule: auto）。"
+      rule:
+        value: null
+        description: '表格高度规则：exactly(固定高度)、at_least(最小高度)、auto(Word自动调整，不区分auto和auto_content)'
+
+    text_wrapping:
+      value: null
+      description: "表格文字环绕（类型：int），0表示无文字环绕，-1表示启用文字环绕。"
+
+    pagination:
+      repeat_header:
+        value: null
+        description: "是否重复显示标题行（页眉行），0 表示关闭，-1 表示启用"
+      keep_with_next:
+        value: null
+        description: "与下段同页（类型：整数），0 表示关闭，-1 表示启用"
+      allow_break_across_pages:
+        value: null
+        description: "允许跨行分页（类型：整数），0 表示关闭，-1 表示启用"
+      page_break_before:
+        value: null
+        description: "段前分页（类型：整数），0 表示关闭，-1 表示启用"
+
+    alignment:
+      horizontal_align:
+        value: null
+        description: "表格水平对齐方式（类型：字符串），可选值：left（左对齐）、center（居中）、right（右对齐）"
+      vertical_align:
+        value: null
+        description: "表格内容垂直对齐方式（类型：字符串），可选值：top（靠上）、center（居中）、bottom（底端对齐） 'mix'（混合对齐）"
+
+    left_indent:
+      value:
+        pt: null
+        cm: null
+        mm: null
+        inches: null
+      description: "表格左缩进量，支持pt/cm/mm/inches四种单位。"
+
+  en:
+    column_width:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Column width value in pt/cm/mm/inches. 99999 represents auto width (rule: auto)."
+      rule:
+        value: null
+        description: "Column width rule: auto, at_least (minimum width), exactly (fixed width)."
+
+    row_height:
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Row height value in pt/cm/mm/inches. 99999 represents auto height (rule: auto)."
+      rule:
+        value: null
+        description: "Row height rule: auto, at_least (minimum height), exactly (fixed height)."
+
+    cell_horizontal_align:
+      value: null
+      description: "Table cell vertical alignment (string). Options: top, center, bottom."
+
+    table_width:
+      width:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          percent: null
+        description: "Table width value in pt/cm/mm/inches/percent. 99999 represents auto width (rule: auto)."
+      rule:
+        value: null
+        description:  "Table width rule: fixed (fixed width), auto (auto-fit width, no distinction between 'auto_content' and 'auto_window')."
+
+    table_height:
+      height:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Table height value in pt/cm/mm/inches. 99999 represents auto height (rule: auto)."
+      rule:
+        value: null
+        description: "Table height rule: exactly (fixed height), at_least (minimum height), auto (no distinction between 'auto_content' and 'auto')"
+
+    text_wrapping:
+      value: null
+      description: "Table text wrapping (int). 0: disabled, -1: enabled."
+
+    pagination:
+      repeat_header:
+        value: null
+        description: "Repeat header rows (int). 0: disabled, -1: enabled."
+      keep_with_next:
+        value: null
+        description: "Keep with next (type: integer). 0 = disabled, -1 = enabled"
+      allow_break_across_pages:
+        value: null
+        description: "Allow break across pages (type: integer). 0 = disabled, -1 = enabled"
+      page_break_before:
+        value: null
+        description: "Page break before (type: integer). 0 = disabled, -1 = enabled"
+
+    alignment:
+      horizontal_align:
+        value: null
+        description: 'Table horizontal alignment (string). Options: "left", "center", "right".'
+      vertical_align:
+        value: null
+        description: "Table content vertical alignment (string): top, center, bottom, mix."
+
+    left_indent:
+      value:
+        pt: null
+        cm: null
+        mm: null
+        inches: null
+      description: "Table left indent. Supported units: pt, cm, mm, inches."

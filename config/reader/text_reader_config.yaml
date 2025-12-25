@@ -1,0 +1,387 @@
+name: TextReaderTool
+description:
+  zh: "TextReaderTool提供的阅读当前文档本文段落格式的工具"
+  en: "PageReaderTool provides tools for read the paragraph format for document"
+
+properties_template:
+  zh:
+    base_font:
+      Name:
+        value: null
+        description: "全局字体名称（类型：字符串）总体字体名称（str），统一控制所有字符（中英数字）的字体样式。"
+      NameAscii:
+        value: null
+        description: "西文字体名称（类型：字符串），单独设置西文字体，仅影响英文、数字等ASCII字符的显示样式，启用时覆盖西文字符（字母和数字）的字体。"
+      Size:
+        value: null
+        description: "字体大小（类型：整数）"
+      Bold:
+        value: null
+        description: "是否加粗（类型：整数，0 表示无效果，-1 表示有效果）"
+      Italic:
+        value: null
+        description: "是否倾斜（类型：整数，0 表示无效果，-1 表示有效果）"
+      Underline:
+        value: null
+        description: "下划线样式（类型：整数，取值包括： 0：无下划线; 1：单线下划线; 2：仅文字下划线; 3：双线下划线; 4：点线下划线; 7：短线下划线（短横线样式的下划线）; 39：长线下划线（长横线样式的下划线）; 11：波浪线下划线; 6：粗线下划线。）"
+      Color:
+        value: null
+        description: "字体颜色（类型：字符串，十六进制，例如 \"#FF0000\"）"
+      HighlightColorIndex:
+        value: null
+        description: "字体高亮颜色（类型：整数，0 无、1 黑、3 青绿、4 亮绿、5 粉、6 红、7 黄、9 深蓝、10 墨绿、11 绿、12 紫、13 深红、14 深黄、15 灰50%、16 灰25%）"
+    advanced_font:
+      StrikeThrough:
+        value: null
+        description: "删除线效果（类型：整数，0 表示无，-1 表示启用）"
+      Subscript:
+        value: null
+        description: "下标效果（类型：整数，0 表示无，-1 表示启用）"
+      Superscript:
+        value: null
+        description: "上标效果（类型：整数，0 表示无，-1 表示启用）"
+      AllCaps:
+        value: null
+        description: "全部大写（类型：整数，0 表示无，-1 表示启用）"
+      SmallCaps:
+        value: null
+        description: "小型大写（类型：整数，0 表示无，-1 表示启用）"
+      Spacing:
+        value: null
+        description: "字符间距（类型：浮点数，单位为磅，正值加宽，负值紧缩）"
+      Scaling:
+        value: null
+        description: "字符缩放百分比（类型：整数，范围 1–100，表示正常宽度的百分比）"
+      Emboss:
+        value: null
+        description: "浮雕效果（类型：整数，0 表示无，-1 表示启用）"
+      Engrave:
+        value: null
+        description: "雕刻效果（类型：整数，0 表示无，-1 表示启用）"
+      Shadow:
+        value: null
+        description: "阴影效果（类型：整数，0 表示无，-1 表示启用）"
+    alignment:
+      value: null
+      description: "段落对齐方式（类型：字符串），可选值：left（左对齐）、center（居中）、right（右对齐）、justify（两端对齐）、distribute（分散对齐）"
+    outlinelevel:
+      value: null
+      description: "大纲级别（类型：整数），1-9 表示标题级别，10 表示正文（无大纲）"
+    spacing:
+      line_spacing:
+        spacing_rule:
+          value: null
+          description: "行间距规则（类型：字符串），可选值：single, 1.5, double, exact, multiple"
+        spacing_value:
+          value: null
+          description: "行间距数值（类型：数值），单位为 pt"
+
+      before_spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "段前间距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+
+      after_spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "段后间距（类型：数值），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches）下的数值。默认单位为 pt。"
+    indent:
+      left_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "左缩进设置（类型：字典），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches，character）下的数值。默认单位为 pt。hanging表示是否悬挂，0 表示缩进，-1 表示悬挂"
+
+      right_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "右缩进设置（类型：字典），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches，character）下的数值。默认单位为 pt。hanging表示是否悬挂，0 表示缩进，-1 表示悬挂"
+
+      firstline_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "首行或悬挂缩进设置（类型：字典），支持多单位。value 中的各个字段分别表示该属性在不同单位（pt、cm、mm、inches，character）下的数值。hanging表示是否悬挂，0 表示缩进，-1 表示悬挂"
+    pagination_control:
+        widow_control:
+          value: null
+          description: "孤行控制（类型：整数），0 表示关闭，-1 表示启用"
+        keep_with_next:
+          value: null
+          description: "与下段同页（类型：整数），0 表示关闭，-1 表示启用"
+        keep_together:
+          value: null
+          description: "段中不分页（类型：整数），0 表示关闭，-1 表示启用"
+        page_break_before:
+          value: null
+          description: "段前分页（类型：整数），0 表示关闭，-1 表示启用"
+  en:
+    base_font:
+      Name:
+        value: null
+        description: "Font name (type: string). Global font name (str), sets the default font for all characters (Chinese, English, numbers, etc.). Used as the primary font setting when no character-specific distinction is required."
+      NameAscii:
+        value: null
+        description: "Font name (type: string). Western font name (English, numbers, etc.) (str), specifically sets the font for ASCII characters. Only activated when character-specific distinction is needed."
+      Size:
+        value: null
+        description: "Font size (type: integer)"
+      Bold:
+        value: null
+        description: "Bold effect (type: integer, 0 = no effect, -1 = apply)"
+      Italic:
+        value: null
+        description: "Italic effect (type: integer, 0 = no effect, -1 = apply)"
+      Underline:
+        value: null
+        description: "Underline style (type: integer, values include: - 0：No underline; 1：Single underline; 2：Words only underline; 3：Double underline; 4：Dotted underline; 7：Dash underline; 39：Dash long underline; 11：Wave underline; 6：Thick underline)"
+      Color:
+        value: null
+        description: "Font color (type: string, hex like \"#FF0000\")"
+      HighlightColorIndex:
+        value: null
+        description: "Font highlight color (type: integer, values: 0 = none, 1 = black, 3 = turquoise, 4 = bright green, 5 = pink, 6 = red, 7 = yellow, 9 = dark blue, 10 = teal, 11 = green, 12 = violet, 13 = dark red, 14 = dark yellow, 15 = gray 50%, 16 = gray 25%)"
+    advanced_font:
+      StrikeThrough:
+        value: null
+        description: "Strikethrough effect (type: integer, 0 = disabled, -1 = enabled)"
+      Subscript:
+        value: null
+        description: "Subscript effect (type: integer, 0 = disabled, -1 = enabled)"
+      Superscript:
+        value: null
+        description: "Superscript effect (type: integer, 0 = disabled, -1 = enabled)"
+      AllCaps:
+        value: null
+        description: "All caps (type: integer, 0 = disabled, -1 = enabled)"
+      SmallCaps:
+        value: null
+        description: "Small caps (type: integer, 0 = disabled, -1 = enabled)"
+      Spacing:
+        value: null
+        description: "Character spacing (type: float, in points; positive = expanded, negative = condensed)"
+      Scaling:
+        value: null
+        description: "Character width scaling (type: integer, 1–100 representing percentage)"
+      Emboss:
+        value: null
+        description: "Emboss effect (type: integer, 0 = disabled, -1 = enabled)"
+      Engrave:
+        value: null
+        description: "Engrave effect (type: integer, 0 = disabled, -1 = enabled)"
+      Shadow:
+        value: null
+        description: "Shadow effect (type: integer, 0 = disabled, -1 = enabled)"
+    alignment:
+      value: null
+      description: "Paragraph alignment (type: string). Options: left, center, right, justify, distribute"
+    outlinelevel:
+      value: null
+      description: "Outline level (type: integer). Values 1–9 represent heading levels; 10 indicates body text (no outline)"
+    spacing:
+      line_spacing:
+        spacing_rule:
+          value: null
+          description: "Line spacing rule (type: string). Options: single, 1.5, double, exact, multiple"
+        spacing_value:
+          value:
+            pt: null
+            cm: null
+            mm: null
+            inches: null
+          description: "Line spacing value (type: number). Required when using 'exact' or 'multiple'. Default unit: pt"
+
+      before_spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Spacing before paragraph (type: number). Supports multiple units. The 'value' fields represent the measurement in different units (pt, cm, mm, inches). The default unit is pt."
+
+      after_spacing:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+        description: "Spacing after paragraph (type: number). Supports multiple units. The 'value' fields represent the measurement in different units (pt, cm, mm, inches). The default unit is pt."
+    indent:
+      left_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "Left indentation settings (type: dictionary), supporting multiple units. Each field in 'value' represents the indentation amount in a specific unit (pt, cm, mm, inches, character). The default unit is pt. 'hanging' indicates whether the indent is hanging: 0 for normal indent, -1 for hanging indent."
+
+      right_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "Right indentation settings (type: dictionary), supporting multiple units. Each field in 'value' represents the indentation amount in a specific unit (pt, cm, mm, inches, character). The default unit is pt. 'hanging' indicates whether the indent is hanging: 0 for normal indent, -1 for hanging indent."
+
+      firstline_indent:
+        value:
+          pt: null
+          cm: null
+          mm: null
+          inches: null
+          character: null
+        hanging: null
+        description: "First line or hanging indentation settings (type: dictionary), supporting multiple units. Each field in 'value' represents the indentation amount in a specific unit (pt, cm, mm, inches, character). 'hanging' indicates whether the indent is hanging: 0 for first-line indent, -1 for hanging indent."
+    pagination_control:
+      widow_control:
+        value: null
+        description: "Widow control (type: integer). 0 = disabled, -1 = enabled"
+      keep_with_next:
+        value: null
+        description: "Keep with next (type: integer). 0 = disabled, -1 = enabled"
+      keep_together:
+        value: null
+        description: "Keep lines together (type: integer). 0 = disabled, -1 = enabled"
+      page_break_before:
+        value: null
+        description: "Page break before (type: integer). 0 = disabled, -1 = enabled"
+
+
+partial_text_properties_template:
+  zh:
+    base_font:
+      Name:
+        value: null
+        description: "全局字体名称（类型：字符串）总体字体名称（str），统一控制所有字符（中英数字）的字体样式。"
+      NameAscii:
+        value: null
+        description: "西文字体名称（类型：字符串），单独设置西文字体，仅影响英文、数字等ASCII字符的显示样式，启用时覆盖西文字符（字母和数字）的字体。"
+      Size:
+        value: null
+        description: "字体大小（类型：整数）"
+      Bold:
+        value: null
+        description: "是否加粗（类型：整数，0 表示无效果，-1 表示有效果）"
+      Italic:
+        value: null
+        description: "是否倾斜（类型：整数，0 表示无效果，-1 表示有效果）"
+      Underline:
+        value: null
+        description: "下划线样式（类型：整数，取值包括： 0：无下划线; 1：单线下划线; 2：仅文字下划线; 3：双线下划线; 4：点线下划线; 7：短线下划线（短横线样式的下划线）; 39：长线下划线（长横线样式的下划线）; 11：波浪线下划线; 6：粗线下划线。）"
+      Color:
+        value: null
+        description: "字体颜色（类型：字符串，十六进制，例如 \"#FF0000\"）"
+      HighlightColorIndex:
+        value: null
+        description: "字体高亮颜色（类型：整数，0 无、1 黑、3 青绿、4 亮绿、5 粉、6 红、7 黄、9 深蓝、10 墨绿、11 绿、12 紫、13 深红、14 深黄、15 灰50%、16 灰25%）"
+    advanced_font:
+      StrikeThrough:
+        value: null
+        description: "删除线效果（类型：整数，0 表示无，-1 表示启用）"
+      Subscript:
+        value: null
+        description: "下标效果（类型：整数，0 表示无，-1 表示启用）"
+      Superscript:
+        value: null
+        description: "上标效果（类型：整数，0 表示无，-1 表示启用）"
+      AllCaps:
+        value: null
+        description: "全部大写（类型：整数，0 表示无，-1 表示启用）"
+      SmallCaps:
+        value: null
+        description: "小型大写（类型：整数，0 表示无，-1 表示启用）"
+      Spacing:
+        value: null
+        description: "字符间距（类型：浮点数，单位为磅，正值加宽，负值紧缩）"
+      Scaling:
+        value: null
+        description: "字符缩放百分比（类型：整数，范围 1–100，表示正常宽度的百分比）"
+      Emboss:
+        value: null
+        description: "浮雕效果（类型：整数，0 表示无，-1 表示启用）"
+      Engrave:
+        value: null
+        description: "雕刻效果（类型：整数，0 表示无，-1 表示启用）"
+      Shadow:
+        value: null
+        description: "阴影效果（类型：整数，0 表示无，-1 表示启用）"
+  en:
+    base_font:
+      Name:
+        value: null
+        description: "Font name (type: string). Global font name (str), sets the default font for all characters (Chinese, English, numbers, etc.). Used as the primary font setting when no character-specific distinction is required."
+      NameAscii:
+        value: null
+        description: "Font name (type: string). Western font name (English, numbers, etc.) (str), specifically sets the font for ASCII characters. Only activated when character-specific distinction is needed."
+      Size:
+        value: null
+        description: "Font size (type: integer)"
+      Bold:
+        value: null
+        description: "Bold effect (type: integer, 0 = no effect, -1 = apply)"
+      Italic:
+        value: null
+        description: "Italic effect (type: integer, 0 = no effect, -1 = apply)"
+      Underline:
+        value: null
+        description: "Underline style (type: integer, values include: - 0：No underline; 1：Single underline; 2：Words only underline; 3：Double underline; 4：Dotted underline; 7：Dash underline; 39：Dash long underline; 11：Wave underline; 6：Thick underline)"
+      Color:
+        value: null
+        description: "Font color (type: string, hex like \"#FF0000\")"
+      HighlightColorIndex:
+        value: null
+        description: "Font highlight color (type: integer, values: 0 = none, 1 = black, 3 = turquoise, 4 = bright green, 5 = pink, 6 = red, 7 = yellow, 9 = dark blue, 10 = teal, 11 = green, 12 = violet, 13 = dark red, 14 = dark yellow, 15 = gray 50%, 16 = gray 25%)"
+    advanced_font:
+      StrikeThrough:
+        value: null
+        description: "Strikethrough effect (type: integer, 0 = disabled, -1 = enabled)"
+      Subscript:
+        value: null
+        description: "Subscript effect (type: integer, 0 = disabled, -1 = enabled)"
+      Superscript:
+        value: null
+        description: "Superscript effect (type: integer, 0 = disabled, -1 = enabled)"
+      AllCaps:
+        value: null
+        description: "All caps (type: integer, 0 = disabled, -1 = enabled)"
+      SmallCaps:
+        value: null
+        description: "Small caps (type: integer, 0 = disabled, -1 = enabled)"
+      Spacing:
+        value: null
+        description: "Character spacing (type: float, in points; positive = expanded, negative = condensed)"
+      Scaling:
+        value: null
+        description: "Character width scaling (type: integer, 1–100 representing percentage)"
+      Emboss:
+        value: null
+        description: "Emboss effect (type: integer, 0 = disabled, -1 = enabled)"
+      Engrave:
+        value: null
+        description: "Engrave effect (type: integer, 0 = disabled, -1 = enabled)"
+      Shadow:
+        value: null
+        description: "Shadow effect (type: integer, 0 = disabled, -1 = enabled)"
