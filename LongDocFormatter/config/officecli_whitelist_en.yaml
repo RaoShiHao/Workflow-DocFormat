@@ -1,0 +1,102 @@
+# Step3 writable property whitelist (English locale): focus tags → officecli keys + value shapes
+#
+# Sole legal key/value source when step3 fills T* for locale=en*:
+#   - Keys must be officecli add/set --prop keys;
+#   - Values follow form (lengths in pt/in/cm, colors #RRGGBB, bools true/false, enums from listed options);
+#   - focus lists which role format_focus tags the key covers (soft focus↔props check);
+#   - form lists common options / ranges (not a closed enum): prefer listed tiers; free values OK within range.
+#
+# Guides **English / Western** typography exploration (US letter margins, pt body sizes, Latin-first fonts).
+# Chinese mirror: officecli_whitelist.yaml (字号阶梯、中文字体、公文红头等). Keys/focus identical across locales.
+#
+# officecli cannot write column/cell widths: no colWidths / cell width.
+# Keys/values from refs/officecli_schemas/*.json — editing this changes the LLM surface.
+
+# ── paragraph text (body + table-cell paragraph.table_cell share this block) ──
+paragraph:
+  font.latin:      {form: 'Latin font family (vary by genre/role; do not use only Times/Calibri everywhere): serif Times New Roman | Georgia | Garamond | Book Antiqua | Palatino Linotype | Cambria | Constantia | Century | Century Schoolbook (legal/pleadings) | Baskerville | Bookman Old Style; sans Arial | Calibri | Candara | Corbel | Segoe UI | Verdana | Tahoma | Helvetica | Gill Sans MT | Trebuchet MS; mono Courier New | Consolas | Lucida Console (docket numbers / code-like ids)', focus: [font_family]}
+  font.ea:         {form: 'East-Asian font (only when CJK appears: names, quotes, bilingual headings). Prefer hierarchy when used: Song/SimSun | Heiti/SimHei | KaiTi | FangSong | Microsoft YaHei | etc. For pure English docs, omit or keep a sensible fallback.', focus: [font_family]}
+  size:            {form: 'Point ladder (title→body must step down). Never use 11pt (Word default; not in the dataset ladder). Cover/report title "18pt"|"20pt"|"22pt"|"24pt"; chapter H1 "14pt"|"16pt"|"18pt"; H2 "12pt"|"13pt"|"14pt"; H3/body "10pt"|"10.5pt"|"12pt"; captions/footnotes "8pt"|"9pt"|"10pt". Academic/business body: 12pt or 10.5pt.', focus: [font_size]}
+  bold:            {form: "true|false",                   focus: [bold]}
+  italic:          {form: "true|false",                   focus: [italic]}
+  color:           {form: 'Text color #RRGGBB. Common: near-black body "#000000"|"#1A1A1A"|"#333333"; secondary gray "#666666"|"#808080"|"#A0A0A0"; accent/link blue "#0563C1"|"#0000FF"; institutional red sparingly "#C00000"|"#B22222"; dark green "#006400". Avoid decorative browns unless genre-driven.', focus: [color]}
+  align:           {form: "left|center|right|justify|both", focus: [alignment, cell_align_h_left, cell_align_h_center, cell_align_h_right]}
+  lineSpacing:     {form: 'Line spacing【UNITS REQUIRED; never bare numbers】Two mutually exclusive forms: (A) Multiples MUST end with x: "1x"|"1.15x"|"1.5x"|"2x" — bare 12/20 are misread by officecli as 12x/20x; (B) Fixed leading MUST end with pt: "18pt"|"20pt"|"22pt"|"24pt"|"28pt" (never write 20 for fixed 20pt — write "20pt"). Body often single / 1.15x / fixed 20–24pt; headings may use 1.5x or 2x (thesis double-space if required).', focus: [line_spacing]}
+  spaceBefore:     {form: 'Space before: common "0pt"|"6pt"|"12pt"|"18pt"|"24pt" (also "3pt"|"9pt"|"30pt")', focus: [space_before]}
+  spaceAfter:      {form: 'Space after: common "0pt"|"6pt"|"12pt"|"18pt"|"24pt" (also "3pt"|"9pt"|"30pt")', focus: [space_after]}
+  firstLineIndent: {form: 'First-line indent (pt/in/cm only; officecli rejects em). English prose often "0.5in"|"36pt"|"1.27cm"; or "0pt" with space-after. Also "12pt"|"18pt"|"24pt"(~2 chars; do not write 2em)|"0.5cm"|"1cm".', focus: [first_line_indent]}
+  hangingIndent:   {form: 'Hanging indent: "12pt"|"18pt"|"0.25in"|"0.5in"|"0.5cm"|"0.74cm"|"1cm" (bibliographies / legal cites)', focus: [hanging_indent]}
+  indent:          {form: 'Left indent: "0pt"|"12pt"|"24pt"|"36pt"|"0.25in"|"0.5in"|"0.5cm"|"1cm"|"1.5cm"|"2.54cm"', focus: [left_indent]}
+  rightIndent:     {form: 'Right indent: "0pt"|"12pt"|"24pt"|"0.25in"|"0.5in"|"0.5cm"|"1cm"|"1.5cm"|"2.54cm"', focus: [right_indent]}
+  outlineLvl:      {form: "0..8 (0 = top-level heading)", focus: [outline_level]}
+  keepNext:        {form: "true|false (keep with next paragraph)", focus: [keep_with_next]}
+  pageBreakBefore: {form: "true|false",                   focus: [page_break_before]}
+  listStyle:       {form: "ordered|bullet",               focus: [list_ordered, list_unordered]}
+  numLevel:        {form: "0..8 (list nesting level)",     focus: [list_ordered, list_unordered]}
+
+# ── run (inline span vs host paragraph; must match discriminable semantics from step1/2) ──
+run:
+  bold:        {form: "true|false",  focus: [run_bold]}
+  italic:      {form: "true|false",  focus: [run_italic]}
+  superscript: {form: "true|false",  focus: [run_superscript]}
+  subscript:   {form: "true|false",  focus: [run_subscript]}
+  caps:        {form: "true|false",  focus: [run_caps]}
+  smallcaps:   {form: "true|false",  focus: [run_small_caps]}
+  color:       {form: 'Span color #RRGGBB (emphasis / link / brand): "#000000"|"#C00000"|"#FF0000"|"#0563C1"|"#666666" etc.', focus: [run_color]}
+  underline:   {form: "single|none|double|thick|dotted|dash", focus: [run_underline]}
+  font.ea:     {form: 'EA font for CJK spans only (proper names, bilingual quotes); do not switch fonts without semantic reason', focus: [run_font_ea, run_font_family]}
+  font.latin:  {form: 'Latin font override for named spans (case numbers, code ids, trademark styling)', focus: [run_font_latin, run_font_family]}
+  size:        {form: 'Optional local size vs host: "8pt"|"9pt"|"10pt"|"10.5pt"|"12pt"|"14pt"|"16pt"|"18pt"|"22pt". Never 11pt.', focus: [font_size]}
+
+# ── section (section-level page setup) ──
+section:
+  marginTop:    {form: 'Top margin【unit required cm/in/pt; forbid bare 2/3】US letter–friendly: "1in"|"1.25in"|"0.75in"|"2.54cm"|"3.17cm"|"2cm"|"2.5cm"|"3cm"|"3.5cm"|"3.81cm"', focus: [margin_intent]}
+  marginBottom: {form: 'Bottom margin【unit required; forbid bare numbers】: "1in"|"1.25in"|"0.75in"|"2.54cm"|"3.17cm"|"2cm"|"2.5cm"|"3cm"|"3.5cm"', focus: [margin_intent]}
+  marginLeft:   {form: 'Left margin【unit required】binding edge may be larger: "1in"|"1.25in"|"1.5in"|"2.54cm"|"3.17cm"|"3.81cm"|"2cm"|"2.5cm"|"3cm"|"3.5cm"', focus: [margin_intent]}
+  marginRight:  {form: 'Right margin【unit required】: "1in"|"1.25in"|"0.75in"|"2.54cm"|"3.17cm"|"2cm"|"2.5cm"|"3cm"', focus: [margin_intent]}
+  marginHeader: {form: 'Header from top【unit required】: "0.5in"|"0.75in"|"1in"|"1.27cm"|"1.5cm"|"1.75cm"|"2cm"|"2.54cm". **If pgBorders=box**: choose one so the header does not sit on the top rule — outside ≤"1.2cm" ("1cm"|"1.2cm"); inside ≥"1.7cm" ("1.75cm"|"2cm"|"2.54cm"). Forbid 1.2–1.7cm', focus: [header_distance]}
+  marginFooter: {form: 'Footer from bottom【unit required】: "0.5in"|"0.75in"|"1in"|"1.27cm"|"1.5cm"|"1.75cm"|"2cm"|"2.54cm". **If pgBorders=box**: must be ≥"1.7cm" (prefer "1.7cm"|"1.75cm"|"2cm") so page numbers are not clipped', focus: [footer_distance]}
+  orientation:  {form: "portrait|landscape",   focus: [orientation_portrait, orientation_landscape]}
+  columns:      {form: "1 (multi-column disabled for this pipeline; always single column)", focus: [columns_one]}
+  # columnSpace deprecated with multi-column
+  # no vAlign: section page vertical align not writable; Word defaults to top
+  pgBorders:    {form: "box|none (page frame; cover/special pages often box)", focus: [page_border]}
+  type:         {form: "nextPage|continuous|evenPage|oddPage", focus: [section_break_nextPage]}
+  pageNumFmt:   {form: "decimal|lowerRoman|upperRoman",        focus: [margin_intent]}
+  pageStart:    {form: '1|"none" (restart page number in this section; none = continue)', focus: [margin_intent]}
+  titlePage:    {form: "true|false (different first-page header/footer)", focus: [header_footer_independent]}
+
+# ── table_format (table-structure: whole-table only; not cell chrome or in-cell text) ──
+# Owns: table align, width, layout, repeat_header; optional coarse outer border (often border.all=none + draw lines on cells).
+# Does not own: per-cell four-side borders, fill, valign → cells (cell_format).
+# Does not own: header bold / size / font → ParaTbl* (paragraph).
+table_format:
+  border.all:    {form: 'Coarse outer frame STYLE;SIZE;COLOR e.g. "single;4;auto" | "none". Prefer cell grid/three-line rules on cells — do not replace four cell sides with this key alone', focus: [table_border_all, table_border_none]}
+  border.top:    {form: 'Table top edge (rare; three-line top belongs on cells.header / row_*)', focus: [table_border_top]}
+  border.bottom: {form: 'Table bottom edge (rare; three-line bottom on cells.row_last)', focus: [table_border_bottom]}
+  border.left:   {form: 'Table left edge (rare; verticals on cells.*.border.left/right)', focus: [table_border_left]}
+  border.right:  {form: 'Table right edge (rare)', focus: [table_border_right]}
+  align:         {form: "left|center|right",  focus: [table_align_center, table_align_left]}
+  width:         {form: '"100%"|"90%"|"80%" (percent table width)', focus: [table_width_percent]}
+  layout:        {form: "fixed|autofit",      focus: [table_width_autofit]}
+  repeat_header: {form: "true|false (repeat header row across pages)", focus: [header_repeat]}
+
+# ── cell_format (table-cell chrome on Tbl*.cells.<pos> / row_*) ──
+# Owns only: four-side borders (top/bottom/left/right or border.all) + fill + valign.
+# Grid / three-line / info-table underlines **must** live here — never omit left/right (open table side).
+# Does not own: bold, size, font, color, horizontal align → ParaTbl* paragraph align.
+cell_format:
+  border.all:    {form: 'Same STYLE;SIZE;COLOR on all four sides (e.g. "single;4;auto"), or "none". Never a bare size "4"', focus: [cell_border_all, cell_border_none]}
+  border.top:    {form: 'Top STYLE;SIZE;COLOR (e.g. "single;12;auto") or "nil". Never a bare "12"',   focus: [cell_border_top]}
+  border.bottom: {form: 'Bottom STYLE;SIZE;COLOR (e.g. "single;4;auto") or "nil". Never a bare "4"',   focus: [cell_border_bottom]}
+  border.left:   {form: 'Left border STYLE;SIZE;COLOR or "nil" (vertical; pair with right)', focus: [cell_border_left]}
+  border.right:  {form: 'Right border STYLE;SIZE;COLOR or "nil" (omit → open right edge)', focus: [cell_border_right]}
+  fill:          {form: 'Shading #RRGGBB. Common "#E7E6E6"|"#F2F2F2"|"#F3F6F9"|"#EFEFEF"|"#D9E2F3"|"#E8EEF7"|"#FFF2CC"|"#FCE4D6"; omit or "auto" for none', focus: [cell_shading]}
+  valign:        {form: "top|center|bottom",  focus: [cell_valign_top, cell_valign_center, cell_valign_bottom]}
+
+# ── image (inline only; no wrap/float; keep aspect via proportional width×height) ──
+# crop / cropLeft|Top|Right|Bottom are intentionally closed: generated figures need no extra crop.
+image:
+  width:  {form: '"4cm"|"6cm"|"8cm"|"10cm"|"12cm"|"13cm"|"14cm"|"16cm"|"3in"|"4in"|"5in"|"6in"', focus: [size_lock_aspect, inline_only]}
+  height: {form: '"3cm"|"4cm"|"6cm"|"7cm"|"8cm"|"9cm"|"10cm"|"12cm"|"2in"|"3in"|"4in"|"5in"', focus: [size_lock_aspect, inline_only]}
+  hAlign: {form: "left|center|right (inline; lands on host paragraph align; default center)", focus: [caption_below]}

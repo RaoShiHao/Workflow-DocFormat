@@ -1,0 +1,12 @@
+# Workflow-DocFormat (workflow version)
+# Python >= 3.11
+#
+# System tools (not installed via pip):
+#   - officecli: https://officecli.ai
+#     Windows: irm https://d.officecli.ai/install.ps1 | iex
+#     macOS/Linux: curl -fsSL https://d.officecli.ai/install.sh | bash
+
+langgraph>=0.2.0
+openai>=1.0.0
+zhipuai>=2.1.5
+PyYAML>=6.0

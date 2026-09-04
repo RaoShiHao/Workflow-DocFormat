@@ -1,0 +1,98 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+style_naming_batch:
+  zh:
+    system: |
+      你是表格结构样式命名专家。按整表用途命名（三线表/网格/封面信息表），不要按业务主题拆近义表。
+      cluster_id 不变；style_name 唯一 [a-z0-9_]。只 JSON。
+    user_template: |
+      元素类型: {{element_type}}
+      聚类列表:
+      {{clusters_json}}
+      排版说明（可选辅助，不得增删聚类；无则 none）:
+      {{requirement}}
+      输出:
+      {"styles":[{"cluster_id":1,"style_name":"three_line","display_name":"三线表","description":"..."}]}
+  en:
+    system: |
+      Name whole-table structure styles by look (three-line / grid / cover info), not by business topic.
+      Keep cluster_id. Unique style_name [a-z0-9_]. JSON only.
+    user_template: |
+      Element type: {{element_type}}
+      Clusters:
+      {{clusters_json}}
+      Optional layout notes (auxiliary only; do not add/remove clusters; none if empty):
+      {{requirement}}
+      Output:
+      {"styles":[{"cluster_id":1,"style_name":"three_line","display_name":"Three-line table","description":"..."}]}
+
+element_classification:
+  zh:
+    system: |
+      把每张表分到已知表结构样式。依据题注、表头文字、行列规模，不要依据 init 里尚未画上的框线。
+      无法判断时 style_id="other"。只 JSON。
+    user_template: |
+      表样式目录:
+      {{style_list_json}}
+      待分类表:
+      {{elements_json}}
+      输出:
+      {"assignments":[{"location_id":1,"style_id":"TblThreeLine"}]}
+  en:
+    system: |
+      Assign each table to a known table-structure style using caption, header row, and shape.
+      Do not use missing borders on an unformatted init table. When unsure use style_id="other". JSON only.
+    user_template: |
+      Table catalog:
+      {{style_list_json}}
+      Tables:
+      {{elements_json}}
+      Output:
+      {"assignments":[{"location_id":1,"style_id":"TblThreeLine"}]}
+
+element_classification_joint:
+  zh:
+    system: |
+      分两跳，不要混成「按标本表的 r1_cN 复印」。
+      1）先选 table-style（整表结构：对齐/表框/宽）。依据表的**用途**：caption（题注）+ header_row（第一行表头）去对目录里的 caption_type / header_semantics / captions / header_rows。
+      typical_sections / section_style 只是弱先验：同一节可以同时有开表和网格表，禁止因为都在 SecBody 就把摘要表绑成网格。
+      不要用源稿格子上已有的默认框线当证据：init 常带 Word 默认 single，gold 可能要拆成 nil。
+      2）再在**该 table-style 已声明的 cell-style**里给每个物理格分类，并选格内 paragraph_style（Para*Cell）。
+      cell_style 必须来自该 table_style 自己的槽名列表（cell_slots_by_table），禁止 r1_c1，禁止用别的表的槽。
+      paragraph_style 必须是 paragraph.table_cell（Para*Cell），禁止 ParaBody/正文。
+      无法判断时用 other。只 JSON。JSON 必须完整可解析，不得截断。
+    user_template: |
+      表结构样式目录（含 caption_type / header_semantics；typical_sections 仅辅助）:
+      {{table_styles_json}}
+      格内段落样式目录:
+      {{paragraph_styles_json}}
+      各 table-style 声明的 cell-style（只许用对应表的槽）:
+      {{cell_slots_by_table_json}}
+      槽名并集（仅参考）:
+      {{cell_slots_json}}
+      待分类表（用途：caption、header_row、邻段；节角色仅辅助；无源稿框线）:
+      {{elements_json}}
+      输出:
+      {"tables":[{"location_id":1,"table_style":"TblThreeLine","cells":[{"row":1,"col":1,"cell_style":"header","paragraph_style":"ParaTblHeaderCell"}]}]}
+  en:
+    system: |
+      Two hops: (1) pick the table-style (structure); (2) classify every physical cell into a cell-style that table-style declares, plus an in-cell Para*Cell.
+      Hop 1 is usage-first: match this table's caption + header_row to a Tbl* caption_type / header_semantics / example captions / header_rows.
+      typical_sections / section_style are a weak prior only — the same Sec* can host several Tbl* looks (open summary vs grid matrix). Do not pick a grid Tbl* for a summary caption just because both sit in SecBody.
+      Do not treat default init borders as evidence: source tables often already have Word single borders; the target look may strip them to nil.
+      Do not copy specimen r1_cN coordinates.
+      cell_style must come from that table_style's own slot list (cell_slots_by_table), never r1_c1, never another table's slots.
+      paragraph_style must be paragraph.table_cell (Para*Cell), never ParaBody/Normal.
+      When unsure use other. JSON only. The JSON must be complete and parseable; do not truncate.
+    user_template: |
+      Table-structure catalog (caption_type / header_semantics; typical_sections auxiliary only):
+      {{table_styles_json}}
+      In-cell paragraph catalog:
+      {{paragraph_styles_json}}
+      Cell-styles declared per table-style (use only that table's slots):
+      {{cell_slots_by_table_json}}
+      Union of slot names (reference only):
+      {{cell_slots_json}}
+      Tables (usage: caption, header_row, neighbors; section role auxiliary; no source chrome):
+      {{elements_json}}
+      Output:
+      {"tables":[{"location_id":1,"table_style":"TblThreeLine","cells":[{"row":1,"col":1,"cell_style":"header","paragraph_style":"ParaTblHeaderCell"}]}]}

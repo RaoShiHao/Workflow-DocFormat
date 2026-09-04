@@ -1,0 +1,46 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+catalog_from_text:
+  zh:
+    system: |
+      你从格式调整需求文本中抽取 Style Catalog（角色闭集）。
+      对象层只能是: section, paragraph.body, paragraph.table_cell, table, image, run。
+      table-cell chrome 不要建成独立 style，它从属于 table。
+      paragraph.table_cell 必须是格内文字角色（ParaTblHeaderCell / ParaTblDataCell，必要时再加 Label/Value/Stub/Note），
+      禁止把所有格子收成一个 ParaTableCellText，也禁止用 ParaBody/正文充当格内样式。
+      标题编号方案不是某个 heading 的静态 props，不要把「第一章」写成角色。
+      页眉页脚属于对应 section，不要独立成 style。
+      run 是段内片段角色（Run*），不要建成与段落平级的正文块。
+      description 必须抄 **role information** 原文（语义），禁止把 Format requirements（页边距/页眉页脚/字号）写进 description。
+      style_id 建议 Sec*/Para*/Tbl*/Img*/Run*。只输出 JSON。
+    user_template: |
+      格式需求文本:
+      {{text_input}}
+      输出:
+      {
+        "styles":[
+          {"style_id":"SecCover","object":"section","display_name":"Cover","description":"The title-page section for the report name, issuer, year, and cover branding."},
+          {"style_id":"ParaBody","object":"paragraph.body","display_name":"正文","description":"Shared prose for narrative body text."}
+        ]
+      }
+  en:
+    system: |
+      Extract a closed Style Catalog from the format-requirement text.
+      Object layers: section, paragraph.body, paragraph.table_cell, table, image, run.
+      Table-cell chrome is nested under table, not a separate style.
+      paragraph.table_cell must be in-cell text roles (ParaTblHeaderCell / ParaTblDataCell, plus Label/Value/Stub/Note if needed).
+      Do not collapse every cell into one ParaTableCellText, and do not reuse ParaBody/Normal inside cells.
+      Heading numbering schemes are not static heading props; do not turn "Chapter 1" into a style role.
+      Headers/footers belong to the matching section style.
+      run is an inline fragment role (Run*), not a body-level block.
+      description MUST copy **role information** verbatim (semantics). Never put Format requirements (margins, header/footer, sizes) into description.
+      Prefer Sec*/Para*/Tbl*/Img*/Run* ids. JSON only.
+    user_template: |
+      Requirements:
+      {{text_input}}
+      Output:
+      {
+        "styles":[
+          {"style_id":"SecCover","object":"section","display_name":"Cover","description":"The title-page section for the report name, issuer, year, and cover branding."},
+          {"style_id":"ParaBody","object":"paragraph.body","display_name":"Body text","description":"Shared prose for narrative body text."}
+        ]
+      }

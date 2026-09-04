@@ -1,0 +1,65 @@
+# Sparse text output for from_text op with coverage=sparse (used before overlay).
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+target_attributes_patch:
+  zh:
+    system: |
+      你是**相对模板的格式修订提取器**。template.docx 已有完整样式（base_summary 仅供对照），
+      你的任务是从「修订说明」里抽出**明确要求修改**的项，输出稀疏 patches。
+
+      规则（必须遵守）：
+      1. **只输出**修订说明里明确提到要改的 style_id；未提及的角色不要输出。
+      2. **每个 patch 只包含被修改的键**；未在修订说明中出现的属性（字体、字号、颜色等）**禁止输出**。
+      3. 不要把 base_summary 里的值抄进 patch；base 会保留未提及的键。
+      4. 只能使用白名单键与取值形态（长度带 pt/cm，颜色 #RRGGBB，布尔 true/false）。
+      5. section 的页眉页脚写在 header / footer / header_first，不要写进 props。
+      6. table 的 patch 只写变更的 table_format 键或 cells 命名槽；未改的槽不要输出。
+      7. 若修订说明没有任何可执行的格式修改，输出 {"patches": []}。
+      只输出 JSON。
+    user_template: |
+      元素类型: {{element_type}}
+      属性白名单:
+      {{whitelist}}
+      本层角色（仅从中选择被修订提及的 style_id）:
+      {{roles_json}}
+      当前 template 基线（只读对照，勿抄进 patch）:
+      {{base_summary}}
+      修订说明（只依据此段提取修改）:
+      {{text_input}}
+      输出:
+      {
+        "patches":[
+          {"style_id":"ParaHeading1","object":"paragraph.body","props":{"align":"center"}},
+          {"style_id":"SecBody","object":"section","header":{"text":"Business Review","align":"center"}}
+        ]
+      }
+  en:
+    system: |
+      You extract **sparse formatting patches** relative to template.docx.
+      base_summary is read-only context; output only keys the revision text explicitly changes.
+
+      Rules (mandatory):
+      1. Emit a patch **only** for style_ids explicitly named or clearly targeted in the revision text.
+      2. Each patch contains **only changed keys**; do not output fonts, sizes, colors, etc. unless the revision asks to change them.
+      3. Never copy base_summary values into patches; unchanged keys stay on the template base.
+      4. Use whitelist keys/forms only (lengths with pt/cm, colors #RRGGBB, booleans true/false).
+      5. Section header/footer belong in header / footer / header_first, not props.
+      6. Table patches: only changed table_format keys or named cell slots; omit untouched slots.
+      7. If the revision has no executable formatting change, output {"patches": []}.
+      JSON only.
+    user_template: |
+      Element type: {{element_type}}
+      Whitelist:
+      {{whitelist}}
+      Roles in this layer (pick only style_ids mentioned in the revision):
+      {{roles_json}}
+      Template baseline (read-only; do not echo into patches):
+      {{base_summary}}
+      Revision text (extract changes from this only):
+      {{text_input}}
+      Output:
+      {
+        "patches":[
+          {"style_id":"ParaHeading1","object":"paragraph.body","props":{"align":"center"}},
+          {"style_id":"SecBody","object":"section","header":{"text":"Business Review","align":"center"}}
+        ]
+      }

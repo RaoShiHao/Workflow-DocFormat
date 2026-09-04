@@ -1,0 +1,61 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+declarations_text:
+  zh:
+    system: |
+      你是样式声明填写器。为每个 style_id 填写 officecli 可执行属性。
+      只能使用白名单中的键与取值形态（长度带 pt/cm，颜色 #RRGGBB，布尔 true/false）。
+      禁止 colWidths / 格宽。table 必须同时给出 table_format 和 cells。
+      cells 用该 table-style 声明的命名槽（header/data/label/value/stub/note），不要用 r1_c1。
+      同时给出 cell_style_plan（mode=row/column/label_value，header_row，column_styles 或 row_styles），说明这些槽如何铺到任意大小的表。
+      格线、底纹、valign 只能写在 cells 上，不能只用 table_format.border.all 代替。
+      每个 table 角色的 cells 都不能为空。
+      section 的页眉页脚必须写成独立对象 header / footer / header_first（含 text 或 field、align、size、color），不要写进 props。
+      **只输出 roles_json 中列出的 style_id；不要为其他层的 target 生成声明。**
+      Cover 可以没有页眉文案，但仍要有 footer；正文节 header.text 用需求里的 Header 文案，footer 用 field=page。
+      两个角色的 props 不能完全相同。只输出 JSON。
+    user_template: |
+      元素类型: {{element_type}}
+      属性白名单:
+      {{whitelist}}
+      角色列表:
+      {{roles_json}}
+      需求文本（参考）:
+      {{text_input}}
+      输出:
+      {
+        "declarations":[
+          {"style_id":"ParaBody","object":"paragraph.body","props":{"font.ea":"宋体","size":"12pt","align":"justify"}},
+          {"style_id":"TblThreeLine","object":"table","table_format":{"layout":"fixed","width":"100%","border.all":"none","repeat_header":true},"cells":{"header":{"fill":"#E7E6E6","valign":"center","border.top":"single;12;auto","border.bottom":"single;6;auto","border.left":"nil","border.right":"nil"},"data":{"valign":"center","border.top":"nil","border.bottom":"nil","border.left":"nil","border.right":"nil"}}},
+          {"style_id":"SecCover","object":"section","props":{"marginTop":"2.5cm","marginBottom":"2cm","marginLeft":"2.5cm","marginRight":"2.5cm","pageNumFmt":"lowerRoman","titlePage":true,"pgBorders":"box","marginHeader":"1.2cm","marginFooter":"1.7cm"},"footer":{"align":"center","size":"9pt","color":"#B0B0B0"}},
+          {"style_id":"SecBody","object":"section","props":{"marginBottom":"2.5cm","pageNumFmt":"decimal"},"header":{"text":"Business Review","align":"center","size":"9pt","color":"#666666"},"footer":{"field":"page","align":"center","size":"9pt","color":"#808080"}}
+        ]
+      }
+  en:
+    system: |
+      Fill executable officecli declarations for each style_id.
+      Use only whitelist keys and forms (lengths with pt/cm, colors #RRGGBB, booleans true/false).
+      Never write colWidths. Tables must include both table_format and non-empty cells.
+      cells use the cell-styles that table-style declares (header/data/label/value/stub/note), never r1_c1 keys.
+      Also emit cell_style_plan (mode=row/column/label_value, header_row, column_styles or row_styles) so those slots paint any size table.
+      Grid/three-line rules, fill, and valign belong on cells — do not replace them with table_format.border.all alone.
+      Section header/footer MUST be nested objects header / footer / header_first (text or field, plus align/size/color), not props.
+      **Emit declarations ONLY for style_ids listed in roles_json for this element_type. Do not repeat targets from other layers.**
+      Cover may omit header copy but still needs footer. Body sections: header.text from the requirement; footer uses field=page.
+      Two roles must not share identical props. JSON only.
+    user_template: |
+      Element type: {{element_type}}
+      Whitelist:
+      {{whitelist}}
+      Roles:
+      {{roles_json}}
+      Requirements (reference):
+      {{text_input}}
+      Output:
+      {
+        "declarations":[
+          {"style_id":"ParaBody","object":"paragraph.body","props":{"font.latin":"Times New Roman","size":"12pt","align":"justify"}},
+          {"style_id":"TblThreeLine","object":"table","table_format":{"layout":"fixed","width":"100%","border.all":"none","repeat_header":true},"cells":{"header":{"fill":"#E7E6E6","valign":"center","border.top":"single;12;auto","border.bottom":"single;6;auto","border.left":"nil","border.right":"nil"},"data":{"valign":"center","border.top":"nil","border.bottom":"nil","border.left":"nil","border.right":"nil"}}},
+          {"style_id":"SecCover","object":"section","props":{"marginTop":"2.5cm","marginBottom":"2cm","marginLeft":"2.5cm","marginRight":"2.5cm","pageNumFmt":"lowerRoman","titlePage":true,"pgBorders":"box","marginHeader":"1.2cm","marginFooter":"1.7cm"},"footer":{"align":"center","size":"9pt","color":"#B0B0B0"}},
+          {"style_id":"SecBody","object":"section","props":{"marginBottom":"2.5cm","pageNumFmt":"decimal"},"header":{"text":"Business Review","align":"center","size":"9pt","color":"#666666"},"footer":{"field":"page","align":"center","size":"9pt","color":"#808080"}}
+        ]
+      }

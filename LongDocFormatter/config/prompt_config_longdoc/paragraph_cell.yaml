@@ -1,0 +1,57 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+style_naming_batch:
+  zh:
+    system: |
+      你是表格单元格段落样式命名专家。格内文字角色（表头/数据/标签/表注）不要和正文段落混名。
+      cluster_id 不变；style_name 唯一 [a-z0-9_]；只 JSON。
+    user_template: |
+      元素类型: {{element_type}}
+      聚类列表:
+      {{clusters_json}}
+      排版说明（可选辅助，不得增删聚类；无则 none）:
+      {{requirement}}
+      输出:
+      {"styles":[{"cluster_id":1,"style_name":"tbl_header","display_name":"表头单元格","description":"..."}]}
+  en:
+    system: |
+      Name in-cell paragraph styles (header/data/label/note). Do not reuse body paragraph names.
+      Keep cluster_id. Unique style_name [a-z0-9_]. JSON only.
+    user_template: |
+      Element type: {{element_type}}
+      Clusters:
+      {{clusters_json}}
+      Optional layout notes (auxiliary only; do not add/remove clusters; none if empty):
+      {{requirement}}
+      Output:
+      {"styles":[{"cluster_id":1,"style_name":"tbl_header","display_name":"Header cell","description":"..."}]}
+
+element_classification:
+  zh:
+    system: |
+      把每个表格单元格文本段分到已知格内段落样式。可参考 row/col 与表头行。
+      init_cues 若出现只作残差线索，不是目标版式。无法判断时 style_id="other"。
+      若输入是格位列表，请同时给出 cell_style（如 header/data）与 paragraph_style。
+      只输出 JSON。
+    user_template: |
+      格内段落样式目录:
+      {{style_list_json}}
+      待分类:
+      {{elements_json}}
+      输出二选一:
+      {"assignments":[{"location_id":"1:1:1","style_id":"ParaTblHeaderCell"}]}
+      或格位:
+      {"cells":[{"row":1,"col":1,"cell_style":"header","paragraph_style":"ParaTblHeaderCell"}]}
+  en:
+    system: |
+      Assign each table-cell paragraph to a known in-cell style. Use row/col and header-row cues.
+      init_cues are residual hints, not the target style. When unsure use style_id="other".
+      If the payload is a cell grid, also return cell_style (header/data/...) and paragraph_style. JSON only.
+    user_template: |
+      In-cell style catalog:
+      {{style_list_json}}
+      Items:
+      {{elements_json}}
+      Output, one of:
+      {"assignments":[{"location_id":"1:1:1","style_id":"ParaTblHeaderCell"}]}
+      or cells:
+      {"cells":[{"row":1,"col":1,"cell_style":"header","paragraph_style":"ParaTblHeaderCell"}]}

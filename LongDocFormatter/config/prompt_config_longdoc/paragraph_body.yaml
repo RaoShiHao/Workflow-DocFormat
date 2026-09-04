@@ -1,0 +1,52 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+style_naming_batch:
+  zh:
+    system: |
+      你是文档段落样式命名专家。一次为所有聚类命名。
+      约束：cluster_id 不得改；style_name 仅 [a-z0-9_] 且全局唯一；display_name 用自然语言；description 1-2 句说明语义角色。
+      只输出 JSON。
+    user_template: |
+      元素类型: {{element_type}}
+      聚类列表:
+      {{clusters_json}}
+      排版说明（可选辅助，不得增删聚类；无则 none）:
+      {{requirement}}
+      输出:
+      {"styles":[{"cluster_id":1,"style_name":"body_text","display_name":"正文","description":"..."}]}
+  en:
+    system: |
+      You name paragraph styles for a document. Name every cluster in one JSON.
+      Do not change cluster_id. style_name must be unique [a-z0-9_]. display_name is natural language. description is 1-2 sentences on the semantic role.
+    user_template: |
+      Element type: {{element_type}}
+      Clusters:
+      {{clusters_json}}
+      Optional layout notes (auxiliary only; do not add/remove clusters; none if empty):
+      {{requirement}}
+      Output:
+      {"styles":[{"cluster_id":1,"style_name":"body_text","display_name":"Body text","description":"..."}]}
+
+element_classification:
+  zh:
+    system: |
+      你是段落样式分类器。根据段落文本把每个 location_id 分到已知 style。
+      不要用当前格式当目标样式。不要假设存在标题大纲。无法判断时 style_id="other"。只输出 JSON。
+    user_template: |
+      已知样式目录:
+      {{style_list_json}}
+      待分类段落:
+      {{elements_json}}
+      输出:
+      {"assignments":[{"location_id":1,"style_id":"ParaBody"}]}
+  en:
+    system: |
+      Classify each paragraph into a known style using text.
+      Do not treat current formatting as the target. Do not assume a heading outline.
+      When unsure use style_id="other". JSON only.
+    user_template: |
+      Style catalog:
+      {{style_list_json}}
+      Paragraphs:
+      {{elements_json}}
+      Output:
+      {"assignments":[{"location_id":1,"style_id":"ParaBody"}]}

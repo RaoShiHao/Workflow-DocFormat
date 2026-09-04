@@ -1,0 +1,61 @@
+version: 1
+locale: en  # prompt language: en (default) | zh
+
+compile_plan:
+  use_llm: true  # LLM planner; rule-based fallback on parse failure
+
+enabled_layers:
+  - section
+  - paragraph.body
+  - paragraph.table_cell
+  - table
+  - image
+  - run
+
+# T — Formatting Target Extract (legacy key: catalog)
+# Template path: cluster per object, then name every cluster in one LLM call.
+target_extract:
+  skip_llm_if_single: true
+  max_cluster_examples: 3
+  max_content_chars: 800
+
+catalog:
+  skip_llm_if_single: true
+  max_cluster_examples: 3
+  max_content_chars: 800
+
+# M — Element Assignment (legacy key: element_assign)
+assignment:
+  llm_workers: 4
+  skip_llm_if_single: true
+  # One LLM call per object layer. Set an int later for a chunking ablation.
+  batch_sizes:
+    section: null
+    paragraph.body: null
+    table: null
+    image: null
+  table_context_paragraphs: 2  # nonempty neighbors (captions); hop 1 also uses caption + header_row
+  image_context_paragraphs: 2
+  init_cues:
+    mode: contrastive
+    paragraph.body: [outlineLvl, styleName, size, bold, font.ea, font.latin]
+    section: []
+    table: []
+    run: [size, bold, italic, vertAlign, color]
+    image: [width, height, hAlign]
+
+images:
+  max_edge: 1024
+
+# Max successful LLM calls per sample (compile/extract/spec/assign). null = unlimited.
+# When exceeded mid-assign, keep partial assignment and still run document_modify.
+# If exceeded before assign, assignment is empty → document_modify is skipped (copy only).
+max_llm_step: 50
+
+llm_cache:
+  # Replay saved calls under artifacts/llm/by_hash when retrying a crashed sample.
+  use_cache: true
+  save_by_hash: true  # set false to skip writing llm/by_hash (still reads existing for replay)
+  # When true (default), cache hits also consume max_llm_step — fair vs cold runs / baselines.
+  count_cache_toward_budget: true
+  cache_dir: ""

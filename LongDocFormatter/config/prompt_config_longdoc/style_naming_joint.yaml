@@ -1,0 +1,54 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+# Template extract: cluster per object, then name every cluster in one call.
+style_naming_joint:
+  zh:
+    system: |
+      你给模板上已经按对象聚类好的格式角色一次性命名，写成一份完整 target_set。
+      输入按层顺序：section → paragraph.body → paragraph.table_cell → table → image → run。
+      不得增删 cluster；cluster_id 在每一层内从 1 起，跨层可重复，输出必须带 object。
+      style_name 唯一 [a-z0-9_]；相近外观不要起同一个 display_name（四种网格表头色必须能分开）。
+      description 写用途说明（谁在用、出现在哪），不要堆字号数值。
+      表：按外观分三线/开表/网格/封面信息表，不要按业务主题拆近义表。
+      表 cluster 含 captions（题注/邻段）、header_rows（第一行表头）和 section_cluster_ids（弱先验：这种表出现在哪些节 cluster）。
+      表输出必须带 caption_type（题注类型，如 finding-summary / control-matrix / cover-kv / annex-schedule）
+      和 header_semantics（表头语义，用列名或「finding/risk/status」这类短标签）。
+      typical_section_cluster_ids 只是辅助，引用同一响应里的 section.cluster_id。
+      description 必须与 caption_type / header_semantics 一致，禁止写成「附录」却配正文摘要题注。
+      节 description 写封面/目录/正文/附录等语义角色。
+      格内段落必须是 Para*Cell，禁止与正文 ParaBody 混名。
+      只 JSON。
+    user_template: |
+      各层聚类（已按对象分开）:
+      {{layers_json}}
+      排版说明（可选辅助，不得增删聚类；无则 none）:
+      {{requirement}}
+      输出:
+      {"styles":[
+        {"object":"section","cluster_id":1,"style_name":"body","display_name":"正文节","description":"..."},
+        {"object":"table","cluster_id":1,"style_name":"minimalist","display_name":"开表/三线","description":"...","caption_type":"finding-summary","header_semantics":"Finding | Risk | Status","typical_section_cluster_ids":[2]}
+      ]}
+  en:
+    system: |
+      Name every already-clustered template role in one pass. Emit a complete target_set.
+      Layers arrive in order: section → paragraph.body → paragraph.table_cell → table → image → run.
+      Do not add or drop clusters. cluster_id is 1-based per object; repeat across layers; every item must include object.
+      Unique style_name [a-z0-9_]. Do not reuse the same display_name for distinct looks (four grid header fills must stay distinct).
+      description = usage (who uses it, where it appears), not font-size dumps.
+      Tables: name by look (three-line / open / grid / cover info), not by business topic.
+      Table clusters include captions (caption/neighbors), header_rows (first-row labels), and section_cluster_ids (weak prior: which template section clusters this look sits in).
+      For tables, emit caption_type (e.g. finding-summary / control-matrix / cover-kv / annex-schedule) and header_semantics (column names or a short label like "finding/risk/status").
+      typical_section_cluster_ids is auxiliary only — those section.cluster_id values from this same response.
+      description must agree with caption_type / header_semantics; do not write "appendix" for a body summary caption.
+      Section descriptions are semantic roles (cover / TOC / body / appendix).
+      In-cell paragraph names must be Para*Cell, never ParaBody/Normal.
+      JSON only.
+    user_template: |
+      Clusters by object:
+      {{layers_json}}
+      Optional layout notes (auxiliary only; do not add/remove clusters; none if empty):
+      {{requirement}}
+      Output:
+      {"styles":[
+        {"object":"section","cluster_id":1,"style_name":"body","display_name":"Body section","description":"..."},
+        {"object":"table","cluster_id":1,"style_name":"minimalist","display_name":"Open / three-line","description":"...","caption_type":"finding-summary","header_semantics":"Finding | Risk | Status","typical_section_cluster_ids":[2]}
+      ]}

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workflow-docformat"
+version = "0.1.0"
+description = "Long-document Word formatting: LangGraph workflow and Agent Skill"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Raoshihao" }]
+keywords = ["docx", "word", "formatting", "langgraph", "officecli", "agent-skill"]
+dependencies = [
+    "langgraph>=0.2.0",
+    "openai>=1.0.0",
+    "zhipuai>=2.1.5",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["LongDocFormatter*"]
+
+[tool.setuptools.package-data]
+LongDocFormatter = [
+    "config/*.yaml",
+    "config/prompt_config_longdoc/*.yaml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["LongDocFormatter"]
+python_files = ["test_*.py"]

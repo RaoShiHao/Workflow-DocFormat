@@ -1,0 +1,7 @@
+# longdoc-format: no PyPI packages.
+# Scripts use the Python 3.11+ standard library only (`json`, `pathlib`, `subprocess`, …).
+# External dependency is the officecli binary on PATH, not a pip package:
+#   https://officecli.ai
+#   Windows: irm https://d.officecli.ai/install.ps1 | iex
+#
+# `pip install -r requirements.txt` is a no-op and is not required.

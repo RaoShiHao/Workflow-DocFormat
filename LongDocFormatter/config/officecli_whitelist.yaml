@@ -1,0 +1,102 @@
+# step3 可写属性白名单（中文 locale）：语义 focus 标签 → officecli 原生键 + 取值形态
+#
+# 这是 step3 生成 T*（可执行格式参数）时**唯一合法的键值来源**：
+#   - 键名必须是 officecli add/set 能接受的 --prop 键；
+#   - 取值形态按 form 给（长度用 pt/cm，颜色 #RRGGBB，布尔 true/false，枚举取列内值）；
+#   - focus 列出该键覆盖哪些 role 的 format_focus 标签，供程序做「focus↔props 一致性」软校验。
+#   - form 里列的是**常用备选与取值范围**（非封闭枚举）：有明确档位的优先用档位；可自由填数值的可在范围内自拟。
+#
+# 引导**中文/公文/中文字号**方向的格式探索（二号→小五、中文字体、红头等）。
+# 英文镜像：officecli_whitelist_en.yaml（locale=en* 时由 runner 选用）；键名与 focus 两边保持一致，仅 form 措辞与常用档不同。
+#
+# officecli 明确**不可写列宽/格宽**：任何 colWidths / 单元格 width 一律禁止。
+# 键名与取值均来自 refs/officecli_schemas/*.json，改这里即改 LLM 的可用面。
+
+# ── 段落文本（普通正文段 + 表格单元格文本段 paragraph.table_cell 共用） ──
+paragraph:
+  font.latin:      {form: '西文字体名（按体裁/角色大胆选型，禁止全文只用 Times/Calibri）：衬线 Times New Roman | Georgia | Garamond | Book Antiqua | Palatino Linotype | Cambria | Constantia | Century | Century Schoolbook（法律英文/书状常用）| Baskerville | Bookman Old Style；无衬线 Arial | Calibri | Candara | Corbel | Segoe UI | Verdana | Tahoma | Helvetica | Gill Sans MT | Trebuchet MS；等宽 Courier New | Consolas | Lucida Console（案号/编号/书状等宽感）', focus: [font_family]}
+  font.ea:         {form: '中文字体名（标题/正文/强调应拉开层次，禁止一律宋体）：宋体 | 黑体 | 楷体 | 楷体_GB2312 | 仿宋 | 仿宋_GB2312 | 微软雅黑 | 隶书 | 幼圆 | 华文中宋 | 华文宋体 | 华文楷体 | 华文细黑 | 华文新魏 | 华文行楷 | 华文隶书 | 华文黑体 | 方正书宋 | 方正仿宋 | 方正黑体 | 方正小标宋（裁判文书/公文标题惯例） | 方正姚体 | 方正舒体 | 华文彩云（封面装饰慎用）', focus: [font_family]}
+  size:            {form: '中文字号阶梯（题名→正文须递减；勿全集中在小四/五号）：二号"22pt" | 小二"18pt" | 三号"16pt" | 小三"15pt" | 四号"14pt" | 小四"12pt" | 五号"10.5pt" | 小五"9pt"。封面/报告主标题宜二号或小二；一级章三号/小三；二级四号/小四；三级及正文小四/五号；脚注/弱化说明可用小五', focus: [font_size]}
+  bold:            {form: "true|false",                   focus: [bold]}
+  italic:          {form: "true|false",                   focus: [italic]}
+  color:           {form: '字色 #RRGGBB。常用：正文近黑 "#000000"/"#1A1A1A"/"#333333"；次要灰 "#666666"/"#808080"/"#A0A0A0"；公文发文机关标志/红头红 "#C00000"/"#FF0000"/"#B22222"/"#8B0000"；链接蓝/强调蓝 "#0563C1"/"#0000FF"；深绿 "#006400"；褐色 "#8B4513"（慎用，仅特殊语义）', focus: [color]}
+  align:           {form: "left|center|right|justify|both", focus: [alignment, cell_align_h_left, cell_align_h_center, cell_align_h_right]}
+  lineSpacing:     {form: '行距【必须带单位，禁止裸数字】两套互斥写法：(A) 倍数：必须以 x 结尾，如 "1x"(单倍)|"1.15x"|"1.5x"|"2x" —— 裸写 12/20 会被 officecli 误当成 12倍/20倍；(B) 固定磅值：必须以 pt 结尾，如 "18pt"|"20pt"|"22pt"|"24pt"|"28pt"（固定行距勿写 20，必须写 "20pt"）。正文常用单倍/固定20–24pt；标题可用 1.5x 或 2x', focus: [line_spacing]}
+  spaceBefore:     {form: '段前距常用 "0pt"|"6pt"|"12pt"|"18pt"|"24pt"（也可 "3pt"|"9pt"|"30pt" 等相近值）', focus: [space_before]}
+  spaceAfter:      {form: '段后距常用 "0pt"|"6pt"|"12pt"|"18pt"|"24pt"（也可 "3pt"|"9pt"|"30pt" 等相近值）', focus: [space_after]}
+  firstLineIndent: {form: '首行缩进：只用 pt 或 cm（officecli 不接受 em）。"0pt"|"12pt"|"21pt"|"24pt"(约两中文字宽，勿写 2em)|"0.74cm"|"0.85cm"|"1cm"', focus: [first_line_indent]}
+  hangingIndent:   {form: '悬挂缩进："12pt"|"18pt"|"21pt"|"24pt"|"0.5cm"|"0.74cm"|"1cm"', focus: [hanging_indent]}
+  indent:          {form: '左缩进（与 firstLineIndent 同单位习惯）："0pt"|"12pt"|"24pt"|"36pt"|"0.5cm"|"0.74cm"|"1cm"|"1.5cm"|"2cm"|"2.54cm"', focus: [left_indent]}
+  rightIndent:     {form: '右缩进："0pt"|"12pt"|"24pt"|"0.5cm"|"0.74cm"|"1cm"|"1.5cm"|"2cm"|"2.54cm"', focus: [right_indent]}
+  outlineLvl:      {form: "0..8(0=一级标题)",             focus: [outline_level]}
+  keepNext:        {form: "true|false(与后段同页)",       focus: [keep_with_next]}
+  pageBreakBefore: {form: "true|false",                   focus: [page_break_before]}
+  listStyle:       {form: "ordered|bullet",               focus: [list_ordered, list_unordered]}
+  numLevel:        {form: "0..8(列表层级)",               focus: [list_ordered, list_unordered]}
+
+# ── run（段内字符跨度：相对宿主段的局部差异；须对应可判别语义，见 step1/2 契约） ──
+run:
+  bold:        {form: "true|false",  focus: [run_bold]}
+  italic:      {form: "true|false",  focus: [run_italic]}
+  superscript: {form: "true|false",  focus: [run_superscript]}
+  subscript:   {form: "true|false",  focus: [run_subscript]}
+  caps:        {form: "true|false",  focus: [run_caps]}
+  smallcaps:   {form: "true|false",  focus: [run_small_caps]}
+  color:       {form: '字色 #RRGGBB（专名/强调/红头局部）："#000000"|"#C00000"|"#FF0000"|"#0563C1"|"#666666" 等', focus: [run_color]}
+  underline:   {form: "single|none|double|thick|dotted|dash", focus: [run_underline]}
+  font.ea:     {form: '中文字体名（专名语义：如人名楷体_GB2312 / 华文楷体；红头可用黑体；勿无故换字体）', focus: [run_font_ea, run_font_family]}
+  font.latin:  {form: '西文字体名（专名/案号等语义换字体时用）', focus: [run_font_latin, run_font_family]}
+  size:        {form: '可选局部字号（相对宿主段微调）："9pt"|"10.5pt"|"12pt"|"14pt"|"16pt"|"18pt"|"22pt"', focus: [font_size]}
+
+# ── section（节级版式，作用于分节符所在节） ──
+section:
+  marginTop:    {form: '上页边距【必须带单位 cm/in/pt，禁止裸数字 2/3】常用："2cm"|"2.54cm"(1英寸)|"2.5cm"|"2.8cm"|"3cm"|"3.17cm"(约1.25英寸)|"3.5cm"|"3.81cm"(1.5英寸)', focus: [margin_intent]}
+  marginBottom: {form: '下页边距【必须带单位，禁止裸数字】常用："2cm"|"2.54cm"|"2.5cm"|"2.8cm"|"3cm"|"3.17cm"|"3.5cm"', focus: [margin_intent]}
+  marginLeft:   {form: '左页边距【必须带单位，禁止裸数字】常用："2cm"|"2.5cm"|"2.54cm"|"2.8cm"|"3cm"|"3.17cm"|"3.5cm"（装订边可略大）', focus: [margin_intent]}
+  marginRight:  {form: '右页边距【必须带单位，禁止裸数字】常用："2cm"|"2.5cm"|"2.54cm"|"2.8cm"|"3cm"|"3.17cm"', focus: [margin_intent]}
+  marginHeader: {form: '页眉到顶距离【必须带单位】常用："1cm"|"1.27cm"(0.5英寸)|"1.5cm"|"1.75cm"|"2cm"|"2.54cm"。**若 pgBorders=box**：二选一以免压在顶线上——框外 ≤"1.2cm"（常用 "1cm"|"1.2cm"）；框内 ≥"1.7cm"（常用 "1.75cm"|"2cm"|"2.54cm"）。禁止 1.2–1.7cm', focus: [header_distance]}
+  marginFooter: {form: '页脚到底距离【必须带单位】常用："1cm"|"1.27cm"|"1.5cm"|"1.75cm"|"2cm"|"2.54cm"。**若 pgBorders=box**：必须 ≥"1.7cm"（常用 "1.7cm"|"1.75cm"|"2cm"），否则页码易被框裁切', focus: [footer_distance]}
+  orientation:  {form: "portrait|landscape",   focus: [orientation_portrait, orientation_landscape]}
+  columns:      {form: "1（本管线弃用双栏；一律单栏）", focus: [columns_one]}
+  # columnSpace 已弃用（随双栏一起禁用）
+  # 不提供 vAlign：节级页面垂直对齐不可写，officecli/Word 默认 top
+  pgBorders:    {form: "box|none(页面外框；封面/特殊页常用box)", focus: [page_border]}
+  type:         {form: "nextPage|continuous|evenPage|oddPage", focus: [section_break_nextPage]}
+  pageNumFmt:   {form: "decimal|lowerRoman|upperRoman",        focus: [margin_intent]}
+  pageStart:    {form: '1|"none"(本节页码重启到N；none=续前节)', focus: [margin_intent]}
+  titlePage:    {form: "true|false(首页独立页眉页脚)",         focus: [header_footer_independent]}
+
+# ── table_format（table-structure：整表级；不含单元格边框/底纹/valign，也不含格内文字） ──
+# 管：整表对齐、宽度、layout、表头跨页重复；可选「整表外框」粗设（常与 cells 配合：开表时 border.all=none，细线画在 cells）。
+# 不管：单个 cell 的上下左右边框、底纹、垂直对齐 → 一律写 cells（cell_format）。
+# 不管：表头加粗/字号/字体 → 写 ParaTbl*（paragraph）。
+table_format:
+  border.all:    {form: '整表外框粗设 STYLE;SIZE;COLOR，如 "single;4;auto" | "none"。细格线/三线行线优先写在 cells，勿只靠本键代替 cell 四边', focus: [table_border_all, table_border_none]}
+  border.top:    {form: '整表顶边（少用；三线顶线应写在 cells.header / row_*）',   focus: [table_border_top]}
+  border.bottom: {form: '整表底边（少用；三线底线应写在 cells.row_last）',   focus: [table_border_bottom]}
+  border.left:   {form: '整表左边（少用；竖线应写在 cells.*.border.left/right）', focus: [table_border_left]}
+  border.right:  {form: '整表右边（少用）', focus: [table_border_right]}
+  align:         {form: "left|center|right",  focus: [table_align_center, table_align_left]}
+  width:         {form: '"100%"|"90%"|"80%"(百分比整表宽)', focus: [table_width_percent]}
+  layout:        {form: "fixed|autofit",      focus: [table_width_autofit]}
+  repeat_header: {form: "true|false(表头行跨页重复)", focus: [header_repeat]}
+
+# ── cell_format（table-cell：单元格 chrome；写在 Tbl*.cells.<pos> / row_*） ──
+# 管且仅管：边框四边（top/bottom/left/right 或 border.all）+ 底纹 fill + 垂直对齐 valign。
+# 格线/三线/信息表底线 **必须**落在本层，禁止漏写 left/right 导致表侧开口。
+# 不管：加粗、字号、字体、字色、水平对齐 → 格内 ParaTbl*（paragraph）；水平对齐用段落 align。
+cell_format:
+  border.all:    {form: '四边同设 STYLE;SIZE;COLOR（如 "single;4;auto"）或 "none"。禁止只写粗细数字 "4"/"12"', focus: [cell_border_all, cell_border_none]}
+  border.top:    {form: '上边框 STYLE;SIZE;COLOR（如 "single;12;auto"）或 "nil"。禁止只写 "12"',   focus: [cell_border_top]}
+  border.bottom: {form: '下边框 STYLE;SIZE;COLOR（如 "single;4;auto"）或 "nil"。禁止只写 "4"',   focus: [cell_border_bottom]}
+  border.left:   {form: '左边框 STYLE;SIZE;COLOR 或 "nil"（竖线；与 right 成对）', focus: [cell_border_left]}
+  border.right:  {form: '右边框 STYLE;SIZE;COLOR 或 "nil"（缺则表右侧开口）', focus: [cell_border_right]}
+  fill:          {form: '底纹 #RRGGBB。常用 "#E7E6E6"|"#F2F2F2"|"#F3F6F9"|"#EFEFEF"|"#D9E2F3"|"#E8EEF7"|"#FFF2CC"|"#FCE4D6"；无底纹省略或 "auto"', focus: [cell_shading]}
+  valign:        {form: "top|center|bottom",  focus: [cell_valign_top, cell_valign_center, cell_valign_bottom]}
+
+# ── image（内联图片；不可写环绕/浮动，锁定纵横比靠 width×height 等比给值） ──
+# 故意不开放 crop / cropLeft|Top|Right|Bottom：合成图不需要再裁切画面。
+image:
+  width:  {form: '"4cm"|"6cm"|"8cm"|"10cm"|"12cm"|"13cm"|"14cm"|"16cm"', focus: [size_lock_aspect, inline_only]}
+  height: {form: '"3cm"|"4cm"|"6cm"|"7cm"|"8cm"|"9cm"|"10cm"|"12cm"', focus: [size_lock_aspect, inline_only]}
+  hAlign: {form: "left|center|right(内联图对齐，实际落到所在段落对齐；默认 center)", focus: [caption_below]}

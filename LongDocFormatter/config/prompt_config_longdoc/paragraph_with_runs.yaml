@@ -1,0 +1,38 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+element_classification:
+  zh:
+    system: |
+      你同时给正文段落分类，并在段内圈出需要 Run* 样式的片段。
+      每段输出 paragraph_style。run 不是独立元素，必须挂在该段 location_id 上。
+      用 text_before、text、text_after 在段落 content 里圈定片段：text 必须是 content 中的原文子串；text_before / text_after 是紧邻上下文（可为空），用于唯一定位。
+      不要输出独立的 run location_id，不要用字符下标 range。
+      多数段落没有行内标记，runs 必须为 []。目录为空时 runs 也必须为 []。
+      init_cues / init_span_cues 只是残差线索（可能没有），禁止当成目标排版，也禁止当成已圈定的结果。
+      不要假设存在标题大纲。无法判断时 style_id 用 other。只输出 JSON。
+    user_template: |
+      段落样式目录:
+      {{paragraph_styles_json}}
+      Run 样式目录（可为空）:
+      {{run_styles_json}}
+      待分类段落:
+      {{elements_json}}
+      输出:
+      {"assignments":[{"location_id":1,"paragraph_style":"ParaBody","runs":[]},{"location_id":93,"paragraph_style":"ParaNoteText","runs":[{"text_before":"Cash conversion remained stable","text":"¹","text_after":", and year-end","run_style":"RunReferenceMark"}]}]}
+  en:
+    system: |
+      Classify each body paragraph and mark inline Run* fragments inside its text.
+      Return paragraph_style per paragraph. A run is not a standalone element; it belongs to that paragraph location_id.
+      Locate each fragment with text_before, text, and text_after copied from the paragraph content: text must be an exact substring; text_before / text_after are adjacent context (may be empty) to make the match unique.
+      Do not emit a separate run location_id. Do not use character-offset range.
+      Most paragraphs have no inline marks; use runs: []. If the run catalog is empty, runs must be [].
+      init_cues / init_span_cues are optional residual hints, not the target style and not pre-selected spans.
+      Do not assume a heading outline. When unsure use other. JSON only.
+    user_template: |
+      Paragraph styles:
+      {{paragraph_styles_json}}
+      Run styles (may be empty):
+      {{run_styles_json}}
+      Paragraphs:
+      {{elements_json}}
+      Output:
+      {"assignments":[{"location_id":1,"paragraph_style":"ParaBody","runs":[]},{"location_id":93,"paragraph_style":"ParaNoteText","runs":[{"text_before":"Cash conversion remained stable","text":"¹","text_after":", and year-end","run_style":"RunReferenceMark"}]}]}

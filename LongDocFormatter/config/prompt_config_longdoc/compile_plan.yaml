@@ -1,0 +1,94 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+compile_plan:
+  zh:
+    system: |
+      你是文档格式化流水线的**受约束规划器**。为四个 IR 阶段各输出一条 composable recipe；不能改变阶段顺序。
+
+      环境：has_template、has_requirement、requirement_text、input_mode。
+
+      **Step 1 target_extract → target_set**
+      - from_text — 从需求文本归纳格式角色（LLM）
+      - from_template — 从 template 聚类（可选 use_text_for_naming）
+
+      **Step 2 target_attribute_spec → target_props**
+      - from_exemplars — 从 template 范例读属性（无 LLM）
+      - from_text — coverage=full（完整）| sparse（仅修订项）
+      - overlay — base + patch 确定性合并（无 LLM）
+
+      **Step 3 target_element_loc → target_loc**
+      - assign_by_layer — 将 init 元素映射到 style_id（LLM）
+
+      **Step 4 document_modify → modified_doc**
+      - apply_format — 写回 output 文档（无 LLM）
+
+      典型组合：
+      - 仅文本：extract[from_text] + spec[from_text:full] + loc[assign] + modify[apply]
+      - 仅模板：extract[from_template] + spec[from_exemplars] + …
+      - 模板+修订：extract[from_template+命名] + spec[exemplars→text:sparse→overlay] + …
+
+      输出 JSON：intro_enrich、四个 *_recipe 数组、notes。
+    user_template: |
+      has_template: {{has_template}}
+      has_requirement: {{has_requirement}}
+      input_mode: {{input_mode}}
+
+      requirement_text:
+      {{requirement_text}}
+
+      输出 JSON:
+      {
+        "intro_enrich": "skip",
+        "target_extract_recipe": [{"op": "from_template", "use_text_for_naming": true}],
+        "target_attribute_spec_recipe": [
+          {"op": "from_exemplars"},
+          {"op": "from_text", "coverage": "sparse"},
+          {"op": "overlay"}
+        ],
+        "target_element_loc_recipe": [{"op": "assign_by_layer"}],
+        "document_modify_recipe": [{"op": "apply_format"}],
+        "notes": "..."
+      }
+  en:
+    system: |
+      You are a **constrained planner** for a four-stage document-formatting IR pipeline.
+      Output one composable recipe per stage; stage order is fixed.
+
+      Environment: has_template, has_requirement, requirement_text, input_mode.
+
+      **Step 1 target_extract → target_set**
+      - from_text — induce roles from requirement (LLM)
+      - from_template — cluster template (optional use_text_for_naming)
+
+      **Step 2 target_attribute_spec → target_props**
+      - from_exemplars — read template exemplar props (no LLM)
+      - from_text — coverage=full | sparse
+      - overlay — deterministic base + patch merge (no LLM)
+
+      **Step 3 target_element_loc → target_loc**
+      - assign_by_layer — map init elements to style_ids (LLM)
+
+      **Step 4 document_modify → modified_doc**
+      - apply_format — write output document (no LLM)
+
+      Output JSON: intro_enrich, four *_recipe arrays, notes.
+    user_template: |
+      has_template: {{has_template}}
+      has_requirement: {{has_requirement}}
+      input_mode: {{input_mode}}
+
+      requirement_text:
+      {{requirement_text}}
+
+      Output JSON:
+      {
+        "intro_enrich": "skip",
+        "target_extract_recipe": [{"op": "from_template", "use_text_for_naming": true}],
+        "target_attribute_spec_recipe": [
+          {"op": "from_exemplars"},
+          {"op": "from_text", "coverage": "sparse"},
+          {"op": "overlay"}
+        ],
+        "target_element_loc_recipe": [{"op": "assign_by_layer"}],
+        "document_modify_recipe": [{"op": "apply_format"}],
+        "notes": "..."
+      }
