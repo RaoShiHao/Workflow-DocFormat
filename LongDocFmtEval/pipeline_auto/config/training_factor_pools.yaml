@@ -1,0 +1,117 @@
+# Training factor pools (assign_training_factors.py).
+#
+# Each domain×locale: 3 genre-appropriate schemes, equal weight (1:1:1).
+# Prefer reset / mixed styles over pure continuous decimal (iso_decimal and
+# zh_section_decimal only where the domain genuinely uses them).
+# Scheme definitions: config/heading_schemes.yaml
+
+meta:
+  seed: 1234
+  version: 12
+
+# Per topic×Cx: one input_mode (balanced across the set); init shared for that content:
+#   2×2 hierarchy aids = init_structure (plain|partial) × numbering_enabled
+# When numbering_enabled: golden+init get title prefixes; template modes also
+# number template.docx; text modes draw text_numbering_spec 1:1.
+numbering_weight: 0.5
+target_notes_weight: 0.5
+text_numbering_note_weight: 0.5
+
+init_structures:
+  - plain
+  - partial
+
+init_weights: [0.5, 0.5]
+
+domain_pools:
+  corporate_disclosure:
+  # 年报/集团报告/ESG：章+小数为主，辅以汉字节、论文章节体
+    zh:
+      - zh_chapter_decimal
+      - zh_chapter_cn_decimal
+      - zh_chinese_hierarchy
+    en:
+      - en_chapter_decimal
+      - en_chapter_section
+      - en_chapter_reset_decimal
+
+  investment_planning:
+  # 商业计划/可研：章+汉字节、章内重置小数、章节体
+    zh:
+      - zh_chapter_cn_decimal
+      - zh_chapter_reset_decimal
+      - zh_chinese_hierarchy
+    en:
+      - en_chapter_section
+      - en_chapter_alpha
+      - en_chapter_decimal
+
+  commercial_filings:
+  # 招股书/招标/专利：公文条款式、汉字节+锚定小数、Chapter+字母大纲
+    zh:
+      - zh_gov_legal
+      - zh_chapter_cn_decimal
+      - zh_chapter_decimal
+    en:
+      - en_outline_mixed
+      - en_chapter_alpha
+      - en_alpha_outline
+
+  government_public:
+  # 政府报告：公文/章节汉字条/章+汉字节
+    zh:
+      - zh_gov_legal
+      - zh_chinese_hierarchy
+      - zh_chapter_cn_decimal
+    en:
+      - en_outline_mixed
+      - en_chapter_section
+      - en_chapter_alpha
+
+  market_intelligence:
+  # 行业/咨询报告：汉字节+锚定、章+小数、括号条重置
+    zh:
+      - zh_chapter_cn_decimal
+      - zh_chapter_decimal
+      - zh_section_paren
+    en:
+      - en_chapter_section
+      - en_outline_mixed
+      - en_section_paren
+
+  engineering_project:
+  # 工程文件：纯数字 ISO；搭配章内重置与 Ch/Sec
+    zh:
+      - zh_section_decimal
+      - zh_chapter_reset_decimal
+      - zh_gov_legal
+    en:
+      - iso_decimal
+      - en_chapter_reset_decimal
+      - en_chapter_section
+
+  standards_operations:
+  # 标准/SOP/安全手册：条文式、ISO 体、公文条款
+    zh:
+      - zh_gov_legal
+      - zh_section_decimal
+      - zh_chapter_decimal
+    en:
+      - iso_decimal
+      - en_outline_mixed
+      - en_chapter_section
+
+  academic_research:
+  # 学位论文/课题报告/基金：章节汉字、章/节+节内小数、章+汉字节
+    zh:
+      - zh_chinese_hierarchy
+      - zh_chapter_section_decimal
+      - zh_chapter_cn_decimal
+    en:
+      - en_chapter_section
+      - en_chapter_alpha
+      - en_chapter_decimal
+
+default_pool:
+  zh: [zh_chapter_cn_decimal, zh_gov_legal, zh_chapter_decimal]
+  en: [en_chapter_section, en_chapter_decimal, en_outline_mixed]

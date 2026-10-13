@@ -1,0 +1,42 @@
+# Discrete candidate values for template_w_text C2 delta (step7).
+# Locale-specific paragraph pools — do not mix zh font.ea into en samples.
+
+paragraph_zh:
+  size: ["9pt", "10.5pt", "12pt", "14pt", "15pt", "16pt", "18pt", "22pt"]
+  bold: [true, false]
+  italic: [true, false]
+  align: ["left", "center", "right", "justify"]
+  color: ["#000000", "#1A1A1A", "#333333", "#666666", "#C00000", "#0563C1"]
+  spaceBefore: ["0pt", "6pt", "12pt", "18pt", "24pt"]
+  spaceAfter: ["0pt", "6pt", "12pt", "18pt", "24pt"]
+  lineSpacing: ["1x", "1.15x", "1.5x", "2x", "20pt", "24pt"]
+  firstLineIndent: ["0pt", "12pt", "21pt", "24pt"]
+  indent: ["0pt", "12pt", "24pt", "36pt"]
+  font.ea: ["宋体", "黑体", "楷体", "仿宋", "微软雅黑", "华文中宋"]
+  font.latin: ["Times New Roman", "Arial", "Calibri", "Georgia", "Cambria"]
+
+paragraph_en:
+  size: ["9pt", "10.5pt", "12pt", "14pt", "15pt", "16pt", "18pt", "22pt"]
+  bold: [true, false]
+  italic: [true, false]
+  align: ["left", "center", "right", "justify"]
+  color: ["#000000", "#1A1A1A", "#333333", "#666666", "#C00000", "#0563C1"]
+  spaceBefore: ["0pt", "6pt", "12pt", "18pt", "24pt"]
+  spaceAfter: ["0pt", "6pt", "12pt", "18pt", "24pt"]
+  lineSpacing: ["1x", "1.15x", "1.5x", "2x", "20pt", "24pt"]
+  firstLineIndent: ["0pt", "12pt", "21pt", "24pt"]
+  indent: ["0pt", "12pt", "24pt", "36pt"]
+  font.ea: ["Arial", "Calibri", "Cambria", "Georgia", "Times New Roman", "Garamond"]
+  font.latin: ["Times New Roman", "Arial", "Calibri", "Georgia", "Cambria", "Garamond"]
+
+section_zh:
+  marginTop: ["2cm", "2.54cm", "2.8cm", "3cm", "3.5cm"]
+  marginBottom: ["2cm", "2.54cm", "2.8cm", "3cm"]
+  marginLeft: ["2cm", "2.5cm", "2.54cm", "3cm"]
+  marginRight: ["2cm", "2.5cm", "2.54cm", "3cm"]
+
+section_en:
+  marginTop: ["2cm", "2.54cm", "2.8cm", "3cm", "3.5cm"]
+  marginBottom: ["2cm", "2.54cm", "2.8cm", "3cm"]
+  marginLeft: ["2cm", "2.5cm", "2.54cm", "3cm"]
+  marginRight: ["2cm", "2.5cm", "2.54cm", "3cm"]

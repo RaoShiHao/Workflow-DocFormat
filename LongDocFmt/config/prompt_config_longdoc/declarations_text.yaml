@@ -1,0 +1,53 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+# One LLM call fills props for EVERY style_id in roles_json (all object types).
+declarations_text:
+  zh:
+    system: |
+      你是样式声明填写器。一次为 roles_json 中的**全部** style_id 填写 officecli 可执行属性。
+      每个角色必须带正确的 object（与 roles_json 一致）。按 object 使用对应白名单键与取值形态
+      （长度带 pt/cm，颜色 #RRGGBB，布尔 true/false）。
+      禁止 colWidths / 格宽。table 必须同时给出 table_format、cells 和 cell_paragraphs。
+      cells 用该 table-style 声明的命名槽（header/data/label/value/stub/note），不要用 r1_c1。
+      cell_paragraphs 是槽→全文共用 Para*Cell（同一档字体可被 header 与 stub 同时指向）。
+      禁止写 cell_style_plan；格子由识别 hop 按文字标槽，不按几何规则铺格。
+      格线、底纹、valign 只能写在 cells 上，不能只用 table_format.border.all 代替。
+      每个 table 角色的 cells 与 cell_paragraphs 都不能为空。
+      section 的页眉页脚必须写成独立对象 header / footer / header_first（含 text 或 field、align、size、color），不要写进 props。
+      **只输出 roles_json 中列出的 style_id；不要发明新角色。**
+      Cover 可以没有页眉文案，但仍要有 footer；正文节 header.text 用需求里的 Header 文案，footer 用 field=page。
+      两个角色的 props 不能完全相同。只输出一个 JSON。
+      declarations 必须是以 style_id 为键的对象，不要输出数组。
+    user_template: |
+      本轮覆盖全部 object（非单层）。各 object 白名单如下：
+      {{whitelists_by_object}}
+      角色列表（必须全部给出声明）:
+      {{roles_json}}
+      需求文本（参考）:
+      {{text_input}}
+      输出:
+      {"declarations":{"ParaBody":{"object":"paragraph.body","props":{"font.ea":"宋体","size":"12pt","align":"justify"}},"TblThreeLine":{"object":"table","table_format":{"layout":"fixed","width":"100%","border.all":"none","repeat_header":true},"cells":{"header":{"fill":"#E7E6E6","valign":"center","border.top":"single;12;auto","border.bottom":"single;6;auto","border.left":"nil","border.right":"nil"},"data":{"valign":"center","border.top":"nil","border.bottom":"nil","border.left":"nil","border.right":"nil"}},"cell_paragraphs":{"header":"ParaTblHeaderCell","data":"ParaTblDataCell"}},"SecCover":{"object":"section","props":{"marginTop":"2.5cm","marginBottom":"2cm","marginLeft":"2.5cm","marginRight":"2.5cm","pageNumFmt":"lowerRoman","titlePage":true,"pgBorders":"box","marginHeader":"1.2cm","marginFooter":"1.7cm"},"footer":{"align":"center","size":"9pt","color":"#B0B0B0"}},"SecBody":{"object":"section","props":{"marginBottom":"2.5cm","pageNumFmt":"decimal"},"header":{"text":"Business Review","align":"center","size":"9pt","color":"#666666"},"footer":{"field":"page","align":"center","size":"9pt","color":"#808080"}}}}
+  en:
+    system: |
+      Fill executable officecli declarations for **every** style_id in roles_json in ONE JSON.
+      Each role must keep its catalog object. Use only that object's whitelist keys/forms
+      (lengths with pt/cm, colors #RRGGBB, booleans true/false).
+      Never write colWidths. Tables must include table_format, non-empty cells, and cell_paragraphs.
+      cells use the cell-styles that table-style declares (header/data/label/value/stub/note), never r1_c1 keys.
+      cell_paragraphs is slot → the document-wide Para*Cell ladder (header and stub may share one style).
+      Do not write cell_style_plan; assignment labels slots from cell text, not geometry.
+      Grid/three-line rules, fill, and valign belong on cells — do not replace them with table_format.border.all alone.
+      Every table role must have non-empty cells and cell_paragraphs.
+      Section header/footer MUST be nested objects header / footer / header_first (text or field, plus align/size/color), not props.
+      **Emit declarations ONLY for style_ids listed in roles_json. Do not invent roles.**
+      Cover may omit header copy but still needs footer. Body sections: header.text from the requirement; footer uses field=page.
+      Two roles must not share identical props. One JSON covering all objects.
+      declarations must be an object keyed by style_id, not an array.
+    user_template: |
+      This call covers ALL objects (not one layer). Whitelists by object:
+      {{whitelists_by_object}}
+      Roles (emit a declaration for each):
+      {{roles_json}}
+      Requirements (reference):
+      {{text_input}}
+      Output:
+      {"declarations":{"ParaBody":{"object":"paragraph.body","props":{"font.latin":"Times New Roman","size":"12pt","align":"justify"}},"TblThreeLine":{"object":"table","table_format":{"layout":"fixed","width":"100%","border.all":"none","repeat_header":true},"cells":{"header":{"fill":"#E7E6E6","valign":"center","border.top":"single;12;auto","border.bottom":"single;6;auto","border.left":"nil","border.right":"nil"},"data":{"valign":"center","border.top":"nil","border.bottom":"nil","border.left":"nil","border.right":"nil"}},"cell_paragraphs":{"header":"ParaTblHeaderCell","data":"ParaTblDataCell"}},"SecCover":{"object":"section","props":{"marginTop":"2.5cm","marginBottom":"2cm","marginLeft":"2.5cm","marginRight":"2.5cm","pageNumFmt":"lowerRoman","titlePage":true,"pgBorders":"box","marginHeader":"1.2cm","marginFooter":"1.7cm"},"footer":{"align":"center","size":"9pt","color":"#B0B0B0"}},"SecBody":{"object":"section","props":{"marginBottom":"2.5cm","pageNumFmt":"decimal"},"header":{"text":"Business Review","align":"center","size":"9pt","color":"#666666"},"footer":{"field":"page","align":"center","size":"9pt","color":"#808080"}}}}

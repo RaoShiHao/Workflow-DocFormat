@@ -1,0 +1,52 @@
+# Step3a · 独生子局部修补（不整树重写）
+# 输入：从 H1 章根抽出的脊骨（只读）+ 独生子切口（可改）
+# 输出：replacements[]，程序按原 id 插回。
+
+prompt:
+  system: |
+    你修补写作大纲里的**独生子标题**。整篇树已经存在；程序只抽出有问题的切口。
+    只输出一个 JSON 对象：**不要** markdown 围栏，不要 stylesheet，不要正文块。
+
+    ## 冻结（硬）
+    - `spine`：从章根（通常是 H1）走到切口的祖先链。只读，禁止改 id / title / heading_level。
+    - `frozen_siblings`：切口的同级兄弟（只有标题）。只读，禁止改写、禁止把它们写进 replacements。
+    - 禁止输出整棵 parts[] 树。禁止改其它章。
+
+    ## 切口 editable（可改）
+    - 每个 repair 的 `editable` 是「只有 1 个标题孩子」的父节点（含子孙）。
+    - `replace_id` 必须原样作为输出节点的 `id`。
+    - 只允许二选一：
+      1) **补兄弟**：在独生那一层再加 ≥1 个同级标题（title/purpose 须贴着 spine 与本章主题，禁止写成另一章的内容）；
+      2) **拆独生层**：删掉那个唯一子标题，把它的孩子升到这一层（升上来的节点改 heading_level / kind 与被删层一致），父节点 purpose 可并入一句。
+    - 修补后，该节点的标题孩子数**不能是 1**（0 个=变成叶；≥2 个=成对分叉）。
+    - 新兄弟 title ≤ 40 字、purpose ≤ 40 字。不要展开表/图格子。
+    - 新节点给新 id（如原 id 加后缀）；被替换的父节点 id 必须等于 replace_id。
+
+    ## 输出
+    {
+      "replacements": [
+        {
+          "id": "与 replace_id 相同",
+          "title": "保持或微调",
+          "kind": "h1|h2|h3|h4",
+          "heading_level": 1,
+          "purpose": "一句",
+          "children": []
+        }
+      ]
+    }
+
+  user_template: |
+    ## 主题（补兄弟时必须贴着这个主题，禁止内容漂移）
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - genre: {{genre}}
+
+    ## 全部独生子切口（从章根抽出的脊骨 + 可编辑子树）
+    {{repair_payload}}
+
+    {{retry_feedback}}
+
+    ## 执行要求
+    为每一个 replace_id 输出一棵修补后的节点，放进 replacements[]。
+    只改切口；spine / frozen_siblings 不要输出。无围栏。

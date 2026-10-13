@@ -1,0 +1,97 @@
+# Step3a · Writing outline (thin tree; no styles / no body blocks yet)
+# Inputs: theme + compact full Role inventory (name + where-used) + heading_depth
+# Output: short JSON tree. Runner checks depth and only-child.
+# Only-child: list every cut, repair the H1-spine subtree locally, splice by id (no whole-tree rewrite).
+# Depth / level-gap issues still get one whole-tree feedback retry.
+
+prompt:
+  system: |
+    You draft a **writing outline**: a heading tree for reader navigation.
+    Do not write a stylesheet, block_ids, pt/cm, or per-paragraph body text.
+
+    Inputs: theme/title, a compact but **complete** Role inventory (names + where used), and a target heading depth.
+    The inventory is a **genre map** (cover, TOC, chapters, statements/notes, etc.).
+    It is **not** a menu — do not create one node per role.
+
+    ## Tree rules (hard)
+    - Two node kinds: front/back parts (cover / toc / letter / annex — no heading_level) and body headings (heading_level=1..6).
+    - Body headings must reach the given heading_depth (levels 1…N contiguous; up to 6 is allowed).
+      Nesting must fit this tier's theme: a compact title stops at N; a deep title may use H5/H6.
+      Do not copy another C-tier's depth.
+    - **Branching**: most H1s have ≥2 H2s; when going deeper, several H2s have ≥2 H3s.
+    - **No only-child**: if a heading opens a deeper level, that level must have ≥2 siblings.
+      2.2.1 requires 2.2.2; a chapter with 5.1 requires 5.2.
+      **Forbid** padding heading_depth with a single deeper heading.
+      If content cannot split, do not add that level — keep it in the parent's purpose.
+    - Some H2s may have no H3; some chapters may stop at H2 — but once you open a level, give siblings.
+    - Abstract bases (*Base, SecFrontMatter, SecMainBody, …) must not be used as kind/title.
+    - Short fields: title ≤ 40 chars; purpose ≤ 40 chars.
+    - Do not expand table rows or body paragraphs on the tree; several body chapters/sections should
+      say in purpose that they contain a table, a figure, or both (KPI, roster, org chart, process, statistical
+      chart, cover logo). Do not emit a text-only heading tree.
+      Spread figures across body chapters; several of them should be **indicator/trend charts**,
+      not only a cover logo.
+    - **Schedule / drawing / figure–table appendix parts**: if the tree has a dedicated back part such as
+      “Supplementary tables”, “Drawings”, or “Appendix figures”, its `purpose` must state that the part
+      **hosts tables or figures** (not only an intro). These are planning anchors for later placement —
+      **not** a copy of body tables/figures into the appendix; the appendix part itself needs table- or
+      figure-type content to place. If you do not intend concentrated media there, do not create such
+      an empty shell part.
+
+    ## Hard rules
+    1. One JSON object, no fences, no commentary.
+    2. Parseable tree: parts[] items have id, title, children (array; leaves []).
+    3. Body heading nodes must set integer heading_level.
+
+    ## Output JSON
+    {
+      "meta": { "genre": "", "theme": "", "locale": "" },
+      "parts": [
+        {
+          "id": "P01",
+          "title": "Cover or contents",
+          "kind": "cover|toc|letter|body|back",
+          "heading_level": null,
+          "purpose": "one line",
+          "children": []
+        },
+        {
+          "id": "C01",
+          "title": "Chapter title",
+          "kind": "h1",
+          "heading_level": 1,
+          "purpose": "what this chapter covers",
+          "children": [
+            {
+              "id": "C01a",
+              "title": "Section title",
+              "kind": "h2",
+              "heading_level": 2,
+              "purpose": "one line",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+
+  user_template: |
+    ## Theme
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - supplementary_notes: {{supplementary_notes}}
+    - genre: {{genre}}
+    - locale: {{locale}}
+    - target heading_depth: {{heading_depth}}
+    - suggested peer chapter count section_count: {{section_count}}
+
+    ## Compact Role inventory (complete list: name + where used; not a fill-all menu)
+    {{role_inventory}}
+
+    {{retry_feedback}}
+
+    ## Do
+    Output valid JSON tree only. Opening a deeper level requires ≥2 siblings. Never pad heading_depth with a single child heading.
+    Most body chapters should host a table or figure (a chapter may have both; say so in purpose) — not a text-only skeleton.
+    Statistical charts (indicators/trends) should appear in several body chapters, not only a cover logo.
+    If you add a dedicated tables/drawings appendix part, its purpose must say it hosts tables or figures; no title-only empty shells.

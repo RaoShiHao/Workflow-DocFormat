@@ -1,0 +1,85 @@
+# Eval subset: 32 samples from full LongDocFmtEval export (datasets_factors.json v12).
+#
+# Full export order (unchanged):
+#   export_id = (topic_id - 1) * 3 + {C1:1, C2:2, C3:3}
+#   e.g. topic1 C1→1, C2→2, C3→3, topic2 C1→4, …
+#
+# After exporting all 324 assignments:
+#   python .../export_longdocform.py --all --out D:/LongDocFmtEval
+# these folder ids are the representative subset.
+#
+# Cover (seed=20260907, greedy fill on top of the original 16):
+#   modes/Cx 11/11/10 (C1 text_requirement, C2 template, C3 template_w_text)
+#   8 domains × 4, zh:en 16:16, heading 16:16, numbering on/off 20:12
+# Original 16 kept: 10,51,59,70,84,93,108,145,154,172,192,200,245,251,260,307
+#
+# export_ids:
+8,10,20,39,51,59,67,70,84,88,93,108,113,142,145,152,154,159,172,188,192,200,206,213,217,241,245,251,260,270,273,307
+#
+# topic_cx (for rebuilding step7 only on these cells):
+3_C2
+4_C1
+7_C2
+13_C3
+17_C3
+20_C2
+23_C1
+24_C1
+28_C3
+30_C1
+31_C3
+36_C3
+38_C2
+48_C1
+49_C1
+51_C2
+52_C1
+53_C3
+58_C1
+63_C2
+64_C3
+67_C2
+69_C2
+71_C3
+73_C1
+81_C1
+82_C2
+84_C2
+87_C2
+90_C3
+91_C3
+103_C1
+#
+# sample_keys (optional --keys-file if you only want to export this subset):
+3_C2_template
+4_C1_text_requirement
+7_C2_template
+13_C3_template_w_text
+17_C3_template_w_text
+20_C2_template
+23_C1_text_requirement
+24_C1_text_requirement
+28_C3_template_w_text
+30_C1_text_requirement
+31_C3_template_w_text
+36_C3_template_w_text
+38_C2_template
+48_C1_text_requirement
+49_C1_text_requirement
+51_C2_template
+52_C1_text_requirement
+53_C3_template_w_text
+58_C1_text_requirement
+63_C2_template
+64_C3_template_w_text
+67_C2_template
+69_C2_template
+71_C3_template_w_text
+73_C1_text_requirement
+81_C1_text_requirement
+82_C2_template
+84_C2_template
+87_C2_template
+90_C3_template_w_text
+91_C3_template_w_text
+103_C1_text_requirement

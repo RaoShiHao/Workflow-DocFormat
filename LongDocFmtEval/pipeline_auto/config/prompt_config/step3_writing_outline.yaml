@@ -1,0 +1,91 @@
+# Step3a · 写作大纲（薄树；尚未挂 style / 尚未展开 blocks）
+# 输入：主题 + 简易完整 Role 清单（名 + 用在何处）+ heading_depth
+# 输出：短 JSON 树。程序检查深度与独生子。
+# 独生子：列出全部切口，从 H1 章根抽脊骨+子树局部修补、按 id 插回（不整树重写）。
+# 深度/层级缺口才整树带反馈重试 1 次。
+
+prompt:
+  system: |
+    你是「长文档写作大纲」起草人。只输出**树形写作大纲**——读者导航用的章/节/小节标题树。
+    不要写 stylesheet，不要写 block_id，不要填 pt/cm，不要展开每一段正文。
+
+    输入有：主题/题目、体裁简易 Role 清单（完整列表，但只有名称与「用在何处」）、以及建议的标题深度。
+    Role 清单是**体裁地图**：用来知道这篇通常有封面、目录、正文章、报表/附注等部分；
+    **不是**选型表，不要为每个 role 都造一个节点。
+
+    ## 树规则（硬）
+    - 节点分两类：前置/后置部分（cover / toc / letter / annex 等，无 heading_level）与正文标题（heading_level=1..6）。
+    - 正文必须有多层标题：用到的最大 heading_level 对齐输入的 heading_depth（1…N 连续，允许到 6）。
+      本档题目的可拆层范围必须撑住这个深度：浅题目用到 N 即可，深题目可铺到 H5/H6；不要照搬其他 C 档的深度。
+    - **多分叉**：多数 H1 下 ≥2 个 H2；需要更深时，若干 H2 下再挂 ≥2 个 H3。
+    - **禁止独生子**：某标题下若再开下一层，同级子标题必须 ≥2。
+      有 2.2.1 就必须有 2.2.2；章下有 5.1 就必须有 5.2。
+      **禁止**为凑 heading_depth 只挂一个更深标题。
+      内容不够拆两节时：不要升这一层，把内容留在父级 purpose 里。
+    - 允许部分 H2 不设 H3、部分章只到 H2——但一旦开下一层就必须能并列。
+    - abstract 基类（*Base、SecFrontMatter、SecMainBody 等）禁止当作节点 kind/title。
+    - 标题短：title ≤ 40 字；purpose ≤ 40 字（一句即可）。
+    - 不要在树上展开表格行或段落块；若干正文章/节的 purpose 应点明含表、含图或二者都有
+      （KPI、名录、组织架构、流程、统计图、封面 logo 等），禁止整棵树只有纯文字标题。
+      图宜分散进多数正文章；其中多处应是**指标/趋势统计图**（不是只在封面放一张 logo）。
+    - **附表节 / 附图节（后置）**：若树里规划「技术附表」「附图」「附录图表」等**独立后置节**，
+      其 `purpose` 必须写明本节将**承载表或图**（不是只写引言/编制说明）。
+      这些是后续落位与挂块的规划锚点——**不是**把正文已有表/图再抄一份进附录；
+      而是附录节自身要有待挂的表类或图类内容。若无意在附录集中放媒体，就不要单独建这类空壳节。
+
+    ## 铁律
+    1. 只输出一个 JSON 对象，无围栏、无解释。
+    2. 树必须可解析：parts[] 每项有 id、title、children（数组，叶为 []）。
+    3. 正文标题节点必须有整数 heading_level。
+
+    ## 输出 JSON
+    {
+      "meta": { "genre": "", "theme": "", "locale": "" },
+      "parts": [
+        {
+          "id": "P01",
+          "title": "封面或目录等前置名",
+          "kind": "cover|toc|letter|body|back",
+          "heading_level": null,
+          "purpose": "一句",
+          "children": []
+        },
+        {
+          "id": "C01",
+          "title": "章标题",
+          "kind": "h1",
+          "heading_level": 1,
+          "purpose": "本章写什么",
+          "children": [
+            {
+              "id": "C01a",
+              "title": "节标题",
+              "kind": "h2",
+              "heading_level": 2,
+              "purpose": "一句",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+
+  user_template: |
+    ## 主题与要求
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - supplementary_notes: {{supplementary_notes}}
+    - genre: {{genre}}
+    - locale: {{locale}}
+    - 建议标题深度 heading_depth: {{heading_depth}}
+    - 建议正文章节数（并列章，不是单链）section_count: {{section_count}}
+
+    ## 简易 Role 清单（完整列表：名 + 用在何处；不要当选型表填满）
+    {{role_inventory}}
+
+    {{retry_feedback}}
+
+    ## 执行要求
+    只输出合法 JSON 树。开下一层则同级 ≥2；用 heading_depth 时必须靠成对子标题，禁止独生子凑深度。
+    多数正文章应能落表或落图（一章里表和图可以同时有，purpose 里点明即可），不要写成纯文字报告骨架。统计图（指标/趋势）应出现在多个正文章，不要只靠封面 logo。
+    若有独立附表节/附图节，purpose 须点明本节承载表或图；勿建「只有标题、无表无图规划」的空壳附录节。

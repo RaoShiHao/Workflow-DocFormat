@@ -1,0 +1,19 @@
+# Topic id lists for pipeline / export (no train|test split).
+# 108 topics × C1–C3 × 1 input_mode ≈ 324 samples (see datasets_factors.json).
+# domains: corporate_disclosure / investment_planning / commercial_filings /
+#   government_public / market_intelligence / engineering_project /
+#   standards_operations / academic_research
+
+# All topic ids (1–108)
+all ids：1-108
+
+# Pipeline examples
+python LongDocFmtEval/pipeline_auto/scripts/run_pipeline_auto.py --ids 1-108 --until-step 6
+python LongDocFmtEval/pipeline_auto/scripts/run_step7.py --ids 1-108 --overwrite
+
+# Progress notes (edit as you go)
+已有 ids:
+1,4,5,10,11,13,14,17,22,24,25,26,28,30,32,35,36,37,40,47,48,49,56,62,64,68,70,75,79,81,89,90,98,102,104
+
+未完成:
+2,3,6,7,8,9,12,15,16,18,19,20,21,23,27,29,31,33,34,38,39,41,42,43,44,45,46,50,51,52,53,54,55,57,58,59,60,61,63,65,66,67,69,71,72,73,74,76,77,78,80,82,83,84,85,86,87,88,91,92,93,94,95,96,97,99,100,101,103,105,106,107,108

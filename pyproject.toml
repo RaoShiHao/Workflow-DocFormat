@@ -4,32 +4,48 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "workflow-docformat"
-version = "0.1.0"
-description = "Long-document Word formatting: LangGraph workflow and Agent Skill"
+version = "0.2.0"
+description = "Long-document Word formatting and dataset construction"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Raoshihao" }]
-keywords = ["docx", "word", "formatting", "langgraph", "officecli", "agent-skill"]
+keywords = ["docx", "word", "formatting", "langgraph", "officecli"]
 dependencies = [
     "langgraph>=0.2.0",
-    "openai>=1.0.0",
-    "zhipuai>=2.1.5",
+    "openai>=1.40.0",
+    "zai-sdk>=0.2.0",
+    "zhipuai>=2.1.0",
     "PyYAML>=6.0",
+    "requests>=2.31.0",
+    "openpyxl>=3.1.0",
+    "pandas>=2.0.0",
+    "lxml>=4.9.0",
+    "matplotlib>=3.7.0",
+    "Pillow>=10.0.0",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+pdf = ["pdfplumber>=0.11.0", "pdf2image>=1.17.0", "PyMuPDF>=1.23.0"]
 
 [tool.setuptools.packages.find]
-include = ["LongDocFormatter*"]
+include = ["LongDocFmt*", "LongDocFmtEval*"]
 
 [tool.setuptools.package-data]
-LongDocFormatter = [
+LongDocFmt = [
     "config/*.yaml",
     "config/prompt_config_longdoc/*.yaml",
 ]
+LongDocFmtEval = [
+    "pipeline_auto/config/*.yaml",
+    "pipeline_auto/config/*.json",
+    "pipeline_auto/config/*.txt",
+    "pipeline_auto/config/*.xlsx",
+    "pipeline_auto/config/prompt_config/*.yaml",
+    "pipeline_auto/config/prompt_config_en/*.yaml",
+]
 
 [tool.pytest.ini_options]
-testpaths = ["LongDocFormatter"]
+testpaths = ["LongDocFmt", "LongDocFmtEval"]
 python_files = ["test_*.py"]

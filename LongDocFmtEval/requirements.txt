@@ -1,0 +1,43 @@
+# LongDocFmtEval — Python dependencies for pipeline_auto (steps 1–7)
+# Python >= 3.11 recommended
+#
+# Install from commit/code (installs this file and the formatter together):
+#   pip install -r requirements.txt
+# Or this package only:
+#   pip install -r LongDocFmtEval/requirements.txt
+#
+# Runtime needs commit/code on PYTHONPATH (LongDocFmtEval and LongDocFmt):
+#   $env:PYTHONPATH = "D:\path\to\commit\code"   # Windows PowerShell
+#   export PYTHONPATH="D:\path\to\commit\code"   # Linux / macOS
+#
+# Not installed via pip (install separately if you render / convert docs):
+#   - officecli == 1.0.144  — https://officecli.ai  (template/document.docx rendering; do not use older builds e.g. 1.0.60)
+#   - LibreOffice (soffice) — optional docx→pdf
+#   - poppler-utils — optional pdf page images (pdf2image)
+
+# --- LLM / HTTP ---
+# pipeline_auto imports zhipuai (ZhipuAI). The formatter imports zai (zai-sdk).
+openai>=1.40.0
+zai-sdk>=0.2.0
+zhipuai>=2.1.0
+PyYAML>=6.0
+requests>=2.31.0
+
+# --- Excel / themes.xlsx ---
+openpyxl>=3.1.0
+pandas>=2.0.0
+
+# --- DOCX / OOXML helpers (pairs, bake styles) ---
+lxml>=4.9.0
+
+# --- Figures (matplotlib charts / diagrams; Pillow for image I/O) ---
+matplotlib>=3.7.0
+Pillow>=10.0.0
+
+# --- Formatter graph (also listed in LongDocFmt/requirements.txt) ---
+langgraph>=0.2.0
+
+# --- PDF helpers (not imported by steps 1–7; also listed for the formatter) ---
+pdfplumber>=0.11.0
+pdf2image>=1.17.0
+PyMuPDF>=1.23.0

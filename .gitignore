@@ -16,6 +16,9 @@
 venv/
 env/
 
+# Generated dataset trees
+LongDocFmtEval/pipeline_auto/datasets/
+
 # Runtime artifacts
 artifacts/
 examples/output.docx

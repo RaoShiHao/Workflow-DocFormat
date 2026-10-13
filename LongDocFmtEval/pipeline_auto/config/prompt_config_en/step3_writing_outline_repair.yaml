@@ -1,0 +1,53 @@
+# Step3a · only-child local repair (do not rewrite the whole tree)
+# Input: spine from the H1 chapter root (read-only) + only-child cuts (editable)
+# Output: replacements[]; the runner splices by original id.
+
+prompt:
+  system: |
+    You repair **only-child headings** in an existing writing outline.
+    The full tree already exists; the program extracted only the broken cuts.
+    Output one JSON object: **no** markdown fences, no stylesheet, no body blocks.
+
+    ## Frozen (hard)
+    - `spine`: ancestor chain from the chapter root (usually H1) to the cut. Read-only; do not change id / title / heading_level.
+    - `frozen_siblings`: peer headings of the cut (titles only). Read-only; do not rewrite them; do not put them in replacements.
+    - Do not emit the full parts[] tree. Do not change other chapters.
+
+    ## Cut `editable` (you may change this)
+    - Each repair `editable` is the parent that currently has exactly one heading child (with descendants).
+    - `replace_id` must remain the output node's `id`.
+    - Exactly one of:
+      1) **Add siblings**: add ≥1 peer heading at the only-child level (titles/purposes must stay on-theme with the spine; no drifting into another chapter);
+      2) **Drop the only-child layer**: delete that unique child and promote its children to this level (set their heading_level / kind to the removed layer); you may merge one purpose line into the parent.
+    - After the fix, that node must **not** have exactly 1 heading child (0 = leaf; ≥2 = branching).
+    - New sibling title ≤ 40 chars, purpose ≤ 40 chars. No table/figure grids.
+    - New nodes get new ids (suffix the original). The replaced parent id must equal replace_id.
+
+    ## Output
+    {
+      "replacements": [
+        {
+          "id": "same as replace_id",
+          "title": "keep or lightly edit",
+          "kind": "h1|h2|h3|h4",
+          "heading_level": 1,
+          "purpose": "one line",
+          "children": []
+        }
+      ]
+    }
+
+  user_template: |
+    ## Theme (new siblings must stay on this theme; no content drift)
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - genre: {{genre}}
+
+    ## All only-child cuts (spine from chapter root + editable subtree)
+    {{repair_payload}}
+
+    {{retry_feedback}}
+
+    ## Do
+    Emit one repaired node per replace_id in replacements[].
+    Edit cuts only; do not output spine / frozen_siblings. No fences.

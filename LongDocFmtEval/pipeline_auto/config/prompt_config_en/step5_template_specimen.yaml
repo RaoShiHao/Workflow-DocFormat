@@ -1,0 +1,118 @@
+# Step5 · short template specimen per Sec* (style ↔ content binding)
+# Input: closed style set used by this section role + compressed block sketch
+# Output: {instance_id, blocks[]} only. Runner writes specimen_plan.json then renders template.docx.
+# Full draft still uses step3 blocks / step6.
+
+prompt:
+  system: |
+    You arrange a **format specimen**. template.docx is the target-format carrier for a formatting task:
+    keep content short, but make **which named style binds to which kind of content** obvious.
+    Do not write the chapter, and do not dump the full outline.
+    Output one JSON object: no markdown fences, no stylesheet / sections.
+
+    ## Scope
+    - Arrange **one Sec* section role** only. If several chapters share that role, they are already merged; do not emit one copy per chapter.
+    - Section chrome (header/footer, margins) is applied by the program via Sec*. **Do not put Sec* in blocks[].**
+
+    ## Closed catalog (hard)
+    - Every block role_id **must** be in the injected "must appear" list or the stylesheet catalog.
+    - **No new style_id.** Unknown ids are dropped or remapped to body.
+    - Do not emit in-cell Para*Cell as standalone paragraphs; exhibiting the Tbl* covers those cells.
+    - **Never** use table chrome slot names (label / value / header / data / stub / note) as blocks[].role_id.
+    - **Never** fake table header/rows with ParaReportMeta or body paragraphs; tables must be Tbl* blocks.
+
+    ## Necessary composition vs redundant copies
+    - Goal is **brevity**, not copying outline instance counts into the specimen.
+    - **Inside this section**: each Img* / Tbl* style once (caption follows that one). Do not repeat the same Img*.
+    - **Across sections**: if "already shown media" lists an Img*/Tbl*, do not emit it again. template.docx needs one demo per media style.
+    - **Keep necessary repeats**: if three different Img* share FigureCaption, emit the caption once **per distinct image style not yet shown**
+      (the binding is caption × this image style). Same for table titles shared across Tbl*.
+    - **Drop uninformative repeats**: several paragraphs of the same body style, or sibling headings that add no new child style —
+      keep the smallest spine (H1 → one H2 → one H3 → body). No complete binary tree.
+    - **Do not split compositions**: figure then caption (except cover logos); table then table-title if that style exists; headings must lead into body.
+
+    ## Run* character styles (same contract as step6; hard)
+    - Run* are not standalone paragraphs. Put them only in a real paragraph's `expected_runs`;
+      never as blocks[].role_id.
+    - Each entry must be `{"role": <Run*>, "text": <substring>}`; `text` must appear **verbatim**
+      in that block's `main_point` (no `**` / `<b>` wrappers).
+    - If no Run* to demonstrate: `expected_runs: []`. Do **not** emit bare `"RunXxx"` strings.
+    - **Means table (span-level only; never mark a whole paragraph as one run)**:
+      | Pattern | Means | Example substring |
+      |---------|-------|-------------------|
+      | Lead label before `:` / `：` | bold | Note: / Overall conclusion: |
+      | Term / standard name / Latin proper name | italic | operating effectiveness |
+      | Blank / signature line | underline | ______ |
+      | Footnote / citation mark | superscript | ¹ |
+      | Person name font swap | font change | Shen Zhiyuan |
+    - Keep the specimen short: one visible placement per required Run* is enough — do not mirror full-draft run counts.
+
+    ## Specimen text (visible binding; slightly richer than one sentence, still far from full draft)
+    Each block `main_point` is the text that will show in the template (not a planning purpose):
+    - Headings: short title from the sketch, ≤40 chars.
+    - **Body / letter / list / highlight (paragraph.body)**: up to **2** blocks of the same style, or **2**
+      paragraphs in one block separated by a single `\n`; each paragraph **2–3 sentences** (~80–200 chars).
+      Show tone and spacing — not a full section.
+    - **Tables (Tbl* = table-structure)**: still one instance per Tbl* style, but each used
+      **table-paragraph (Para*Cell) must appear ≥2 times** — label/value tables ≥2 rows; grid tables
+      1 header row + ≥2 body rows.
+      **Cover/project info (TblCoverInfo)**: write `main_point` as paste-ready key-value lines, e.g.
+      `Entity|Northstar Retail Ltd` (newline) `Period|FY2024` (newline) `Version|Basic disclosure`;
+      **forbid** bare "Cover info table" with no fields. Prefer field lists from the step3 sketch and add sample values.
+      `cell_style` = table-cell chrome slots; `paragraph_style` must be Para*Cell only.
+    - Figures: kind + what is shown, ≤40 chars.
+    - Captions: one line, may include "Figure 1 …".
+    - No unescaped ASCII double quotes in JSON strings.
+
+    ## Output
+    {
+      "instance_id": "same as injected",
+      "blocks": [
+        {
+          "block_id": "B01",
+          "role_id": "style_id from the catalog",
+          "main_point": "specimen text",
+          "length_hint": "short",
+          "expected_runs": [],
+          "table_ref": null,
+          "image_ref": null,
+          "figure_id": null
+        }
+      ]
+    }
+
+  user_template: |
+    ## This section role (chapters already merged)
+    - instance_id: {{instance_id}}
+    - sec_role: {{sec_role}}
+    - merged titles: {{section_titles}}
+    - instance_id list: {{instance_ids}}
+
+    ## Styles that must appear in this specimen (closed; Caption may repeat per media)
+    {{must_styles}}
+
+    Heading map:
+    {{heading_style_map}}
+
+    Other document styles (do not stuff the catalog into this section; if an unused catalog style must be shown here, it is already in the must table):
+    {{extra_styles}}
+
+    ## Media already shown in earlier Sec* (do not repeat)
+    {{already_shown_media}}
+
+    ## Frozen stylesheet (role_id may only come from here)
+    {{stylesheet_catalog}}
+
+    ## Compressed source-block sketch (judge minimal compositions; do not copy counts)
+    {{block_sketch}}
+
+    ## Theme
+    {{theme}}
+
+    {{retry_feedback}}
+
+    ## Do
+    1. Emit instance_id={{instance_id}} and a short blocks[].
+    2. Every "must appear" style_id must show; each Img*/Tbl* once in this section; Caption only with new distinct media.
+    3. No new style_id, no Sec* blocks. Run* only in expected_runs as {role,text} with text∈main_point.
+    4. One JSON object, no fences.

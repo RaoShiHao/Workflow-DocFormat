@@ -1,0 +1,124 @@
+# Step 3d · blocks per chapter (stylesheet frozen; after 3c1/3c2 placement)
+# Inputs: this chapter subtree + closed style catalog (no new styles)
+# Output: {instance_id, blocks[]} only. The runner concatenates into plan.json.
+
+prompt:
+  system: |
+    You plan **blocks for one Word section**. The document stylesheet is **frozen**; the heading tree is frozen.
+    Cover this section only (one cover/toc/letter, or one H1 subtree).
+    Output one JSON object: **no** markdown fences. Do not emit stylesheet / selection / sections.
+
+    ## Heading blocks
+    - Prefer one heading paragraph per heading_level node in the subtree; role_id from the injected H1→style map; main_point = tree title.
+    - **Front/back slots** (cover / toc / letter / back) still need a title block even when heading_level is empty.
+      If the frozen catalog already has a dedicated TOC-page / acknowledgments / appendix-section title role
+      (**no** heading_level), **prefer that role** over ParaHeading1. Fall back to ParaHeading* only when
+      no dedicated role exists. (Appendix **inner** headings that carry heading_level still use the H→style map.)
+    - Under existing headings you may add: bridge body, ≥2 medium leaf paragraphs, tables/figures + captions, TOC lines, cover info table.
+      Do not drop titles that are already on the tree.
+
+    ## Closed catalog (hard)
+    - Every block role_id must appear in the injected stylesheet catalog. No new style_id.
+    - **Do not put Sec* in blocks[]** (Word section layout, not a paragraph). TOC title uses a paragraph style; TOC lines use ParaTOC*.
+    - Cover titles use the title_kind=cover style; TOC lines must not use heading styles.
+    - **Run*** go in a paragraph's `expected_runs`; do not use Run* as blocks[].role_id.
+
+    ## Thin blocks (hard · sample sentences are step5)
+    Each block: `role_id` + short `main_point` (purpose) + `length_hint`; `organization_note` omit or ≤20 chars.
+    - Headings: tree title, ≤40 chars.
+    - Body/bridge: one-line purpose, ≤40 chars. No draft-like sample sentences.
+    - Tables: purpose + field names, ≤40 chars. No sample rows or cell grids.
+    - Figures: kind + what to show, ≤40 chars.
+    - Captions / TOC lines: one-line stub, ≤40 chars.
+    - No unescaped ASCII double quotes in JSON strings.
+
+    ## Placement (hard · no heading stacks without body slots)
+    - **Between same-level headings (hard)**: between two heading blocks A → B at the **same**
+      `heading_level`, you must place first:
+      * ≥ **2** body blocks with `length_hint=medium|long`, **or**
+      * ≥ **1** table block (Tbl* / length_hint=table), **or**
+      * ≥ **1** figure block (Img* / length_hint=image; caption is separate).
+      Never chain H4→H4→H4 with zero body/table/figure between.
+    - **Under leaf headings (hard)**: the deepest heading in a branch (no deeper heading_level below)
+      must satisfy the same rule before the next same/shallower heading.
+    - **Cross-level bridge (soft)**: before the first direct child heading under H1/H2, 0–1 short/medium
+      bridge paragraph is encouraged but not required.
+    - Heading blocks use `length_hint=short`; do **not** put medium/long body prose into heading blocks.
+    - **Required media from 3c2 (hard)**: hang ×N matching blocks for every listed row
+      (the same style may appear under several nodes in this chapter).
+      Do not move required items to another chapter. Cover/TOC/letter only hang
+      cover logo / info table if they were placed here.
+      **Cover logos / images in the cover section must not have captions** (no ParaCaption / "Figure 1 … cover illustration").
+      Cover info tables omit captions. Body tables/figures need adjacent captions, under the heading they illustrate
+      (do not dump every table/figure at the end of the chapter).
+      **One chapter / one leaf may mix several Tbl*/Img* styles** (table+figure, or two table types);
+      do not treat a section as "one style only".
+    - **Tables / drawings appendix sections**: if this chapter is a tables or drawings back part,
+      besides the title/short intro you must hang the **Tbl*** / **Img*** assigned by 3c2.
+      Do not emit only “Supplementary tables/drawings” headings with no media blocks.
+      Plan media for this section — do not rewrite other chapters’ tables/figures here.
+    - 3c2 already lists **multiple instances per type**; do not hang each style only once.
+      `template_exhibit` is preview-only (≤2 true per style) and is independent of how many
+      outline instances exist.
+    - template_exhibit **only** on tables/figures and their captions (omit the key on headings/body; cover logo has no caption).
+      At most 2 true per Tbl*/Img* in the whole document; template exhibits ≤2 instances per style.
+      Do not mark every table/figure false.
+    - Heading blocks: length_hint=short.
+
+    ## Output
+    {
+      "instance_id": "same as the injected slot",
+      "blocks": [
+        {
+          "block_id": "B01",
+          "role_id": "must be a frozen style_id",
+          "main_point": "purpose ≤40 chars",
+          "organization_note": "",
+          "length_hint": "short|medium|long",
+          "expected_runs": [],
+          "table_ref": null,
+          "image_ref": null,
+          "figure_id": null
+        }
+      ]
+    }
+
+  user_template: |
+    ## This Word section
+    - instance_id: {{instance_id}}
+    - kind: {{chunk_kind}}
+    - title: {{chunk_title}}
+
+    ## Heading subtree for this section
+    {{chunk_tree}}
+
+    Frozen heading sequence (heading_level nodes only; front/back may be empty and may still use heading blocks for tree titles):
+    {{heading_sequence}}
+
+    ## Frozen stylesheet (use only these style_ids)
+    {{stylesheet_catalog}}
+
+    Heading role_id map:
+    {{heading_style_map}}
+
+    ## Required body / run styles in this section (3c1)
+    {{text_must}}
+
+    ## Required tables/figures in this section (3c2)
+    {{media_must}}
+
+    ## Theme
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+
+    {{retry_feedback}}
+
+    ## Do
+    1. Emit instance_id={{instance_id}} and blocks[]. No stylesheet / sections / other chapters.
+    2. Body headings should follow the subtree; front/back may use heading blocks for section titles. role_id must be in the catalog.
+    3. Each main_point ≤40 characters (purpose, not draft); one JSON object, no fences.
+    4. Hang required body/run styles (Run* only in expected_runs).
+       Hang ×N Tbl*/Img* listed under required media (same style may repeat; a chapter may mix styles, under fitting headings);
+       cover logos get no caption; body figures need captions.
+       template_exhibit only on tables/figures (and captions); ≤2 true per style document-wide.
+    5. **Self-check (hard)**: no same-level heading stacks; every leaf heading has ≥2 medium/long or ≥1 table/figure block.

@@ -1,0 +1,41 @@
+version: 1
+
+# Copy this file to the three names the pipeline loads, then fill api_key:
+#   llm_config.yaml
+#   role_library_llm_config.yaml   # step 1 role library
+#   seed_llm_config.yaml           # seed / image calls
+# Do not commit real keys.
+
+openai:
+  api_key: ""
+  base_url: "https://api.openai.com/v1"
+zhipu:
+  api_key: ""
+  base_url: null
+dashscope:
+  api_key: ""
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+gemini:
+  api_key: ""
+  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+
+language_model:
+  provider: openai
+  model: gpt-5.4
+  default_params:
+    temperature: 0.0
+    reasoning_effort: none
+
+image_generate_model:
+  provider: dashscope
+  model: qwen-image-2.0
+  default_params:
+    size: "1024*1024"
+    prompt_extend: true
+    watermark: false
+  fallback:
+    provider: gemini
+    model: gemini-3.1-flash-image-preview
+    default_params:
+      size: "1024x1024"
+      no_text_framing: true

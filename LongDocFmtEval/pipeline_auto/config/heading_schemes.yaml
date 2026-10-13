@@ -1,0 +1,401 @@
+# Heading text prefix schemes (L1–L7).
+#
+# Placeholders (seed/heading_numbering.py):
+#   {n}…{t} — per-level decimal counters (reset when a higher level advances)
+#   {CN} — Chinese numeral for the *current* level counter (一、二、三…)
+#   {ROMAN}/{roman}, {ALPHA}/{alpha} — same, for current level
+#   {CN_LOWER} — circled digit ①②… (1–20)
+#
+# Each scheme includes human-readable rules (summary + level_descriptions)
+# consumed by numbering_spec_text.md (heading_numbering_spec.py).
+
+schemes:
+  zh_chapter_cn_decimal:
+    locale: zh
+    numbering_style: reset
+    title: 章 + 汉字节 + 锚定小数
+    summary: >-
+      一级「第×章」；二级「×、」汉字序数（每章重置）；
+      三级起用 1.× / 1.×.× 锚定小数（每个二级「×、」下从 1.1 重新开始）；
+      七级用（阿拉伯数字）。
+    level_descriptions:
+      1: "第×章 + 空格 + 标题（例：第一章 概述）"
+      2: "×、+ 标题，每章从「一、」重新编号（例：一、背景）"
+      3: "1.× + 空格 + 标题，每个「×、」下从 1.1 起（例：1.1 研究范围）"
+      4: "1.×.×（例：1.1.1 指标说明）"
+      5: "1.×.×.×（例：1.1.1.1 抽样方法）"
+      6: "1.×.×.×.×（例：1.1.1.1.1 样本量）"
+      7: "（阿拉伯数字）+ 标题（例：（1）附注条目）"
+    levels:
+      1: { template: "第{CN}章", separator: " " }
+      2: { template: "{CN}、", separator: "" }
+      3: { template: "1.{p}", separator: " " }
+      4: { template: "1.{p}.{q}", separator: " " }
+      5: { template: "1.{p}.{q}.{r}", separator: " " }
+      6: { template: "1.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "（{t}）", separator: "" }
+
+  zh_chapter_decimal:
+    locale: zh
+    numbering_style: continuous
+    title: 章 + 多级小数
+    summary: >-
+      一级「第×章」；二级起阿拉伯数字 1. / 1.1 / 1.1.1 逐级扩展
+      （章内二级编号含章号，如第二章下为 2.1）。
+    level_descriptions:
+      1: "第×章 + 空格 + 标题"
+      2: "章号. + 空格 + 标题（例：1. 总体说明）"
+      3: "章号.节号（例：1.1 经营回顾）"
+      4: "章号.节号.款（例：1.1.1 收入构成）"
+      5: "继续小数扩展"
+      6: "括号包裹的全路径小数（例：(1.1.1.1.1)）"
+      7: "七级全路径小数"
+    levels:
+      1: { template: "第{CN}章", separator: " " }
+      2: { template: "{n}.", separator: " " }
+      3: { template: "{n}.{m}", separator: " " }
+      4: { template: "{n}.{m}.{p}", separator: " " }
+      5: { template: "{n}.{m}.{p}.{q}", separator: " " }
+      6: { template: "({n}.{m}.{p}.{q}.{r})", separator: " " }
+      7: { template: "{n}.{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  zh_section_decimal:
+    locale: zh
+    numbering_style: continuous
+    title: 纯多级小数
+    summary: >-
+      各级均为 1. / 1.1 / 1.1.1 小数扩展，无「章」或汉字层。
+      常见于 GB 标准、技术说明书。
+    level_descriptions:
+      1: "序号. + 空格 + 标题（例：1. 范围）"
+      2: "上级.序号（例：1.1 规范性引用）"
+      3: "继续扩展（例：1.1.1 术语）"
+      4: "1.1.1.1"
+      5: "1.1.1.1.1"
+      6: "1.1.1.1.1.1"
+      7: "1.1.1.1.1.1.1"
+    levels:
+      1: { template: "{n}.", separator: " " }
+      2: { template: "{n}.{m}", separator: " " }
+      3: { template: "{n}.{m}.{p}", separator: " " }
+      4: { template: "{n}.{m}.{p}.{q}", separator: " " }
+      5: { template: "{n}.{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{n}.{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{n}.{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  zh_gov_legal:
+    locale: zh
+    numbering_style: reset
+    title: 公文 / 法规条款式
+    summary: >-
+      一级「一、二、…」；二级「（一）（二）…」（每个一级下从（一）重置）；
+      三级起阿拉伯数字与括号数字混排。适用于政府公文、制度、招标文件正文。
+    level_descriptions:
+      1: "汉字序数、+ 标题（例：一、总则）"
+      2: "（汉字序数）+ 标题，每级「×、」下从（一）重置（例：（一）适用范围）"
+      3: "序号. + 空格 + 标题（例：1. 定义）"
+      4: "（序号）+ 标题（例：（1）名词解释）"
+      5: "圈号 ①②… + 标题"
+      6: "小写字母. + 标题（例：a. 补充说明）"
+      7: "（小写字母）+ 标题"
+    levels:
+      1: { template: "{CN}、", separator: "" }
+      2: { template: "（{CN}）", separator: "" }
+      3: { template: "{n}.", separator: " " }
+      4: { template: "（{n}）", separator: "" }
+      5: { template: "{CN_LOWER}", separator: "" }
+      6: { template: "{alpha}.", separator: " " }
+      7: { template: "（{alpha}）", separator: "" }
+
+  zh_chinese_hierarchy:
+    locale: zh
+    numbering_style: reset
+    title: 章 / 节 / 汉字条
+    summary: >-
+      一级「第×章」、二级「第×节」（每章内节号重置）、
+      三级「×、」汉字条（每节内重置）、四级「（×）」。
+      常见于学位论文、专著。
+    level_descriptions:
+      1: "第×章 + 空格 + 标题"
+      2: "第×节 + 空格 + 标题（每章从「第一节」重置）"
+      3: "×、+ 标题（每节从「一、」重置）"
+      4: "（汉字序数）+ 标题"
+      5: "序号. + 空格 + 标题"
+      6: "（序号）+ 标题"
+      7: "圈号 ①②… + 标题"
+    levels:
+      1: { template: "第{CN}章", separator: " " }
+      2: { template: "第{CN}节", separator: " " }
+      3: { template: "{CN}、", separator: "" }
+      4: { template: "（{CN}）", separator: "" }
+      5: { template: "{n}.", separator: " " }
+      6: { template: "（{n}）", separator: "" }
+      7: { template: "{CN_LOWER}", separator: "" }
+
+  en_chapter_decimal:
+    locale: en
+    numbering_style: continuous
+    title: Chapter + decimal outline
+    summary: >-
+      Level 1 «Chapter N»; deeper levels use 1. / 1.1 / 1.1.1 decimal paths
+      that include the chapter index (e.g. 2.1 under Chapter 2).
+    level_descriptions:
+      1: "Chapter N + space + title"
+      2: "chapter. + space + title (e.g. 1. Introduction)"
+      3: "chapter.section (e.g. 1.1 Background)"
+      4: "chapter.section.subsection (e.g. 1.1.1 Scope)"
+      5: "continue decimal extension"
+      6: "continue decimal extension"
+      7: "continue decimal extension"
+    levels:
+      1: { template: "Chapter {n}", separator: " " }
+      2: { template: "{n}.", separator: " " }
+      3: { template: "{n}.{m}", separator: " " }
+      4: { template: "{n}.{m}.{p}", separator: " " }
+      5: { template: "{n}.{m}.{p}.{q}", separator: " " }
+      6: { template: "{n}.{m}.{p}.{q}.{r}", separator: " " }
+      7: { template: "{n}.{m}.{p}.{q}.{r}.{s}", separator: " " }
+
+  en_chapter_section:
+    locale: en
+    numbering_style: reset
+    title: Chapter / Section / Subsection
+    summary: >-
+      Level 1 «Chapter N»; Level 2 «Section M» (resets in each chapter);
+      Level 3 «Subsection P» (resets in each section); deeper levels use
+      relative decimals under the current subsection branch.
+    level_descriptions:
+      1: "Chapter N + space + title"
+      2: "Section M + space + title; restarts at Section 1 in each chapter"
+      3: "Subsection P + space + title; restarts at Subsection 1 in each section"
+      4: "p.q decimal under current subsection (e.g. 1.1 Details)"
+      5: "p.q.r (e.g. 1.1.1 Metrics)"
+      6: "p.q.r.s"
+      7: "(t) + space + title"
+    levels:
+      1: { template: "Chapter {n}", separator: " " }
+      2: { template: "Section {m}", separator: " " }
+      3: { template: "Subsection {p}", separator: " " }
+      4: { template: "{p}.{q}", separator: " " }
+      5: { template: "{p}.{q}.{r}", separator: " " }
+      6: { template: "{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "({t})", separator: " " }
+
+  en_chapter_alpha:
+    locale: en
+    numbering_style: reset
+    title: Chapter + letter + number (resetting)
+    summary: >-
+      Level 1 «Chapter N»; Level 2 «A.» uppercase letters (reset per chapter);
+      Level 3 «1.» arabic (reset per letter block); good for offering memoranda
+      and structured reports.
+    level_descriptions:
+      1: "Chapter N + space + title"
+      2: "LETTER. + space + title; restarts at A. in each chapter"
+      3: "item. + space + title; restarts at 1. in each letter block"
+      4: "(item) + space + title"
+      5: "roman. + space + title (lowercase roman)"
+      6: "(alpha) + space + title"
+      7: "roman. + space + title"
+    levels:
+      1: { template: "Chapter {n}", separator: " " }
+      2: { template: "{ALPHA}.", separator: " " }
+      3: { template: "{p}.", separator: " " }
+      4: { template: "({p})", separator: " " }
+      5: { template: "{roman}.", separator: " " }
+      6: { template: "({alpha})", separator: " " }
+      7: { template: "{roman}.", separator: " " }
+
+  en_outline_mixed:
+    locale: en
+    numbering_style: reset
+    title: Roman / letter / decimal outline
+    summary: >-
+      Classic legal / policy outline: I. → A. → 1. → a. → (1) → (a) → i.
+      Each level resets when its parent level advances.
+    level_descriptions:
+      1: "ROMAN. + space + title (e.g. I. Overview)"
+      2: "LETTER. + space + title; resets per Roman section (e.g. A. Purpose)"
+      3: "n. + space + title; resets per letter block"
+      4: "letter. lowercase + space + title"
+      5: "(n) + space + title"
+      6: "(letter) + space + title"
+      7: "roman. + space + title"
+    levels:
+      1: { template: "{ROMAN}.", separator: " " }
+      2: { template: "{ALPHA}.", separator: " " }
+      3: { template: "{n}.", separator: " " }
+      4: { template: "{alpha}.", separator: " " }
+      5: { template: "({n})", separator: " " }
+      6: { template: "({alpha})", separator: " " }
+      7: { template: "{roman}.", separator: " " }
+
+  iso_decimal:
+    locale: en
+    numbering_style: continuous
+    title: ISO-style numeric outline
+    summary: >-
+      Plain 1 / 1.1 / 1.1.1 numeric hierarchy without words.
+      Common in engineering standards (ISO/IEC style).
+    level_descriptions:
+      1: "n + space + title (no trailing dot)"
+      2: "n.m"
+      3: "n.m.p"
+      4: "n.m.p.q"
+      5: "n.m.p.q.r"
+      6: "n.m.p.q.r.s"
+      7: "n.m.p.q.r.s.t"
+    levels:
+      1: { template: "{n}", separator: " " }
+      2: { template: "{n}.{m}", separator: " " }
+      3: { template: "{n}.{m}.{p}", separator: " " }
+      4: { template: "{n}.{m}.{p}.{q}", separator: " " }
+      5: { template: "{n}.{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{n}.{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{n}.{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  zh_chapter_reset_decimal:
+    locale: zh
+    numbering_style: reset
+    title: 章 + 章内重置小数
+    summary: >-
+      一级「第×章」；二级起在章内用 1. / 1.1 编号（不含章号前缀，每章从 1. 重置）。
+      区别于 zh_chapter_decimal 的 2.1 连续路径。
+    level_descriptions:
+      1: "第×章 + 空格 + 标题"
+      2: "章内序号. + 空格（每章从 1. 重置）"
+      3: "章内 节.条（如 1.1，每章重置路径）"
+      4: "1.1.1"
+      5: "1.1.1.1"
+      6: "1.1.1.1.1"
+      7: "1.1.1.1.1.1"
+    levels:
+      1: { template: "第{CN}章", separator: " " }
+      2: { template: "{m}.", separator: " " }
+      3: { template: "{m}.{p}", separator: " " }
+      4: { template: "{m}.{p}.{q}", separator: " " }
+      5: { template: "{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  zh_chapter_section_decimal:
+    locale: zh
+    numbering_style: reset
+    title: 章 / 节 + 节内小数
+    summary: >-
+      一级「第×章」、二级「第×节」（每章内节号重置）；
+      三级起在节内用 1.1 / 1.1.1（不含章号，每节重置小数路径）。
+    level_descriptions:
+      1: "第×章 + 空格 + 标题"
+      2: "第×节 + 空格 + 标题（每章从第一节重置）"
+      3: "节内 1.1（每节从 1.1 路径重置）"
+      4: "1.1.1"
+      5: "1.1.1.1"
+      6: "1.1.1.1.1"
+      7: "（序号）+ 标题"
+    levels:
+      1: { template: "第{CN}章", separator: " " }
+      2: { template: "第{CN}节", separator: " " }
+      3: { template: "{m}.{p}", separator: " " }
+      4: { template: "{m}.{p}.{q}", separator: " " }
+      5: { template: "{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "（{t}）", separator: "" }
+
+  zh_section_paren:
+    locale: zh
+    numbering_style: reset
+    title: 小数 + 括号条（二级重置）
+    summary: >-
+      一级 1.；二级（1）（2）在每个一级下重置；三级起 1.1 小数。
+      常见于内部制度、说明书的混合体例。
+    level_descriptions:
+      1: "序号. + 空格 + 标题（例：1. 范围）"
+      2: "（序号）+ 标题，每个 1. 下从（1）重置"
+      3: "1.1 小数扩展"
+      4: "1.1.1"
+      5: "1.1.1.1"
+      6: "1.1.1.1.1"
+      7: "1.1.1.1.1.1"
+    levels:
+      1: { template: "{n}.", separator: " " }
+      2: { template: "（{m}）", separator: "" }
+      3: { template: "{m}.{p}", separator: " " }
+      4: { template: "{m}.{p}.{q}", separator: " " }
+      5: { template: "{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  en_chapter_reset_decimal:
+    locale: en
+    numbering_style: reset
+    title: Chapter + in-chapter reset decimal
+    summary: >-
+      Level 1 «Chapter N»; levels 2+ use 1. / 1.1 inside each chapter
+      (no chapter index in the decimal path; resets every chapter).
+    level_descriptions:
+      1: "Chapter N + space + title"
+      2: "in-chapter m. + space; resets to 1. each chapter"
+      3: "m.p (e.g. 1.1 within chapter)"
+      4: "m.p.q"
+      5: "m.p.q.r"
+      6: "m.p.q.r.s"
+      7: "m.p.q.r.s.t"
+    levels:
+      1: { template: "Chapter {n}", separator: " " }
+      2: { template: "{m}.", separator: " " }
+      3: { template: "{m}.{p}", separator: " " }
+      4: { template: "{m}.{p}.{q}", separator: " " }
+      5: { template: "{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  en_section_paren:
+    locale: en
+    numbering_style: reset
+    title: Decimal + parenthesis items (L2 reset)
+    summary: >-
+      Level 1 «1.»; Level 2 «(1) (2)» resets under each level-1 block;
+      deeper levels use m.p decimals.
+    level_descriptions:
+      1: "n. + space + title"
+      2: "(m) + space + title; resets under each n."
+      3: "m.p decimal"
+      4: "m.p.q"
+      5: "m.p.q.r"
+      6: "m.p.q.r.s"
+      7: "m.p.q.r.s.t"
+    levels:
+      1: { template: "{n}.", separator: " " }
+      2: { template: "({m})", separator: " " }
+      3: { template: "{m}.{p}", separator: " " }
+      4: { template: "{m}.{p}.{q}", separator: " " }
+      5: { template: "{m}.{p}.{q}.{r}", separator: " " }
+      6: { template: "{m}.{p}.{q}.{r}.{s}", separator: " " }
+      7: { template: "{m}.{p}.{q}.{r}.{s}.{t}", separator: " " }
+
+  en_alpha_outline:
+    locale: en
+    numbering_style: reset
+    title: Letter / number outline (no Chapter word)
+    summary: >-
+      Top level «A.» letters; level 2 «1.» resets per letter block;
+      level 3+ lowercase / parenthesis. Short memos and briefs without
+      explicit «Chapter» headings.
+    level_descriptions:
+      1: "LETTER. + space + title"
+      2: "n. + space; resets to 1. under each letter"
+      3: "letter. lowercase"
+      4: "(n)"
+      5: "(letter)"
+      6: "roman."
+      7: "(roman)"
+    levels:
+      1: { template: "{ALPHA}.", separator: " " }
+      2: { template: "{m}.", separator: " " }
+      3: { template: "{alpha}.", separator: " " }
+      4: { template: "({p})", separator: " " }
+      5: { template: "({alpha})", separator: " " }
+      6: { template: "{roman}.", separator: " " }
+      7: { template: "({roman})", separator: " " }
+

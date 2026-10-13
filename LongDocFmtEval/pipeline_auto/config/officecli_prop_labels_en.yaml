@@ -1,0 +1,74 @@
+# officecli key → English gloss (for template.md natural-language format lines)
+# - prop_labels: ordinary keys → X in "Set X to Y"
+# - bool_labels: boolean keys → X in "Enable X"
+# - val_labels: enum values → English
+# Chinese mirror: officecli_prop_labels.yaml. Keys must stay in sync.
+
+prop_labels:
+  font.latin: Latin font
+  font.ea: East-Asian font
+  size: font size
+  color: text color
+  align: alignment
+  lineSpacing: line spacing
+  spaceBefore: space before
+  spaceAfter: space after
+  firstLineIndent: first-line indent
+  hangingIndent: hanging indent
+  indent: left indent
+  rightIndent: right indent
+  outlineLvl: outline level
+  listStyle: list style
+  numLevel: list level
+  marginTop: top margin
+  marginBottom: bottom margin
+  marginLeft: left margin
+  marginRight: right margin
+  marginHeader: header distance
+  marginFooter: footer distance
+  orientation: page orientation
+  columns: columns
+  columnSpace: column spacing
+  vAlign: page vertical align
+  pgBorders: page border
+  type: section break type
+  pageNumFmt: page number format
+  pageStart: page number start
+  border.all: border (all sides)
+  border.top: top border
+  border.bottom: bottom border
+  border.left: left border
+  border.right: right border
+  fill: cell shading
+  valign: vertical align
+  width: width
+  height: height
+  hAlign: horizontal align
+  underline: underline
+  layout: column layout
+  repeat_header: repeat header row
+
+bool_labels:
+  bold: bold
+  italic: italic
+  keepNext: keep with next
+  pageBreakBefore: page break before
+  titlePage: different first page
+  repeat_header: repeat header row
+  superscript: superscript
+  subscript: subscript
+  caps: all caps
+  smallcaps: small caps
+
+val_labels:
+  align: {left: left, center: center, right: right, justify: justify, both: justify}
+  orientation: {portrait: portrait, landscape: landscape}
+  pageNumFmt: {decimal: Arabic numerals, lowerRoman: lower Roman, upperRoman: upper Roman}
+  listStyle: {ordered: ordered, bullet: bullet}
+  valign: {top: top, center: center, bottom: bottom}
+  vAlign: {top: top, center: center, both: justified vertically, bottom: bottom}
+  pgBorders: {box: box, none: none}
+  hAlign: {left: left, center: center, right: right}
+  underline: {single: single, none: none, double: double, thick: thick, dotted: dotted, dash: dash}
+  layout: {fixed: fixed, autofit: autofit}
+  type: {nextPage: next page, continuous: continuous, evenPage: even page, oddPage: odd page}

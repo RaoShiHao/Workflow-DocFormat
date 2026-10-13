@@ -1,0 +1,77 @@
+# Keep zh and en in lockstep: same placeholders, JSON schema, and constraints.
+# Used by assignment.loc_mode=flat / AblationStudy NoLayeredLoc (one joint M call).
+element_classification:
+  zh:
+    system: |
+      你在一次调用里完成全部 element localization：section、正文段落(+run 片段)、表格(+单元格)、图片。
+      只输出 JSON。无法判断时 style_id / *_style 用 other。不要输出数组。不要 pretty-print。
+      各层以 location_id 为键：section / paragraph.body / table / image。
+      段落 runs：用 text_before、text、text_after 圈定；多数段不要写 runs。
+      表格：table 为 location_id→表样式；table_cells 写每个物理格的 cell_style。
+      init_cues / init_span_cues 只是残差线索，禁止当成目标排版。
+    user_template: |
+      Section 样式:
+      {{section_styles_json}}
+      段落样式:
+      {{paragraph_styles_json}}
+      Run 样式（可空）:
+      {{run_styles_json}}
+      表格样式:
+      {{table_styles_json}}
+      表内段落样式:
+      {{table_cell_paragraph_styles_json}}
+      单元格 slot 目录:
+      {{cell_slots_json}}
+      按表 slot:
+      {{cell_slots_by_table_json}}
+      按表 cell→段落样式:
+      {{cell_paragraphs_by_table_json}}
+      图片样式:
+      {{image_styles_json}}
+      Sections:
+      {{sections_json}}
+      Paragraphs:
+      {{paragraphs_json}}
+      Tables:
+      {{tables_json}}
+      Images:
+      {{images_json}}
+      输出:
+      {"section":{"1":"SecBody"},"paragraph.body":{"1":"ParaBody"},"runs":{"93":[{"text_before":"stable","text":"¹","text_after":",","run_style":"RunCite"}]},"table":{"1":"TblDefault"},"table_cells":{"1":[{"row":1,"col":1,"cell_style":"header"}]},"image":{"1":"ImgDefault"}}
+  en:
+    system: |
+      Perform ALL element localization in one call: sections, body paragraphs (+ run spans), tables (+ cells), and images.
+      JSON only. When unsure use other for style_id / *_style. Do not emit arrays. Do not pretty-print.
+      Each layer is keyed by location_id: section / paragraph.body / table / image.
+      Paragraph runs: locate with text_before, text, text_after; omit runs for most paragraphs.
+      Tables: table is location_id → table-style; table_cells holds each physical cell's cell_style.
+      init_cues / init_span_cues are residual hints, not the target formatting.
+    user_template: |
+      Section styles:
+      {{section_styles_json}}
+      Paragraph styles:
+      {{paragraph_styles_json}}
+      Run styles (may be empty):
+      {{run_styles_json}}
+      Table styles:
+      {{table_styles_json}}
+      Table-cell paragraph styles:
+      {{table_cell_paragraph_styles_json}}
+      Cell slot catalog:
+      {{cell_slots_json}}
+      Slots by table style:
+      {{cell_slots_by_table_json}}
+      Cell→paragraph styles by table:
+      {{cell_paragraphs_by_table_json}}
+      Image styles:
+      {{image_styles_json}}
+      Sections:
+      {{sections_json}}
+      Paragraphs:
+      {{paragraphs_json}}
+      Tables:
+      {{tables_json}}
+      Images:
+      {{images_json}}
+      Output:
+      {"section":{"1":"SecBody"},"paragraph.body":{"1":"ParaBody"},"runs":{"93":[{"text_before":"stable","text":"¹","text_after":",","run_style":"RunCite"}]},"table":{"1":"TblDefault"},"table_cells":{"1":[{"row":1,"col":1,"cell_style":"header"}]},"image":{"1":"ImgDefault"}}

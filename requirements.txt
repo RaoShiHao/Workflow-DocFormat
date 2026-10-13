@@ -1,12 +1,17 @@
-# Workflow-DocFormat (workflow version)
-# Python >= 3.11
+# One install for the dataset pipeline and the formatter.
+# Python >= 3.11.
 #
-# System tools (not installed via pip):
-#   - officecli: https://officecli.ai
-#     Windows: irm https://d.officecli.ai/install.ps1 | iex
-#     macOS/Linux: curl -fsSL https://d.officecli.ai/install.sh | bash
+#   pip install -r requirements.txt
+#
+# From the repository root:
+#   $env:PYTHONPATH = (Get-Location).Path          # Windows PowerShell
+#   export PYTHONPATH="$(pwd)"                     # Linux / macOS
+#
+# officecli is a separate binary, not a pip package:
+#   - dataset rendering: officecli == 1.0.144
+#   - formatter and evaluation: officecli == 1.0.145
+#   https://officecli.ai
+# LibreOffice (soffice) and poppler-utils are optional (docx to pdf, pdf page images).
 
-langgraph>=0.2.0
-openai>=1.0.0
-zhipuai>=2.1.5
-PyYAML>=6.0
+-r LongDocFmtEval/requirements.txt
+-r LongDocFmt/requirements.txt

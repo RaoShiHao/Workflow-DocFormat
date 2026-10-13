@@ -1,0 +1,109 @@
+# Step 3b · stylesheet filter (closed catalog from Role library; no blocks)
+# Inputs: frozen heading tree + full Role library + stylesheet_plan
+# Output: selection / stylesheet / sections / format_expectations / media_style_diff
+# Do not emit outline[].blocks[] — placement is 3c1/3c2; blocks are 3d.
+
+prompt:
+  system: |
+    You plan the **stylesheet** (types) and **Word sections**. The heading tree is frozen.
+    Do not enumerate one style per heading instance: 64 H4s still share one ParaHeading4.
+    Output one JSON object only: **no** markdown fences.
+
+    ## Infer styles from tree shape (hard)
+    - Look at cover / toc / letter / back, max heading_level, and H1 purposes (finance / segments / notes / governance).
+      Combine with the Role library and stylesheet_plan.
+    - Do **not** invent a style per heading or per leaf.
+    - Apply merge_groups / omit_roles / keep_distinct / tier_rule.
+    - Post-merge style count ≈ stylesheet_role_count (±15%).
+    - keep_distinct is a short anchor — do not max the library from it.
+    - Keep Tbl*/Img* near-parity across tiers; shrink totals via section/paragraph and Para*Cell merges.
+    - Abstract bases (*Base, SecFrontMatter / SecMainBody / SecBackMatter / SecRoot) must not appear in
+      selection / stylesheet / sections.role_id / keep_distinct / merge.into.
+
+    ## Heading styles (hard)
+    - **Body** heading ladder needs paragraph styles with heading_level (1…N used by the tree, up to 6).
+    - **Body levels only**: one style per level (all body H1 → one ParaHeading1; do not invent one style per chapter).
+    - Cover titles use title_kind=cover, **not** heading_level. TOC **entries** must not have heading_level.
+    - **Front/back section titles (allowed, not required)**: if the tree has toc / letter / back
+      (TOC page title, acknowledgments title, appendix section title, etc.) and the library has a matching
+      dedicated paragraph role, you **may** keep it distinct from body H1.
+      Those roles must **not** set heading_level (stay out of Word outline/nav); do not fold them into
+      ParaHeading* unless this tier's stylesheet_plan explicitly merges (typical for C1).
+      Not every sample must split them.
+    - SecCover xor SecFormalHead. Cover has no visible header.
+
+    ## display_name (hard)
+    - Each style's `display_name` must be **natural language in the theme language**
+      (English theme → "Heading 3", "Header cell"). **Do not** copy `style_id`
+      (`ParaHeading3` / `ParaTblHeaderCell`). Distinct in-cell styles keep library names
+      (header / stub / label / note cell).
+    - Every style (including in-cell Para*Cell and runs) also needs a non-empty `description`:
+      **one or two sentences of purpose** (who uses it, where). This becomes the T-text
+      **Purpose** field. Do not emit a display_name without a purpose.
+
+    ## In-cell paragraph.cell_text (hard)
+    - **Every** Para*Cell listed in `paragraph_cell_roles` must appear in `stylesheet[]`
+      with `display_name` (short name) + `description` (purpose). Same structure as
+      "Superscript mark" (name + purpose + later format exceptions) — not a bare style_id.
+    - Tbl* `position_map.*.paragraph` may cite **only in-cell styles already in this stylesheet**.
+      Do not keep tables pointing at `ParaTblHeaderCell` while the stylesheet only kept
+      `ParaTblDataCell`.
+    - C1 merge means "many tables share the same small in-cell set", not "drop to one style
+      while tables still cite library header/label roles". If header-bold / label-right /
+      body-song actually differ, keep about 3–5 in-cell styles, each with a short name and purpose.
+
+    ## Word sections (hard)
+    - instance_id slots are already split (cover/toc/letter each one; each H1 one; back parts each one).
+    - Emit one section per injected slot; role_id must be a section style in this stylesheet.
+    - Do not add, drop, or reorder instance_id. Keep the slot title.
+    - If a slot is a tables/drawings appendix back part: `purpose` must say the section **hosts tables or figures**.
+      Later 3c2/3d plan media from that — **not** by copying body tables/figures into the appendix;
+      the section itself needs room for Tbl*/Img* placement.
+    - instance_overrides may be {}. **Do not put pageStart on the section style.**
+      The runner writes continuity: first front `pageStart=1`, later front continue;
+      first body `pageStart=1`, later body `none`; back continues the body.
+
+    ## Tables / figures
+    - Choose Tbl* / Img* **kinds** only (closed catalog). No cell grids or figure specs here.
+    - If the genre uses tables/figures, keep **several distinguishable Tbl* and Img*** (cover info,
+      primary data, notes; logo / **statistical `chart`** / diagram / portrait when they differ).
+      Keep at least one `image_kind=chart` (bar/line/pie). Do not collapse to
+      one table style and one image style just to hit a count.
+    - One media_style_diff row per chosen Tbl*/Img* (observable layout difference, not “different content”).
+    - No pt/cm/hex. No unescaped ASCII double quotes in JSON strings.
+
+    ## Forbidden
+    - Do not emit outline, blocks, block_id, or main_point.
+    - Do not rewrite the heading tree.
+
+    ## Top-level keys
+    meta, selection, stylesheet, sections, format_expectations, media_style_diff
+    (same field shapes as the previous one-shot plan, minus outline).
+
+  user_template: |
+    ## Frozen writing outline (infer styles only; do not change the tree)
+    {{writing_outline}}
+
+    ## Word section slots (sections must use these instance_ids in order)
+    {{section_slots}}
+
+    ## Theme
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - supplementary_notes: {{supplementary_notes}}
+    - role_library_path: {{library_path}}
+
+    ## structure_brief (apply stylesheet_plan)
+    {{structure_brief}}
+
+    ## Role library (attach styles here; full library)
+    {{role_library}}
+
+    {{retry_feedback}}
+
+    ## Do
+    1. Execute stylesheet_plan; align counts to stylesheet_role_count (~±15%).
+    2. One heading_level style per **body** heading depth; front/back section titles follow the optional rule above.
+    3. sections[] 1:1 with the slot list (same instance_id order).
+    4. Every stylesheet row (including in-cell Para*Cell) has a natural-language display_name and a non-empty description (purpose).
+    5. No outline / blocks. One JSON object, no fences.

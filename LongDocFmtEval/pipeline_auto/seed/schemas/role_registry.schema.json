@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodatabuild.local/schemas/role_registry.schema.json",
+  "title": "RoleRegistry",
+  "description": "每角色一张标准卡 + 命中对象索引 + 可执行样式，便于人工识别与批量修改。",
+  "type": "object",
+  "required": ["meta", "roles"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["seed_id", "source_outline"],
+      "properties": {
+        "seed_id": { "type": "string" },
+        "source_outline": { "type": "string" },
+        "built_at": { "type": "string" }
+      }
+    },
+    "theme_tokens": {
+      "type": "object",
+      "description": "文档级视觉槽位（自然度）；角色 style 应引用槽位",
+      "properties": {
+        "faces": { "type": "object" },
+        "ladder_pt": { "type": "object" },
+        "accent": { "type": "string" }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["role_id", "standard", "bindings"],
+        "properties": {
+          "role_id": { "type": "string" },
+          "standard": {
+            "type": "object",
+            "required": ["label", "display_name", "human_mark", "object_kind", "semantic"],
+            "properties": {
+              "label": { "type": "string", "description": "短码，如 H1" },
+              "display_name": { "type": "string" },
+              "human_mark": {
+                "type": "string",
+                "description": "标注预览可见标记，如【H1·一级标题】"
+              },
+              "object_kind": {
+                "type": "string",
+                "enum": ["section", "paragraph", "table", "image", "cell", "run"]
+              },
+              "semantic": { "type": "string" },
+              "format_intent": { "type": "string" },
+              "preview_example": { "type": "string" }
+            }
+          },
+          "bindings": {
+            "type": "object",
+            "required": ["object_indices", "object_ids"],
+            "properties": {
+              "object_indices": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 0 },
+                "description": "outline_bind.objects[].index 列表"
+              },
+              "object_ids": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "paths": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "cell_refs": {
+                "type": "array",
+                "description": "单元格角色：挂在哪个表对象的哪个 pos",
+                "items": {
+                  "type": "object",
+                  "required": ["table_object_index", "table_object_id", "pos"],
+                  "properties": {
+                    "table_object_index": { "type": "integer" },
+                    "table_object_id": { "type": "string" },
+                    "pos": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "style": {
+            "type": "object",
+            "description": "可执行 T* 片段（officecli 白名单 props 等）",
+            "properties": {
+              "theme_slot": { "type": "string" },
+              "props": { "type": "object" },
+              "header": { "type": "object" },
+              "footer": { "type": "object" },
+              "runs": { "type": "object" }
+            }
+          }
+        }
+      }
+    },
+    "index": {
+      "type": "object",
+      "description": "可选倒排：index → role_id，便于按对象定位",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

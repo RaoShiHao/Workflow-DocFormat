@@ -1,0 +1,13 @@
+dataset_root: /path/to/LongDocFmtEval
+experiment_root: /path/to/LongDocFmt
+
+# Per-sample artifacts: {experiment_root}/{agent}/{skill}/{model}/{sample}/eval/
+#   output.flat.json
+#   usage.json          (LLM totals only, no per_step)
+# Model-level average:  {experiment_root}/{agent}/{skill}/{model}/summary.json
+
+# Fallback only when the result dir has no sample folders.
+sample_ids: [19, 31, 37, 82, 94, 119, 134, 153, 164, 197, 218, 222, 234, 276, 306]
+
+officecli_bin: officecli
+skip_if_eval_exists: true

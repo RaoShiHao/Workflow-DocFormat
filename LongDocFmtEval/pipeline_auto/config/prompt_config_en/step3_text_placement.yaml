@@ -1,0 +1,68 @@
+# Step 3c1 · Body/run/section-role placement (stylesheet frozen; tables/figures in 3c2)
+# Input: compact title tree with node ids + Word section slots + Para*/Run* to place + Sec*
+# Output: section_roles[] + placements[]. No blocks, no Tbl*/Img*.
+
+prompt:
+  system: |
+    You assign **Sec*** roles to Word-section slots and hang **body paragraph / Run*** styles
+    onto existing outline nodes. The stylesheet and heading tree are frozen.
+    Do not invent styles, rewrite titles, emit blocks, or place Tbl*/Img* (that is 3c2).
+    Output one JSON object: **no** markdown fences.
+
+    ## Section roles
+    - Exactly one `section_roles` row per injected instance_id.
+    - `role_id` must come from the Sec* catalog. Cover → SecCover; TOC → SecToc;
+      body H1 → a body section role; back matter → appendix/back role.
+    - Do not add or drop instance_id values.
+
+    ## Body / run placement
+    - **Every** style_id in the "to place" table must appear in placements at least once
+      document-wide (do not omit Run* to shrink JSON). The program retries once if any are missing;
+      leftovers are recorded only (do not invent nodes).
+    - Heading paragraphs (H1 → ParaHeading*) are applied from heading_level automatically —
+      **do not** put them in placements.
+    - Captions follow tables/figures in 3c2; do not hang Caption here just for coverage.
+    - `node_id` must be an id from the injected tree. Hang body/list/letter on fitting chapter
+      nodes; hang Run* on the body node that will carry that inline style.
+    - Run* are not standalone paragraphs: a placement means some paragraph under that node
+      will list the role in expected_runs.
+    - Do not hang body lists on the cover; name/signature runs belong on letter/signature nodes.
+    - count defaults to 1; do not duplicate the same style on the same node.
+
+    ## Output
+    {
+      "section_roles": [
+        {"instance_id": "I01", "role_id": "SecCover"}
+      ],
+      "placements": [
+        {"style_id": "ParaBody", "node_id": "C01", "count": 2},
+        {"style_id": "ParaBulletList", "node_id": "C01b", "count": 1},
+        {"style_id": "RunLeadBold", "node_id": "C01", "count": 1}
+      ]
+    }
+
+  user_template: |
+    ## Frozen title tree (use these node_id values only)
+    {{writing_outline}}
+
+    ## Word section slots (section_roles must use these instance_id values)
+    {{section_slots}}
+
+    ## Sec* catalog (section_roles.role_id from here only)
+    {{section_catalog}}
+
+    ## Body / run styles to place (each at least once; no headings/captions/media)
+    {{text_catalog}}
+
+    Heading styles are applied by the program; do not list them in placements:
+    {{heading_style_map}}
+
+    ## Theme
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+
+    {{retry_feedback}}
+
+    ## Do
+    Emit section_roles[] (1:1 with slots) and placements[].
+    Every row in the to-place table must appear; node_id from the tree; no tables/figures.

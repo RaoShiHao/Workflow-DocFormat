@@ -1,0 +1,50 @@
+# Step3 兼容回退 · 结构预算（structure brief）
+# 仅当 step2 未提供 structure_brief 时，由 run_step3 调用。新轨 brief 来自 step2_suggest_themes。
+
+prompt:
+  system: |
+    你是「长文档结构预算师」。在写细大纲之前，先为本篇给出可执行的 **structure_brief**。
+    目标：约束标题层级深度与篇幅倾向，避免篇篇都是「三级标题 + 中等篇幅」的同质骨架。
+
+    ## 原则
+    - **层级 = 标题级别**（章 / 节 / 小节 / 点），不是正文语义分层。
+    - 深度必须**符合体裁**：规划纲要/年报等常 4–6；标书/技术方案/系统设计可达 5–6
+      （如 系统→模块→子模块→功能点）；短函/简报可 3。C1/C2/C3 若同批出现，深度整体递进即可（相邻可相同）。
+    - 不是越深越好：浅体裁硬灌四级反而假。
+    - 用 `length_band` 与分支要求拉开样本差异（shallow/medium/deep × short/medium/long/very_long）。
+    - **输出预算**：后续细大纲是单次超大 JSON。`very_long` 时宁可「章多叶疏」：
+      h1 约 5–7、每 H1 下 H2 约 2–3、每 H2 下 H3 约 1–2、leaf 每叶 1–2 段；
+      勿同时拉满「7–9 章 × 密级四级 × 每叶 3+ 段」，否则大纲 JSON 会被截断。
+
+    ## 输出（只输出合法 JSON）
+    {
+      "heading_depth_min": 2|3|4|5,
+      "heading_depth_target": 3|4|5|6,
+      "hierarchy_pattern": "中文短句，描述标题梯子（例：章→节→小节→（1）点）",
+      "branching": {
+        "h1_count": "3-6",
+        "h2_per_h1": "2-4",
+        "h3_per_h2": "0-3 或 2-3",
+        "require_some_h4": true/false,
+        "h4_note": "若 require_some_h4：至少多少个 H3 下再拆 H4"
+      },
+      "length_band": "short|medium|long|very_long",
+      "leaf_policy": "每个最深标题下至少…个 medium/long 正文块",
+      "anti_homogeneity": "一句：本篇与「默认三级中篇」如何拉开差异",
+      "rationale": "40–80 字：为何该体裁+主题选此深度/篇幅"
+    }
+
+  user_template: |
+    ## 输入
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - supplementary_notes: {{supplementary_notes}}
+    - genre / locale 线索见 Role 库路径：{{library_path}}
+
+    ## Role 库（软参考，看有哪些 Heading 级可用）
+    {{role_library_headings}}
+
+    ## 执行
+    1. 根据体裁惯例 + 主题可拆性，给出本篇 structure_brief。
+    2. 若库中有 ParaHeading4/5，深度目标才可冲到 4/5；否则不要超过库能力。
+    3. 只输出合法 JSON（不要 Markdown 围栏）。

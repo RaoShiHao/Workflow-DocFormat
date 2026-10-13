@@ -1,0 +1,77 @@
+# Step 3c2 · Media placement (stylesheet frozen; after 3c1, before per-chapter blocks)
+# Input: compact title tree with node ids + frozen Tbl*/Img* catalog
+# Output: hang table/figure **types** onto several existing nodes (reuse the same style)
+
+prompt:
+  system: |
+    You assign frozen **Tbl*** / **Img*** styles onto existing outline nodes.
+    The stylesheet and heading tree are frozen. Do not invent styles, rewrite titles, or emit blocks.
+    Output one JSON object: **no** markdown fences.
+
+    ## Type vs instance (hard)
+    - Each Tbl*/Img* in the stylesheet is a **layout type**, not a one-shot exhibit.
+    - Each `placements` row is one **instance**. Body tables/figures default to reusing
+      the same style on **several different nodes**.
+    - Catalog `reuse=once` (cover logo, cover info table, stamp, …): **exactly 1** instance.
+    - Catalog `reuse=repeat`: **at least 2 different nodes**; statistical charts **at least 3**.
+      Do not stop at one row with count=1 per style.
+
+    ## Fit the outline (guidance)
+    - Read each node's **title / purpose** and hang tables/figures where they **make sense**:
+      indicator tables → targets; project lists → major projects; maps → spatial layout;
+      charts → comparison/trend discussion; cover logo → cover. Do not pad unrelated sections.
+    - **Tables / drawings appendix parts**: if a node title/purpose says “Supplementary tables”,
+      “Drawings”, or “Appendix figures”, hang matching **Tbl*** or **Img*** onto **those back nodes**
+      (several allowed) so the part can expand real media blocks later. Body may still have media;
+      appendix media are instances planned **for that part**, not a paste of body tables/figures.
+      Do not leave such parts with title-only intent while all media go only to body nodes.
+    - **One chapter, and even one H2/H3 leaf, may host several different Tbl*/Img* styles**
+      (e.g. an indicator table plus a chart, or a list table plus a responsibility matrix).
+      Do not treat this as "one node = one style" or "one chapter = one table".
+    - Complementary table+figure next to each other is normal; avoid two near-duplicate copies
+      of the **same** style under one leaf.
+    - Spreading is for document coverage, not a ban on mixing styles in the same chapter.
+
+    ## Hard rules
+    - Every style_id at least once; repeat types must have multiple rows (or count≥2 on one row —
+      prefer splitting across node_ids).
+    - `node_id` must be an id from the injected tree (e.g. P01, C01, C01b1). Do not invent ids.
+    - Cover logo / cover info table → cover; other items follow "fit the outline" above.
+    - **Instance totals (not number of styles)**:
+      * Img*: about **6–12** figures document-wide (cover logo counts as 1; short letters near the floor,
+        plans/annual reports toward the ceiling). Fill extras with **charts**.
+      * Tbl*: about **6–14** tables (cover info table counts as 1). The same three-line / list table
+        should appear in several chapters.
+    - count defaults to 1; use 2–3 only when the same node truly needs two copies. Logo / cover info stay 1.
+    - Cover logos **must not** have captions (placement only; chapter pass must not add ParaCaption).
+    - Tables are **text-only**; do not plan in-cell photos/images.
+
+    ## Output
+    {
+      "placements": [
+        {"style_id": "ImgCoverMark", "node_id": "P01", "count": 1},
+        {"style_id": "TblIndicator", "node_id": "C01a", "count": 1},
+        {"style_id": "ImgStatChart", "node_id": "C01a", "count": 1},
+        {"style_id": "ImgStatChart", "node_id": "C03b", "count": 1},
+        {"style_id": "TblIndicator", "node_id": "C04b", "count": 1}
+      ]
+    }
+
+  user_template: |
+    ## Frozen title tree (use these node_id values only)
+    {{writing_outline}}
+
+    ## Frozen Tbl*/Img* catalog (once = 1× document-wide; repeat = reuse on several nodes)
+    {{media_catalog}}
+
+    ## Theme
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+
+    {{retry_feedback}}
+
+    ## Do
+    Output placements[] only. Hang on nodes that fit title/purpose; one node/chapter may mix styles.
+    If tables/drawings appendix nodes exist, hang Tbl*/Img* there (planned for that part, not body copies).
+    Repeat types must span several nodes; about 6–12 Img* and 6–14 Tbl*
+    instances (fill extras by reusing charts and body tables); node_id from the tree above.

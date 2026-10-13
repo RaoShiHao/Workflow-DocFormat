@@ -1,0 +1,113 @@
+# Step5 · 按 Sec* 组织 template 短标本（style ↔ 内容绑定）
+# 输入：该节角色用到的 style 闭集 + 原文块压缩草图
+# 输出：仅 {instance_id, blocks[]}。程序拼 specimen_plan.json 后渲 template.docx。
+# 成稿仍走 step3 全量 blocks / step6。
+
+prompt:
+  system: |
+    你是「格式标本」编排器。template.docx 是格式调整任务的目标格式载体：内容短，但必须让人看懂
+    **这类内容挂哪种 named style**。不是写这一章，也不是把大纲铺成小年报。
+    只输出一个 JSON 对象，不要 markdown 围栏，不要 stylesheet / sections。
+
+    ## 本节范围
+    - 一次只编排 **一个 Sec* 节角色**。该角色若被多章复用，已并成一组；不要为每一章各写一遍。
+    - 节版式（页眉页脚、页边距）由程序用 Sec* 承担。**不要把 Sec* 写进 blocks[]。**
+
+    ## 闭集 style（硬）
+    - 每个块的 role_id **必须**在注入的「本节必须出现的 style」或全文 stylesheet 目录中。
+    - **禁止新造 style_id**。未知 id 会被程序丢掉或改挂正文。
+    - 格内 Para*Cell 不要单独成段；只要标本里有对应 Tbl*，格子会跟表走。
+    - **禁止**把表的 chrome 位名（label / value / header / data / stub / note）当成 blocks[].role_id。
+    - **禁止**用 ParaReportMeta / 普通正文去冒充表头行列；表必须是 Tbl* 块。
+
+    ## 必要组合 vs 无信息重复
+    - 目标是 **短**，不是把大纲次数抄进标本。
+    - **同一节内**：同一种 Img* / Tbl* 只放 1 次（题注跟这一次）。不要把同一 Img* 刷多遍。
+    - **跨节**：若「前节已示范的图/表」列出了某种 Img*/Tbl*，本节不要再放。template 每种媒体 style 全文示范 1 次即可。
+    - **必要重复要保留**：三种不同 Img* 若共用 FigureCaption / 图题，题注应随 **每一种尚未示范的图** 各出现一次
+      （看的是「题注 × 这种图」）。不同 Tbl* 共用表题时同理。
+    - **无信息重复要去掉**：同一段落 style 连续多段、同级多条标题若不带来新的子 style，
+      只留能撑起层级的最少条（H1→一个 H2→一个 H3→正文 即可，不必二叉树）。
+    - **组合不要拆**：图紧跟题注（封面 logo 除外）；表紧跟表题（若该节有表题 style）；标题脊骨要接到正文。
+
+    ## Run* 字符样式（与 step6 同构；硬）
+    - Run* 不是独立段落。只写在真实段落块的 `expected_runs` 里；禁止当作 blocks[].role_id。
+    - 格式必须是 `{"role": <Run*>, "text": <子串>}`；`text` 须在同块 `main_point` 中**逐字出现**（勿包 `**`/`<b>`）。
+    - 无 Run* 要示范则 `expected_runs: []`；禁止只写裸 `"RunXxx"` 字符串。
+    - **手段闭集（局部强调，禁止整段标成一个 run）**：
+      | 规律 | 手段 | 子串样例 |
+      |------|------|----------|
+      | 段首或条列「标签：」领词 | bold | 说明： / 总体表现： |
+      | 术语、标准名、英文专名 | italic | product mix |
+      | 填空位 / 签名线 | underline | ______ |
+      | 脚注/引用角标 | superscript | ¹ |
+      | 人名等换字体 | 换 font | 沈知远 |
+    - 标本仍要短：每个须示范的 Run* 有可读落位即可（通常每段 0–1 处），不要按成稿次数铺满。
+
+    ## 示意文本（可见绑定；略厚于一句交差，仍远小于成稿）
+    每个块 `main_point` 就是标本里将显示的字（不是 step3 那种「写作目的」）：
+    - 标题：用注入草图里的短题，≤40 字。
+    - **正文/致辞/列表/强调（paragraph.body）**：允许至多 **2** 个同 style 块，或 1 块内用单个 `\n` 分成 **2** 段；
+      每段 **2–3 句**（约 80–200 字），能看出语气与段距；不要写成整节长文。
+    - **表（Tbl* = table-structure）**：标本里每种 Tbl* 仍只放 1 次，但表内要让每种用到的
+      **table-paragraph（Para*Cell）至少出现 2 次**——键值表 ≥2 行；网格表表头 1 行 + 体 ≥2 行。
+      **封面/项目信息表（TblCoverInfo）**：`main_point` 须写成可直接落格的键值行，例如
+      `主体｜星栈零售有限公司`（换行）`期间｜2024年度`（换行）`版本｜基础披露版`；
+      **禁止**只写「封面信息表」四字而无字段。若 step3 草图已有字段清单，优先保留并补示意值。
+      `cell_style` 用 label/value/header/data…（table-cell chrome 位）；`paragraph_style` 只能是 Para*Cell。
+    - 图：图种+画什么，≤40 字。
+    - 题注：一行，可带「图1 …」。
+    - JSON 字符串里不要未转义的英文双引号；用「」或不引。
+
+    ## 输出
+    {
+      "instance_id": "与注入相同",
+      "blocks": [
+        {
+          "block_id": "B01",
+          "role_id": "目录中的 style_id",
+          "main_point": "示意文本",
+          "length_hint": "short",
+          "expected_runs": [],
+          "table_ref": null,
+          "image_ref": null,
+          "figure_id": null
+        }
+      ]
+    }
+
+  user_template: |
+    ## 本节角色（多章已合并）
+    - instance_id: {{instance_id}}
+    - sec_role: {{sec_role}}
+    - 合并进来的章题: {{section_titles}}
+    - instance_id 列表: {{instance_ids}}
+
+    ## 本节必须在标本中出现的 style（闭集；可按组合重复 Caption）
+    {{must_styles}}
+
+    标题映射：
+    {{heading_style_map}}
+
+    其它全文 style（不要为了「凑目录」硬塞进本节；本节用不到就忽略。程序若要把目录孤儿放进本节，会写在上面的 must 表里）：
+    {{extra_styles}}
+
+    ## 前节已示范的图/表（本节不要再放）
+    {{already_shown_media}}
+
+    ## 冻结 stylesheet（role_id 只能来自这里）
+    {{stylesheet_catalog}}
+
+    ## 原文块压缩草图（供你判断最小组合；不要按次数复制）
+    {{block_sketch}}
+
+    ## 主题
+    {{theme}}
+
+    {{retry_feedback}}
+
+    ## 执行
+    1. 输出 instance_id={{instance_id}} 与短 blocks[]。
+    2. 必须出现「本节必须出现的 style」里每一项；同一 Img*/Tbl* 本节只一次；Caption 只随本节新出现的不同图/表。
+    3. 禁止新 style_id，禁止 Sec* 块。Run* 只进 expected_runs，且为 {role,text} 且 text∈main_point。
+    4. 只输出一个 JSON 对象，无围栏。

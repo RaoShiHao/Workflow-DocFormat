@@ -1,0 +1,51 @@
+version: 1
+
+# Copy to llm_config.yaml (gitignored) and fill api_key on each model.
+# Never commit real keys.
+#
+# Naming (registry key = D:\LongDocFmtEval-Result\{key}\ ):
+#   - lowercase [a-z0-9._-], start with a letter or digit, max 64 chars
+#   - no spaces, slashes, or uppercase
+#   - example: qwen3.5-397b-a17b
+# `model:` is the vendor API id and may differ from the registry key.
+
+# Sampling used by every model. Do not set temperature / top_p / seed on a model.
+shared_params:
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+  max_tokens: 20480
+
+# Default lookup when callers omit model=.
+active: qwen3.5-397b-a17b
+# Optional: different registry key for vision. Default = same as language.
+# vision: qwen3.5-397b-a17b
+
+models:
+  qwen3.5-397b-a17b:
+    provider: openai          # openai | zhipu (zhipu → zai-sdk / ZhipuAiClient)
+    model: qwen3.5-397b-a17b  # API model id
+    api_key: "YOUR_OPENAI_OR_COMPATIBLE_API_KEY"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    extra_body:
+      enable_thinking: false
+
+  glm-4.5:
+    provider: zhipu
+    model: glm-4.5
+    # Text-only chat id: factory maps image loc to glm-4.5v unless overridden.
+    vision_model: glm-4.5v
+    api_key: "YOUR_ZHIPU_API_KEY"
+    base_url: null
+
+  # Preferred Zhipu entry: native multimodal (text + image_url).
+  # Do not use text-only glm-5.3 for image localization (error 1210: type in ['text']).
+  glm-5.3-flash:
+    provider: zhipu
+    model: glm-5.3-flash
+    api_key: "YOUR_ZHIPU_API_KEY"
+    base_url: null
+    extra_body:
+      thinking:
+        type: enabled
+      reasoning_effort: low

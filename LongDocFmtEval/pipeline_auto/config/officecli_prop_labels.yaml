@@ -1,0 +1,75 @@
+# officecli 属性键 → 中文含义映射（供 template.md 用自然语言表达格式要求）
+# - prop_labels：普通键 → 「设置X为Y」里的 X
+# - bool_labels：布尔键 → 用「启用X」表达
+# - val_labels ：枚举取值 → 中文
+# 英文镜像：officecli_prop_labels_en.yaml（locale=en*）；键集合两边保持一致。
+# 改这里即可调整 template.md 的措辞，不必动代码。
+
+prop_labels:
+  font.latin: 西文字体
+  font.ea: 中文字体
+  size: 字号
+  color: 字色
+  align: 对齐方式
+  lineSpacing: 行距
+  spaceBefore: 段前距
+  spaceAfter: 段后距
+  firstLineIndent: 首行缩进
+  hangingIndent: 悬挂缩进
+  indent: 左缩进
+  rightIndent: 右缩进
+  outlineLvl: 大纲级别
+  listStyle: 列表类型
+  numLevel: 列表层级
+  marginTop: 上页边距
+  marginBottom: 下页边距
+  marginLeft: 左页边距
+  marginRight: 右页边距
+  marginHeader: 页眉距顶
+  marginFooter: 页脚距底
+  orientation: 纸张方向
+  columns: 分栏数
+  columnSpace: 栏间距
+  vAlign: 页面垂直对齐
+  pgBorders: 页面外框
+  type: 分节类型
+  pageNumFmt: 页码格式
+  pageStart: 页码起始
+  border.all: 四周边框
+  border.top: 上边框
+  border.bottom: 下边框
+  border.left: 左边框
+  border.right: 右边框
+  fill: 底纹填充
+  valign: 垂直对齐
+  width: 宽度
+  height: 高度
+  hAlign: 水平对齐
+  underline: 下划线
+  layout: 列宽模式
+  repeat_header: 表头跨页重复
+
+bool_labels:
+  bold: 加粗
+  italic: 斜体
+  keepNext: 与下段同页
+  pageBreakBefore: 段前分页
+  titlePage: 首页独立版式
+  repeat_header: 表头跨页重复
+  superscript: 上标
+  subscript: 下标
+  caps: 全大写
+  smallcaps: 小型大写
+
+val_labels:
+  align: {left: 左对齐, center: 居中, right: 右对齐, justify: 两端对齐, both: 两端对齐}
+  orientation: {portrait: 纵向, landscape: 横向}
+  pageNumFmt: {decimal: 阿拉伯数字, lowerRoman: 小写罗马, upperRoman: 大写罗马}
+  listStyle: {ordered: 有序, bullet: 无序}
+  valign: {top: 顶端, center: 居中, bottom: 底端}
+  vAlign: {top: 顶端, center: 居中, both: 上下拉齐, bottom: 底端}
+  pgBorders: {box: 四周外框, none: 无}
+  hAlign: {left: 左, center: 居中, right: 右}
+  underline: {single: 单线, none: 无, double: 双线, thick: 粗线, dotted: 点线, dash: 虚线}
+  layout: {fixed: 固定列宽, autofit: 自适应}
+  type: {nextPage: 下一页, continuous: 连续, evenPage: 偶数页, oddPage: 奇数页}

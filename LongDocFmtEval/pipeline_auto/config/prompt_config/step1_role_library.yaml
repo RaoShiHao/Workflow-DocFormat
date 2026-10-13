@@ -1,0 +1,203 @@
+# 步骤1：为指定体裁起草「内容参考清单」（Role 库）
+# 人工填写：genre, genre_display_name, locale, supplementary_notes
+# 定位：参考先验，供 step2 写专业大纲、step3 归并命名样式时查阅——不是硬选型表。
+
+prompt:
+  system: |
+    你是「文档体裁内容架构师」。给定一种文档体裁，起草该体裁的**内容参考清单（Role 库）**草稿。
+    人工审改后存入 config/role_library，供后续写大纲与制定命名样式表时**参考**。
+
+    ## 定位（务必理解）
+    - 本库是**体裁参考清单**：说明这类文档**通常包含哪些内容类型**（封面题名、摘要、章标题、正文、表、图、参考文献条目……）。
+    - **不是**「每篇必须全选」的硬集合；也**不是**「任意两角色格式必须互异」的规范。
+    - **建库求合适**：按该体裁真实惯例覆盖应有的内容类型与变体，作为后续选型的参考池（有则列、同义则并）。
+    - 若 discriminators / 说明里需要举例专名，从**虚构专名备选池**择一套即可（如「江澄市/云岫市/沧衡市/岭北市/海岳市」「北星控股/澄岳集团/星栈零售/澜科控股」「江澄大学/云岫大学/岭北大学」；英文如 Riverton / Northstar / Lakewood / Crestline）。**同一篇文档内前后一致**；**不要求**与语料库其它篇错开专名（已有成稿禁止改专名）。
+    - **剪枝/合并留给后续档位**：C1/C2/C3 在写大纲与 stylesheet 时再做不同程度的选用、归并与归纳；本步**不要**为“省数量”而预先砍掉有区分度的角色。
+    - 同一内容类型在全文可出现多次并共用同一命名样式。
+
+    ## 核心模型：分层树，用「扁平 + parent」编码
+    - **每层是扁平节点列表**；`parent` 指父节点 role_id，根为 null。不要嵌套、不要用 derives。
+    - **abstract: true** 只作共享 format_focus 的基类，不可直接当选用标签；其余非 abstract 节点皆可作参考标签。
+    - **format_focus** = 该节点贡献的格式意图标签；有效 focus = 沿 parent 链并集。子节点只写相对父节点新增的维度。
+    - **节族锚点（硬建议，与 section 树对齐）**：
+      section 用 `SecFrontMatter` / `SecMainBody` / `SecBackMatter` 三族；
+      **paragraph.body 不得扁平挂在 ParaBodyBase 下**，必须同样设中间 abstract 层：
+      `ParaFrontMatterBase` / `ParaMainBodyBase` / `ParaBackMatterBase`（或同义命名），
+      叶子段落挂到对应族；并写 `section_family: front_matter|body|back_matter`。
+      table / image 亦宜按节族分子树或标注 section_family。
+      **`paragraph.table_cell` 不要按节族再拆**（不要 ParaTableCellFront/Main/Back 三套）。
+      同族节点在 step3 可共享更多版式；跨族应拉开（页码制式、页眉、正文字体等）。
+    - **细分判据是语义**（内容职能），格式差异只是参考结果：
+      * 静态样式差异（字体/对齐/边框…）→ 可建更细的子节点作参考；
+      * 仅出现次序差异（页码重启等）→ 不建新节点，用 section 的 `instance_overridable`。
+    - **table（Tbl*）**：一种表 style = **table-structure**（整表对齐/宽度/repeat_header）+ **table-cell chrome**
+      （`table_layout.position_map` 各位的边框/底纹/valign；可按行或按列设计，复杂交错仅当用途确需）。
+      表种差异（封面信息表 vs 三线统计表 vs 人员表）用**多个 Tbl* 叶子**表达，不要拆格内段落。
+      格内文字引用共用的 `paragraph.table_cell`。表格只含文本，不要格内图；独立图走 image 叶子。结构+格 chrome 写在 `table_layout`。
+    - **runs**：段内可识别的语义跨度（加粗领词/强调、上标、下划线空格、斜体术语、专名字体等）。
+      用 font 级差异标记，不碰段落级属性。每个 run 必须写清**可判别的语义标准**。禁止无语义的装饰换色。
+
+    ## 建库方法（硬态度：先想本 topic，再落库；数量不是 KPI）
+    先针对**本 topic / 体裁**想清楚「真实成稿里会见到哪些节、段落、表种、图种、行内标记」，
+    把想得到且能区分的都列出来（**尽可能发散**）。下文数字与类别清单只是「别过早停笔」的启发，
+    **不是必须凑满或不得超过的硬指标**。同义克隆、按章复制、无语义装饰不要。
+
+    ## 行内 run 语义契约（按体裁发散，勿过早停）
+    每个 `paragraph_runs` 节点 = 一类读者能一眼看懂的行内惯例；`discriminators` 写清「何时用 / 与正文如何区分」。
+    **先想本 topic 段内会标出什么**（领词、角标、待填线、术语斜体、专名字体…），用得上就列；
+    常见长文大约数个互不重复叶子——这是量级感觉，**禁止当成 2–5 的配额**。对照下列启发，不要只留最稳的两项就停：
+    **手段闭集**：加粗 / 斜体 / 下划线 / 上标 / 换字体 / 颜色（颜色仅辅、不得单独当区分）。按规律挂手段，勿近义拆叶：
+    1. **加粗领词** → `run_bold`：段首或条列「标签：」引导（「关键词：」「市场需求风险：」）、说话人标签；非整段加粗、勿靠 `**` 假冒。
+    2. **上标** → `run_superscript`：脚注号、文内引用、附注交叉引用（如 ¹、Note 12 的角标）。
+    3. **下划线空格 / 待填** → `run_underline`：签名线、封面待填、表格填空「______」（体裁有填空位或落款线就列）。
+    4. **斜体专业用语** → `run_italic`：定义术语、书名/标准名、拉丁学名、财务口径词（如 *Adjusted EBITDA*）。
+    5. **特殊字体** → `run_font_ea` / `run_font_latin`：公文人名楷体、英文专名换字体等**体裁硬规范**；无此惯例则省略。
+    6. **颜色（少用）** → 仅当体裁硬规范要求，且须与加粗/斜体之一叠用；禁止「只换色」的强调叶。
+    同一手段不要拆成近义叶子（不要两个都是「段首加粗」）。
+    `example_substr` 必须是该类典型子串（「______」、「¹」、术语、引导「关键词：」、人名）。
+
+    ## 格内文字 `paragraph.table_cell`（硬；按实际排版，不是按表种扩叶子）
+    这一层是**格子里的段落样式**（字体/字号/加粗/水平对齐），对应 Word 里少数几个单元格段落 style。
+    边框、底纹、三线、竖线、垂直对齐 → 写在 Tbl* 的 `table_layout` / `cell_focus`，**不要**为此新开 Para*Cell。
+    - **默认跨表共用小阶梯（有则列）**：`ParaTblHeaderCell`（表头：常加粗、居中）+ `ParaTblDataCell`（表体）。
+      一张 `ParaTableCellBase` abstract 即可；**禁止** Front/Main/Back 三套格内基类。
+    - **仅当文字观感稳定不同再加**（无则不加）：
+      * 封面/信息键值：标签加粗、值不加粗 → `ParaTblLabelCell` + `ParaTblValueCell`（若值与表体字号/字体相同，value 可直接用 `ParaTblDataCell`）
+      * 行名/stub：左对齐、与数字列明显不同 → 可加 `ParaTblStubCell`
+      * 附注：明显更小字号 → 可加 `ParaTblNoteCell`
+      * 体裁硬规范：强调格、人名专用字体等
+    - **禁止按表种/章节克隆**：不要 `ParaStatementHeaderCell` / `ParaDisclosureHeaderCell` / `ParaBackScheduleHeaderCell`
+      这类「每张表一套 Header/Stub/Data」。报表、附注表、附表若表头都是加粗居中，**共用同一个** Header 叶子。
+    - 多张表的 `position_map.*.paragraph` **指向同一批共用叶子**；`stub`/`data`/`note` 若字号对齐相同就挂同一个 role_id。
+    - 叶子宜少（大约 2–6 个非 abstract），不是十几个。表型丰富靠 Tbl*，不靠格内段落堆数量。
+    - 每个非 abstract 格内叶子都要有 **display_name（短名称）** 和 **discriminators（用途：谁用、用在哪）**，
+      与正文/run 叶子同一套字段；不要只给 `ParaTblHeaderCell` 不写「表头单元格」。
+
+    ## 图片 `roles.image`（按本 topic 发散图种，不是张数 KPI）
+    这一层是**插图用途档**（logo / 照片 / 统计图 / 结构示意…），不是「图1、图2」。
+    **先枚举本体裁成稿里可能出现的图**（封面要不要标识？有没有现场照、统计图、流程/组织示意、地图、肖像？还有没有该体裁独有的图种？），
+    能区分的都列；清单 1–6 是启发，**不是必须 3–6、也不是上限**。按 `image_kind` + 版面用途拆；
+    **禁止**按章克隆（不要 `ImgCh1Photo` / `ImgCh2Photo`）。不要只留「架构图 + 业绩图」就停：
+    1. **标识/logo** → `illustrative_diagram`，封面或文头，常 `wide_banner` / `inline_only`
+    2. **现场/设施照片** → `photo`（经营、实验室、工程现场）
+    3. **统计图** → `chart`，常 `square_chart`（柱/线/饼，有坐标数值）
+    4. **结构/流程示意** → `abstract_diagram` 或 `illustrative_diagram`（组织、股权、方法流程；同为框图宽幅则可合并为一叶）
+    5. **地图/区位** → `map`（体裁确有区位图才列）
+    6. **人物肖像** → `photo` + `portrait_photo`（治理/人员介绍才列）
+    近义框图不要拆两叶去凑数；缺 logo/照片/统计图才是缺口。
+
+    ## 覆盖度：以本 topic 能想到的为准（不要用个数硬卡）
+    - **主目标**：针对该体裁**先发散、再去重**——该有的语义职能/图种/表型不要漏，不要为凑数硬拆，也不要为省数过早停。
+    - **不要**写死「section≥N / 图=4–6」之类门槛或上限；不同体裁天然厚薄不同（短函 vs 年报/学位论文）。
+    - 本项目后续要做**节/文/表/图并茂**的长文档数据：若体裁惯例本身含多种节型、正文块、表型、图型，库里应备齐对应叶子，供 C1/C2/C3 再剪枝。
+    - **自检口诀**：合上清单，再问「这类文档通常还有某某块/某某图吗？」有就补；两条几乎同义再合并。
+
+    ## 案例与辅助提示（按体裁对号入座，非强制清单）
+    - **年报 / 集团年报**：前置（封面题名、目录、致辞）+ 正文分章（业务回顾、治理、财务）+ 表（封面信息表、经营数据表、合并报表类）+ 图注/表注、highlights、附注披露段等——按惯例分角色，勿并成「一个正文、一个表」。
+      **runs**：先想年报段内惯例（附注上标、领词加粗、斜体口径、待填/落款线、人名楷体等），能区分就列，不为凑个数。
+      **图**：先想年报可能有的图（封面 logo、组织/股权、业绩统计、经营照片、董事肖像、工艺或价值链示意…），能区分就列，不要停在三张示意图，也不要为凑 4–6 拆同质框图。
+    - **学位论文**：封面信息、中英文摘要/关键词、目录（页标题与条目分开）、多级标题、正文、图表题注、参考文献条目、致谢/附录；有公式/定理惯例时可加对应段落角色。
+      **runs**：引用上标、关键词/定理领词加粗、斜体术语或拉丁名；封面待填可加下划线。
+      **图**：方法流程、实验装置照片、结果统计图；有区位再加 map。
+    - **判决书 / 裁决类**：首部当事人与案由、审理经过、事实、说理、裁判主文、落款；表/图若罕见可少，但正文职能块要分清。
+      **runs**：当事人人名楷体（若惯例）、法条/案号强调、上标脚注。
+      **图**：体裁少图则 1–2 叶即可，勿硬凑照片。
+    - **招标/标准/可研等**：封面与目录、章节标题分层、技术要求/条款体、响应表或指标表、附图/示意图——以该体裁常见块为准。
+      **runs**：响应表/封面填空下划线、条款领号加粗、标准名斜体、引用上标。
+      **图**：总平/区位 map、工艺或组织流程、效果或现场照片、指标统计图。
+    - **table_cell**：见上文「格内文字」；年报即使有封面信息表、合并报表、附注表，格内段落仍是共用表头/表体（+ 必要时 label/value），不要每表一套。
+    - **runs**：跟 topic 走，先想段内可能标记，对照契约 1–5 发散；不要只留「上标+领词」，也不要编造装饰色。
+    - **image**：跟 topic 走，先想可能图种再对照 1–6；不要只留两三张同质框图，也不要把启发清单当成必须凑满的配额。
+
+    ## 文风：字段短、区分度高（硬建议）——约束的是「写法」，不是「角色个数」
+    - **discriminators**：一句即可（建议 ≤40 汉字 / ≤20 英文词）；写清「何时用 / 与谁区分」，切中要点，禁止散文展开。
+    - **display_name**：短名；**content_hint**（图）：一句，≤20 汉字 / ≤12 英文词。
+    - constraints / section_rules：每条一句；整库说明文字宁短勿滥——避免二次注入时 token 膨胀。
+    - **禁止用「少列角色」来换简洁**：section / paragraph.body / table / image 上，语义职能不同的叶子应予保留；仅当两条几乎同义才合并。
+      **例外：`paragraph.table_cell` 以文字观感档为准**，不按表种或节族扩叶子（见上文硬规则）。
+    - 优先用 format_focus / section_family 拉开版式意图；不要造「换个同义词」的假变体。
+
+    ## 铁律
+    1. 只输出一个 JSON 对象，无围栏、无解释；**禁止在 JSON 前写任何说明文字**。
+       禁止输出工具调用、思考过程、```json 小片段；**第一个字符必须是根对象 `{`**。
+    2. 禁止「等」「……」「略」；字段写实。禁止写具体 pt/cm/色值（只用 format_focus 标签）。
+    3. 五层：section / paragraph.body / paragraph.table_cell / paragraph_runs / table / image。
+    4. **覆盖度以本 topic 能想到的为准**（见「建库方法」与「覆盖度」）：先发散可能的 style，再去近义；**禁止数量硬门槛/硬上限**。
+    5. 给出 selection_policy（给后续步骤的软提示，描述「宜多种变体」，勿写成死数字 KPI）：
+       - `objects_required`: 固定四类全含 `["section","paragraph","table","image"]`（体裁极简、确无表/图惯例时，仍保留层结构，叶子可很少）
+       - `single_variant_allowed`: **必须 `[]` 空数组**——不要暗示「全文一种表/一种图就够」
+       - `keep_all_when_scarce`: 通常 `["table","image"]`（表/图变体稀缺时尽量保留）
+       - `min_variants_default`: 用**定性建议**即可（例如各对象「多种语义变体」），不要当成必须凑到的整数配额
+    6. section 默认 reusable: true；给 instance_overridable（pageStart/pageNumFmt/titlePage）。
+    7. paragraph_runs：span_role、attaches_to、format_focus（仅 run_*）、example_substr、**discriminators（必填）**。
+       按本 topic 发散行内惯例（加粗 / 上标 / 下划线空格 / 斜体术语 / 特殊字体）；禁止近义重复、无语义换色与数字配额。
+    8. table 叶子含 **table_layout 对象**（禁止写成一句散文）：
+       `{pattern, table_focus[], position_map{pos: {cell_focus[], paragraph}}}`；
+       **表型按体裁惯例区分**（常见可参考：封面/项目信息表、数据/统计表、人员信息表；体裁没有的可省略，有则勿写成同款网格）：
+       - **封面/项目信息表**：通常 2 列（标签|值），整体无框或仅值列下边框。
+       - **数据/统计表**：三线表或表头底纹网格。
+       - **人员信息表**：姓名/职务/单位等**文本列**，版式与数据表明显不同；**禁止**照片格或格内插图（独立肖像图走 image 叶子）。
+       position_map 每个位置必须是对象：
+       `{"cell_focus":[...], "paragraph":"<table_cell 叶子 role_id>"}`，禁止字符串简写。
+       **position_map 键必须是语义位**（`header`/`stub`/`data`/`note`/`label`/`value`/`row_*` 等）；
+       **禁止** `r1c1`/`r2c3` 这类矩阵坐标键。
+       stub/data/note 等表体位**默认共用同一表体** paragraph 角色；列对齐放 `cell_focus`。
+       **关键：** `position_map.*.paragraph` 必须引用 `roles.paragraph.table_cell` 下的**共用**叶子
+       （不要写到 `paragraph.body`）；**禁止**为每个 Tbl 叶子各造一套 Header/Stub/Data。
+       表题/题注仍放在 `paragraph.body`。正文表/图默认配套题注叶子（可共用一个 ParaCaption）；
+       **封面 logo、封面/项目信息表禁止题注**，不要为此另造角色，也不要把题注并进表单元格。
+    9. 段落标签角色勿混用：摘要标签 ≠ 调查说明；关键词用单行「关键词：…」，不要单独「关键词」标题块。
+    9b. **标题分层（体裁有分层标题时）**：按惯例区分章/节/小节等层级（常见长文可到四级），**禁止**用一个「章节标题」包打全部。
+        标题叶子放在 **`paragraph.body`**（名字不限），非 abstract 叶子写 **`heading_level`: 1|2|3|4**
+        ——这是后续 Word 大纲级别的依据，不要写在 section 叶子上。
+        `format_focus` 含 `outline_level`。封面题不要 heading_level。目录条目不含 outline_level / heading_level。
+    9c. **目录（体裁有目录时）**：目录页标题与目录条目独立于正文标题；目录条目**不含** outline_level。
+    10. 封面/前置若惯例含 logo/标识图与项目信息表，在 image / table 层给出对应叶子，并在 section_rules 中建议。
+        **image：先想本 topic 可能有哪些图种再落叶**（logo / 照片 / 统计图 / 结构示意 / 地图 / 肖像及体裁独有图）；
+        禁止按章克隆、同质框图凑数，也禁止把「大约几种」写成必须凑满的配额。
+    11. constraints：co_occurrence、section_rules、exclusive（软参考）。
+
+    ## format_focus 允许标签（对齐 officecli）
+    段落：outline_level, font_family, font_size, bold, italic, color, alignment, line_spacing, space_before, space_after, first_line_indent, hanging_indent, left_indent, right_indent, list_ordered, list_unordered, keep_with_next, page_break_before
+    单元格水平对齐：cell_align_h_left, cell_align_h_center, cell_align_h_right
+    run：run_bold, run_italic, run_superscript, run_subscript, run_caps, run_small_caps, run_color, run_underline, run_font_ea, run_font_latin
+    单元格 cell_focus：cell_border_top, cell_border_bottom, cell_border_all, cell_border_none, cell_shading, cell_valign_top, cell_valign_center, cell_valign_bottom
+    表 table_focus：table_border_top, table_border_bottom, table_border_all, table_border_none, table_align_center, table_align_left, table_width_percent, table_width_autofit, header_repeat
+    图片：inline_only, size_lock_aspect, space_before_after, caption_below
+    节：orientation_portrait, orientation_landscape, columns_one, margin_intent, header_footer_independent, section_break_nextPage
+    （不要用 columns_two：本管线弃用双栏）
+    禁止列宽类标签。
+
+    ## 图片角色额外字段（非 abstract 叶子）
+    - **image_kind**：photo | map | illustrative_diagram | chart | abstract_diagram（一叶一种；统计图必须是 chart）
+    - **content_hint**：这类图通常画什么（一句话）
+    - **size_intent**：如 wide_banner / square_chart / portrait_photo
+
+    ## 输出 JSON 顶层键
+    usage（固定 "reference"）, genre, display_name, locale, selection_policy{...}, constraints{...},
+    roles **必须是这五个同级键**（禁止把后三者塞进 paragraph）：
+      section[],
+      paragraph{ **只允许** body[], table_cell[] },
+      paragraph_runs[],
+      table[],
+      image[]
+
+    树层节点：role_id, parent, abstract?, display_name, format_focus[], discriminators，及层附加字段。
+    标题段落叶子另加 heading_level（1–4）。section 叶子不必写 heading_level（写了也不作为段落大纲依据）。
+    paragraph_runs 扁平：span_role, attaches_to[], format_focus[], example_substr, discriminators（语义标准说明）。
+    禁止 derives / 嵌套。
+
+  user_template: |
+    ## 人类输入
+    - genre: {{genre}}
+    - genre_display_name: {{genre_display_name}}
+    - locale: {{locale}}
+    - supplementary_notes: {{supplementary_notes}}
+
+    ## 执行要求
+    1. **先针对本 topic 发散**可能的节/段落/表/图/run style，再落库：该有则列、同义则并。案例与类别清单是启发，不是配额；勿用个数凑数或砍数。
+    2. role_id 用英文 PascalCase（Sec/Para/Run/Tbl/Img 前缀）；display_name 与说明用 locale 语言。
+    3. supplementary_notes 非空时落实每条。
+    4. **简洁在字段**：discriminators/content_hint/constraints 短句、高区分；section/正文/表/图的剪枝留给后续 C1/C2/C3。
+       **格内 table_cell 本步就要按实际用法建小阶梯**（跨表共用，勿按表种/节族克隆）。
+    5. 只输出合法 JSON；禁止在 JSON 前写说明。

@@ -1,0 +1,57 @@
+# Step3 fallback · structure brief
+# Loaded by run_step3 only when step2 did not already write a structure_brief. The default path uses step2_suggest_themes.
+
+prompt:
+  system: |
+    You are a "long-document structure budget planner". Before writing the fine outline,
+    produce an executable **structure_brief** for this document.
+    Goal: constrain heading depth and length tendency so every sample is not the same
+    "three-level medium-length" skeleton.
+
+    ## Principles
+    - **Depth = heading level** (chapter / section / subsection / point), not semantic layering in body prose.
+    - Depth must **fit the genre**: planning outlines / annual reports often 4–6;
+      RFPs / technical proposals / system designs may reach 5–6
+      (e.g. system → module → submodule → feature point); short memos/briefs may be 3.
+      When C1/C2/C3 are planned together, depths should progress overall (neighbors may match).
+    - Deeper is not always better: forcing level-4 on shallow genres looks fake.
+    - Use `length_band` and branching requirements to differentiate samples
+      (shallow/medium/deep × short/medium/long/very_long).
+    - **Output budget**: the fine outline is one large JSON in a single call. For `very_long`,
+      prefer "many chapters, sparse leaves":
+      ~5–7 H1s, ~2–3 H2 per H1, ~1–2 H3 per H2, ~1–2 medium/long body blocks per leaf;
+      do not simultaneously max out "7–9 chapters × dense level-4 × 3+ paragraphs per leaf"
+      or the outline JSON will be truncated.
+
+    ## Output (valid JSON only)
+    {
+      "heading_depth_min": 2|3|4|5,
+      "heading_depth_target": 3|4|5|6,
+      "hierarchy_pattern": "short English phrase describing the heading ladder (e.g. chapter→section→subsection→(1) point)",
+      "branching": {
+        "h1_count": "3-6",
+        "h2_per_h1": "2-4",
+        "h3_per_h2": "0-3 or 2-3",
+        "require_some_h4": true/false,
+        "h4_note": "if require_some_h4: at least how many H3 nodes should split into H4"
+      },
+      "length_band": "short|medium|long|very_long",
+      "leaf_policy": "at each deepest heading, at least … medium/long body blocks",
+      "anti_homogeneity": "one sentence: how this document differs from the default three-level medium skeleton",
+      "rationale": "40–80 words: why this genre + theme warrants this depth/length"
+    }
+
+  user_template: |
+    ## Inputs
+    - theme: {{theme}}
+    - writing_requirements: {{writing_requirements}}
+    - supplementary_notes: {{supplementary_notes}}
+    - genre / locale hints from Role library path: {{library_path}}
+
+    ## Role library (soft reference — see which Heading levels exist)
+    {{role_library_headings}}
+
+    ## Execution
+    1. From genre conventions + theme decomposability, produce this document's structure_brief.
+    2. Target depth 4/5 only if the library has ParaHeading4/5; do not exceed library capability.
+    3. Output valid JSON only (no Markdown fences).

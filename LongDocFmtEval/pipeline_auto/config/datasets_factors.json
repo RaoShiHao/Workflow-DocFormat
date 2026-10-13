@@ -1,0 +1,6623 @@
+{
+  "meta": {
+    "seed": 1234,
+    "frozen": true,
+    "source_of_truth": "datasets_factors.json",
+    "version": 12,
+    "n_topics": 108,
+    "n_content_units": 324,
+    "n_samples": 324,
+    "modes_per_content": 1,
+    "input_modes": [
+      "text_requirement",
+      "template",
+      "template_w_text"
+    ],
+    "pools_file": "training_factor_pools.yaml"
+  },
+  "assignments": [
+    {
+      "topic_id": 1,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "1_C1_text_requirement",
+      "content_key": "1_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Annual Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 1,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "1_C2_template",
+      "content_key": "1_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Annual Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 1,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "1_C3_template_w_text",
+      "content_key": "1_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Annual Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 2,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "2_C1_text_requirement",
+      "content_key": "2_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Group Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 2,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "2_C2_template",
+      "content_key": "2_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Group Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 2,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "2_C3_template_w_text",
+      "content_key": "2_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "Group Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 3,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "3_C1_text_requirement",
+      "content_key": "3_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "集团年度报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 3,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "3_C2_template",
+      "content_key": "3_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "集团年度报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 3,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "3_C3_template_w_text",
+      "content_key": "3_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "集团年度报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 4,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "4_C1_text_requirement",
+      "content_key": "4_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "上市公司年度报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 4,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "4_C2_template",
+      "content_key": "4_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "上市公司年度报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 4,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "4_C3_template_w_text",
+      "content_key": "4_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "annual_reports",
+      "genre_display_name": "上市公司年度报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 5,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "5_C1_text_requirement",
+      "content_key": "5_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Control Evaluation",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 5,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "5_C2_template",
+      "content_key": "5_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Control Evaluation",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 5,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "5_C3_template_w_text",
+      "content_key": "5_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Control Evaluation",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 6,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "6_C1_text_requirement",
+      "content_key": "6_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Financial Notes",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 6,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "6_C2_template",
+      "content_key": "6_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Financial Notes",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 6,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "6_C3_template_w_text",
+      "content_key": "6_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "Financial Notes",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 7,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "7_C1_text_requirement",
+      "content_key": "7_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "财务报表附注",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 7,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "7_C2_template",
+      "content_key": "7_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "财务报表附注",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 7,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "7_C3_template_w_text",
+      "content_key": "7_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "财务报表附注",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 8,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "8_C1_text_requirement",
+      "content_key": "8_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "内部控制评价报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 8,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "8_C2_template",
+      "content_key": "8_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "内部控制评价报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 8,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "8_C3_template_w_text",
+      "content_key": "8_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "audit_packs",
+      "genre_display_name": "内部控制评价报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 9,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "9_C1_text_requirement",
+      "content_key": "9_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "EPC Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 9,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "9_C2_template",
+      "content_key": "9_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "EPC Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 9,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "9_C3_template_w_text",
+      "content_key": "9_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "EPC Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 10,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "10_C1_text_requirement",
+      "content_key": "10_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Technical Bid",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 10,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "10_C2_template",
+      "content_key": "10_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Technical Bid",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_alpha_outline"
+        }
+      }
+    },
+    {
+      "topic_id": 10,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "10_C3_template_w_text",
+      "content_key": "10_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Technical Bid",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 11,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "11_C1_text_requirement",
+      "content_key": "11_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Vendor Response",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 11,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "11_C2_template",
+      "content_key": "11_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Vendor Response",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      }
+    },
+    {
+      "topic_id": 11,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "11_C3_template_w_text",
+      "content_key": "11_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "Vendor Response",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 12,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "12_C1_text_requirement",
+      "content_key": "12_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "施工技术标",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 12,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "12_C2_template",
+      "content_key": "12_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "施工技术标",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 12,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "12_C3_template_w_text",
+      "content_key": "12_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "施工技术标",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 13,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "13_C1_text_requirement",
+      "content_key": "13_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "总承包投标技术方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 13,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "13_C2_template",
+      "content_key": "13_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "总承包投标技术方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 13,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "13_C3_template_w_text",
+      "content_key": "13_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "bid_responses",
+      "genre_display_name": "总承包投标技术方案",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 14,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "14_C1_text_requirement",
+      "content_key": "14_C1",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Consulting Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 14,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "14_C2_template",
+      "content_key": "14_C2",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Consulting Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 14,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "14_C3_template_w_text",
+      "content_key": "14_C3",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Consulting Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 15,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "15_C1_text_requirement",
+      "content_key": "15_C1",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Diagnostic Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_section_paren"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 15,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "15_C2_template",
+      "content_key": "15_C2",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Diagnostic Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_section_paren"
+        }
+      }
+    },
+    {
+      "topic_id": 15,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "15_C3_template_w_text",
+      "content_key": "15_C3",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "Diagnostic Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 16,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "16_C1_text_requirement",
+      "content_key": "16_C1",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "尽职调查报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 16,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "16_C2_template",
+      "content_key": "16_C2",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "尽职调查报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 16,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "16_C3_template_w_text",
+      "content_key": "16_C3",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "尽职调查报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 17,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "17_C1_text_requirement",
+      "content_key": "17_C1",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "管理咨询报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 17,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "17_C2_template",
+      "content_key": "17_C2",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "管理咨询报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 17,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "17_C3_template_w_text",
+      "content_key": "17_C3",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "consulting",
+      "genre_display_name": "管理咨询报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_paren"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 18,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "18_C1_text_requirement",
+      "content_key": "18_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Basis Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 18,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "18_C2_template",
+      "content_key": "18_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Basis Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 18,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "18_C3_template_w_text",
+      "content_key": "18_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Basis Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 19,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "19_C1_text_requirement",
+      "content_key": "19_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Design Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 19,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "19_C2_template",
+      "content_key": "19_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Design Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 19,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "19_C3_template_w_text",
+      "content_key": "19_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "Design Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 20,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "20_C1_text_requirement",
+      "content_key": "20_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "施工图设计说明",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 20,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "20_C2_template",
+      "content_key": "20_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "施工图设计说明",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 20,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "20_C3_template_w_text",
+      "content_key": "20_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "施工图设计说明",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 21,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "21_C1_text_requirement",
+      "content_key": "21_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "方案设计说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 21,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "21_C2_template",
+      "content_key": "21_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "方案设计说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 21,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "21_C3_template_w_text",
+      "content_key": "21_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "design_docs",
+      "genre_display_name": "方案设计说明书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 22,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "22_C1_text_requirement",
+      "content_key": "22_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "EIA Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 22,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "22_C2_template",
+      "content_key": "22_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "EIA Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 22,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "22_C3_template_w_text",
+      "content_key": "22_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "EIA Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 23,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "23_C1_text_requirement",
+      "content_key": "23_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "SEA Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 23,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "23_C2_template",
+      "content_key": "23_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "SEA Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 23,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "23_C3_template_w_text",
+      "content_key": "23_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "SEA Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 24,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "24_C1_text_requirement",
+      "content_key": "24_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "环境监测评估报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 24,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "24_C2_template",
+      "content_key": "24_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "环境监测评估报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 24,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "24_C3_template_w_text",
+      "content_key": "24_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "环境监测评估报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 25,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "25_C1_text_requirement",
+      "content_key": "25_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "规划环境影响评价报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 25,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "25_C2_template",
+      "content_key": "25_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "规划环境影响评价报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 25,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "25_C3_template_w_text",
+      "content_key": "25_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "env_assess",
+      "genre_display_name": "规划环境影响评价报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 26,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "26_C1_text_requirement",
+      "content_key": "26_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "ESG Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 26,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "26_C2_template",
+      "content_key": "26_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "ESG Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 26,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "26_C3_template_w_text",
+      "content_key": "26_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "ESG Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 27,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "27_C1_text_requirement",
+      "content_key": "27_C1",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "Integrated Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 27,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "27_C2_template",
+      "content_key": "27_C2",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "Integrated Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 27,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "27_C3_template_w_text",
+      "content_key": "27_C3",
+      "locale": "en",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "Integrated Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 28,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "28_C1_text_requirement",
+      "content_key": "28_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "可持续发展报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 28,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "28_C2_template",
+      "content_key": "28_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "可持续发展报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 28,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "28_C3_template_w_text",
+      "content_key": "28_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "可持续发展报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 29,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "29_C1_text_requirement",
+      "content_key": "29_C1",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "综合价值报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 29,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "29_C2_template",
+      "content_key": "29_C2",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "综合价值报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 29,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "29_C3_template_w_text",
+      "content_key": "29_C3",
+      "locale": "zh",
+      "domain_id": "corporate_disclosure",
+      "fine_domain_id": "esg_reports",
+      "genre_display_name": "综合价值报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 30,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "30_C1_text_requirement",
+      "content_key": "30_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Feasibility Study",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 30,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "30_C2_template",
+      "content_key": "30_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Feasibility Study",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 30,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "30_C3_template_w_text",
+      "content_key": "30_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Feasibility Study",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 31,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "31_C1_text_requirement",
+      "content_key": "31_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Investment Study",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 31,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "31_C2_template",
+      "content_key": "31_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Investment Study",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 31,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "31_C3_template_w_text",
+      "content_key": "31_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Investment Study",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 32,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "32_C1_text_requirement",
+      "content_key": "32_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Prefeasibility Study",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 32,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "32_C2_template",
+      "content_key": "32_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Prefeasibility Study",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 32,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "32_C3_template_w_text",
+      "content_key": "32_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "Prefeasibility Study",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 33,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "33_C1_text_requirement",
+      "content_key": "33_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "可行性研究报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 33,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "33_C2_template",
+      "content_key": "33_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "可行性研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 33,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "33_C3_template_w_text",
+      "content_key": "33_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "可行性研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 34,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "34_C1_text_requirement",
+      "content_key": "34_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "预可行性研究报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 34,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "34_C2_template",
+      "content_key": "34_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "预可行性研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 34,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "34_C3_template_w_text",
+      "content_key": "34_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "预可行性研究报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 35,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "35_C1_text_requirement",
+      "content_key": "35_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "项目建议书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 35,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "35_C2_template",
+      "content_key": "35_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "项目建议书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 35,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "35_C3_template_w_text",
+      "content_key": "35_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "feasibility",
+      "genre_display_name": "项目建议书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 36,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "36_C1_text_requirement",
+      "content_key": "36_C1",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Performance Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 36,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "36_C2_template",
+      "content_key": "36_C2",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Performance Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 36,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "36_C3_template_w_text",
+      "content_key": "36_C3",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Performance Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 37,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "37_C1_text_requirement",
+      "content_key": "37_C1",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Evaluation Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 37,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "37_C2_template",
+      "content_key": "37_C2",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Evaluation Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 37,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "37_C3_template_w_text",
+      "content_key": "37_C3",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Evaluation Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 38,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "38_C1_text_requirement",
+      "content_key": "38_C1",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Budget Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 38,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "38_C2_template",
+      "content_key": "38_C2",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Budget Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 38,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "38_C3_template_w_text",
+      "content_key": "38_C3",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "Budget Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 39,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "39_C1_text_requirement",
+      "content_key": "39_C1",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "政府工作报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 39,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "39_C2_template",
+      "content_key": "39_C2",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "政府工作报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 39,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "39_C3_template_w_text",
+      "content_key": "39_C3",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "政府工作报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 40,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "40_C1_text_requirement",
+      "content_key": "40_C1",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "重大政策实施方案",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 40,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "40_C2_template",
+      "content_key": "40_C2",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "重大政策实施方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 40,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "40_C3_template_w_text",
+      "content_key": "40_C3",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "重大政策实施方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 41,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "41_C1_text_requirement",
+      "content_key": "41_C1",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "专项工作报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 41,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "41_C2_template",
+      "content_key": "41_C2",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "专项工作报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 41,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "41_C3_template_w_text",
+      "content_key": "41_C3",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "gov_reports",
+      "genre_display_name": "专项工作报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 42,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "42_C1_text_requirement",
+      "content_key": "42_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Consortium Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 42,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "42_C2_template",
+      "content_key": "42_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Consortium Proposal",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 42,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "42_C3_template_w_text",
+      "content_key": "42_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Consortium Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 43,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "43_C1_text_requirement",
+      "content_key": "43_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Grant Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 43,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "43_C2_template",
+      "content_key": "43_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Grant Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 43,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "43_C3_template_w_text",
+      "content_key": "43_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "Grant Proposal",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 44,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "44_C1_text_requirement",
+      "content_key": "44_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "重大专项申报书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 44,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "44_C2_template",
+      "content_key": "44_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "重大专项申报书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 44,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "44_C3_template_w_text",
+      "content_key": "44_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "重大专项申报书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 45,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "45_C1_text_requirement",
+      "content_key": "45_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "国家自然科学基金申请书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 45,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "45_C2_template",
+      "content_key": "45_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "国家自然科学基金申请书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 45,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "45_C3_template_w_text",
+      "content_key": "45_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "grant_proposals",
+      "genre_display_name": "国家自然科学基金申请书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 46,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "46_C1_text_requirement",
+      "content_key": "46_C1",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Competitive Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 46,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "46_C2_template",
+      "content_key": "46_C2",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Competitive Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 46,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "46_C3_template_w_text",
+      "content_key": "46_C3",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Competitive Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 47,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "47_C1_text_requirement",
+      "content_key": "47_C1",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Industry Outlook",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 47,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "47_C2_template",
+      "content_key": "47_C2",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Industry Outlook",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_section_paren"
+        }
+      }
+    },
+    {
+      "topic_id": 47,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "47_C3_template_w_text",
+      "content_key": "47_C3",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Industry Outlook",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 48,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "48_C1_text_requirement",
+      "content_key": "48_C1",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Market Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 48,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "48_C2_template",
+      "content_key": "48_C2",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Market Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 48,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "48_C3_template_w_text",
+      "content_key": "48_C3",
+      "locale": "en",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "Market Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 49,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "49_C1_text_requirement",
+      "content_key": "49_C1",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "竞品分析报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 49,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "49_C2_template",
+      "content_key": "49_C2",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "竞品分析报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 49,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "49_C3_template_w_text",
+      "content_key": "49_C3",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "竞品分析报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 50,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "50_C1_text_requirement",
+      "content_key": "50_C1",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "行业研究长报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 50,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "50_C2_template",
+      "content_key": "50_C2",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "行业研究长报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 50,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "50_C3_template_w_text",
+      "content_key": "50_C3",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "行业研究长报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 51,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "51_C1_text_requirement",
+      "content_key": "51_C1",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "市场研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_paren"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 51,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "51_C2_template",
+      "content_key": "51_C2",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "市场研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_paren"
+        }
+      }
+    },
+    {
+      "topic_id": 51,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "51_C3_template_w_text",
+      "content_key": "51_C3",
+      "locale": "zh",
+      "domain_id": "market_intelligence",
+      "fine_domain_id": "market_research",
+      "genre_display_name": "市场研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 52,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "52_C1_text_requirement",
+      "content_key": "52_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Follow-on Circular",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_alpha_outline"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 52,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "52_C2_template",
+      "content_key": "52_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Follow-on Circular",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      }
+    },
+    {
+      "topic_id": 52,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "52_C3_template_w_text",
+      "content_key": "52_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Follow-on Circular",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 53,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "53_C1_text_requirement",
+      "content_key": "53_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "IPO Prospectus",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 53,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "53_C2_template",
+      "content_key": "53_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "IPO Prospectus",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      }
+    },
+    {
+      "topic_id": 53,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "53_C3_template_w_text",
+      "content_key": "53_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "IPO Prospectus",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 54,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "54_C1_text_requirement",
+      "content_key": "54_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Offering Circular",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 54,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "54_C2_template",
+      "content_key": "54_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Offering Circular",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      }
+    },
+    {
+      "topic_id": 54,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "54_C3_template_w_text",
+      "content_key": "54_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "Offering Circular",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 55,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "55_C1_text_requirement",
+      "content_key": "55_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "募集说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 55,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "55_C2_template",
+      "content_key": "55_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "募集说明书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 55,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "55_C3_template_w_text",
+      "content_key": "55_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "募集说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 56,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "56_C1_text_requirement",
+      "content_key": "56_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "招股说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 56,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "56_C2_template",
+      "content_key": "56_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "招股说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 56,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "56_C3_template_w_text",
+      "content_key": "56_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "offering_docs",
+      "genre_display_name": "招股说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 57,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "57_C1_text_requirement",
+      "content_key": "57_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Landscape",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 57,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "57_C2_template",
+      "content_key": "57_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Landscape",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_alpha_outline"
+        }
+      }
+    },
+    {
+      "topic_id": 57,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "57_C3_template_w_text",
+      "content_key": "57_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Landscape",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_alpha_outline"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 58,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "58_C1_text_requirement",
+      "content_key": "58_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Spec",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 58,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "58_C2_template",
+      "content_key": "58_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Spec",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 58,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "58_C3_template_w_text",
+      "content_key": "58_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "Patent Spec",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 59,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "59_C1_text_requirement",
+      "content_key": "59_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "发明专利说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 59,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "59_C2_template",
+      "content_key": "59_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "发明专利说明书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 59,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "59_C3_template_w_text",
+      "content_key": "59_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "发明专利说明书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 60,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "60_C1_text_requirement",
+      "content_key": "60_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "技术交底书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 60,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "60_C2_template",
+      "content_key": "60_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "技术交底书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 60,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "60_C3_template_w_text",
+      "content_key": "60_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "patent_docs",
+      "genre_display_name": "技术交底书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 61,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "61_C1_text_requirement",
+      "content_key": "61_C1",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Capital Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 61,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "61_C2_template",
+      "content_key": "61_C2",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Capital Plan",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 61,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "61_C3_template_w_text",
+      "content_key": "61_C3",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Capital Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 62,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "62_C1_text_requirement",
+      "content_key": "62_C1",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Strategic Plan",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 62,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "62_C2_template",
+      "content_key": "62_C2",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Strategic Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 62,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "62_C3_template_w_text",
+      "content_key": "62_C3",
+      "locale": "en",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "Strategic Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 63,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "63_C1_text_requirement",
+      "content_key": "63_C1",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "国民经济和社会发展五年规划纲要",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 63,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "63_C2_template",
+      "content_key": "63_C2",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "国民经济和社会发展五年规划纲要",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 63,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "63_C3_template_w_text",
+      "content_key": "63_C3",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "国民经济和社会发展五年规划纲要",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 64,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "64_C1_text_requirement",
+      "content_key": "64_C1",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "产业发展规划",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 64,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "64_C2_template",
+      "content_key": "64_C2",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "产业发展规划",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 64,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "64_C3_template_w_text",
+      "content_key": "64_C3",
+      "locale": "zh",
+      "domain_id": "government_public",
+      "fine_domain_id": "public_plans",
+      "genre_display_name": "产业发展规划",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 65,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "65_C1_text_requirement",
+      "content_key": "65_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Lab Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 65,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "65_C2_template",
+      "content_key": "65_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Lab Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 65,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "65_C3_template_w_text",
+      "content_key": "65_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Lab Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 66,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "66_C1_text_requirement",
+      "content_key": "66_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Final Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 66,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "66_C2_template",
+      "content_key": "66_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Final Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 66,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "66_C3_template_w_text",
+      "content_key": "66_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Final Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 67,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "67_C1_text_requirement",
+      "content_key": "67_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 67,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "67_C2_template",
+      "content_key": "67_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 67,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "67_C3_template_w_text",
+      "content_key": "67_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 68,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "68_C1_text_requirement",
+      "content_key": "68_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Investigation Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 68,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "68_C2_template",
+      "content_key": "68_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Investigation Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 68,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "68_C3_template_w_text",
+      "content_key": "68_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "Investigation Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 69,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "69_C1_text_requirement",
+      "content_key": "69_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "博士后出站报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 69,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "69_C2_template",
+      "content_key": "69_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "博士后出站报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 69,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "69_C3_template_w_text",
+      "content_key": "69_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "博士后出站报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 70,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "70_C1_text_requirement",
+      "content_key": "70_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科研课题中期报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 70,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "70_C2_template",
+      "content_key": "70_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科研课题中期报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      }
+    },
+    {
+      "topic_id": 70,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "70_C3_template_w_text",
+      "content_key": "70_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科研课题中期报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 71,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "71_C1_text_requirement",
+      "content_key": "71_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科技计划项目结题报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 71,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "71_C2_template",
+      "content_key": "71_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科技计划项目结题报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 71,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "71_C3_template_w_text",
+      "content_key": "71_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "科技计划项目结题报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 72,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "72_C1_text_requirement",
+      "content_key": "72_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "技术研发总结报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 72,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "72_C2_template",
+      "content_key": "72_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "技术研发总结报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 72,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "72_C3_template_w_text",
+      "content_key": "72_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "research_reports",
+      "genre_display_name": "技术研发总结报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 73,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "73_C1_text_requirement",
+      "content_key": "73_C1",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "EHS Manual",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 73,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "73_C2_template",
+      "content_key": "73_C2",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "EHS Manual",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 73,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "73_C3_template_w_text",
+      "content_key": "73_C3",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "EHS Manual",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 74,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "74_C1_text_requirement",
+      "content_key": "74_C1",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "应急预案成册",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 74,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "74_C2_template",
+      "content_key": "74_C2",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "应急预案成册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 74,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "74_C3_template_w_text",
+      "content_key": "74_C3",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "safety_manuals",
+      "genre_display_name": "应急预案成册",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 75,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "75_C1_text_requirement",
+      "content_key": "75_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Handover Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 75,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "75_C2_template",
+      "content_key": "75_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Handover Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 75,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "75_C3_template_w_text",
+      "content_key": "75_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Handover Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 76,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "76_C1_text_requirement",
+      "content_key": "76_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Method Statement",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 76,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "76_C2_template",
+      "content_key": "76_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Method Statement",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 76,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "76_C3_template_w_text",
+      "content_key": "76_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Method Statement",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 77,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "77_C1_text_requirement",
+      "content_key": "77_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 77,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "77_C2_template",
+      "content_key": "77_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 77,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "77_C3_template_w_text",
+      "content_key": "77_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "Progress Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 78,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "78_C1_text_requirement",
+      "content_key": "78_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "竣工验收报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 78,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "78_C2_template",
+      "content_key": "78_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "竣工验收报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 78,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "78_C3_template_w_text",
+      "content_key": "78_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "竣工验收报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 79,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "79_C1_text_requirement",
+      "content_key": "79_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "施工组织设计",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 79,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "79_C2_template",
+      "content_key": "79_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "施工组织设计",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 79,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "79_C3_template_w_text",
+      "content_key": "79_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "施工组织设计",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 80,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "80_C1_text_requirement",
+      "content_key": "80_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "项目实施方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 80,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "80_C2_template",
+      "content_key": "80_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "项目实施方案",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 80,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "80_C3_template_w_text",
+      "content_key": "80_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "site_works",
+      "genre_display_name": "项目实施方案",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 81,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "81_C1_text_requirement",
+      "content_key": "81_C1",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "Commissioning Manual",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 81,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "81_C2_template",
+      "content_key": "81_C2",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "Commissioning Manual",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 81,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "81_C3_template_w_text",
+      "content_key": "81_C3",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "Commissioning Manual",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 82,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "82_C1_text_requirement",
+      "content_key": "82_C1",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "SOP Handbook",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 82,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "82_C2_template",
+      "content_key": "82_C2",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "SOP Handbook",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 82,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "82_C3_template_w_text",
+      "content_key": "82_C3",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "SOP Handbook",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 83,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "83_C1_text_requirement",
+      "content_key": "83_C1",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "操作规程手册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 83,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "83_C2_template",
+      "content_key": "83_C2",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "操作规程手册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 83,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "83_C3_template_w_text",
+      "content_key": "83_C3",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "操作规程手册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 84,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "84_C1_text_requirement",
+      "content_key": "84_C1",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "标准作业程序成册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 84,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "84_C2_template",
+      "content_key": "84_C2",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "标准作业程序成册",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 84,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "84_C3_template_w_text",
+      "content_key": "84_C3",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "sop_manuals",
+      "genre_display_name": "标准作业程序成册",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 85,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "85_C1_text_requirement",
+      "content_key": "85_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Business Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 85,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "85_C2_template",
+      "content_key": "85_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Business Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 85,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "85_C3_template_w_text",
+      "content_key": "85_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Business Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 86,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "86_C1_text_requirement",
+      "content_key": "86_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Project Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 86,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "86_C2_template",
+      "content_key": "86_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Project Plan",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 86,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "86_C3_template_w_text",
+      "content_key": "86_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Project Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 87,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "87_C1_text_requirement",
+      "content_key": "87_C1",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Venture Plan",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 87,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "87_C2_template",
+      "content_key": "87_C2",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Venture Plan",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 87,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "87_C3_template_w_text",
+      "content_key": "87_C3",
+      "locale": "en",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "Venture Plan",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 88,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "88_C1_text_requirement",
+      "content_key": "88_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "商业计划书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 88,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "88_C2_template",
+      "content_key": "88_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "商业计划书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 88,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "88_C3_template_w_text",
+      "content_key": "88_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "商业计划书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 89,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "89_C1_text_requirement",
+      "content_key": "89_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "正式项目计划书",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 89,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "89_C2_template",
+      "content_key": "89_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "正式项目计划书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 89,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "89_C3_template_w_text",
+      "content_key": "89_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "正式项目计划书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 90,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "90_C1_text_requirement",
+      "content_key": "90_C1",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "创业计划书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chinese_hierarchy"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 90,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "90_C2_template",
+      "content_key": "90_C2",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "创业计划书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 90,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "90_C3_template_w_text",
+      "content_key": "90_C3",
+      "locale": "zh",
+      "domain_id": "investment_planning",
+      "fine_domain_id": "startup_plans",
+      "genre_display_name": "创业计划书",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 91,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "91_C1_text_requirement",
+      "content_key": "91_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Geotech Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 91,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "91_C2_template",
+      "content_key": "91_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Geotech Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      }
+    },
+    {
+      "topic_id": 91,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "91_C3_template_w_text",
+      "content_key": "91_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Geotech Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 92,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "92_C1_text_requirement",
+      "content_key": "92_C1",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Survey Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 92,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "92_C2_template",
+      "content_key": "92_C2",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Survey Report",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 92,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "92_C3_template_w_text",
+      "content_key": "92_C3",
+      "locale": "en",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "Survey Report",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 93,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "93_C1_text_requirement",
+      "content_key": "93_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "岩土工程勘察报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 93,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "93_C2_template",
+      "content_key": "93_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "岩土工程勘察报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 93,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "93_C3_template_w_text",
+      "content_key": "93_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "岩土工程勘察报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 94,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "94_C1_text_requirement",
+      "content_key": "94_C1",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "工程测绘成果报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 94,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "94_C2_template",
+      "content_key": "94_C2",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "工程测绘成果报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_reset_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 94,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "94_C3_template_w_text",
+      "content_key": "94_C3",
+      "locale": "zh",
+      "domain_id": "engineering_project",
+      "fine_domain_id": "survey_reports",
+      "genre_display_name": "工程测绘成果报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 95,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "95_C1_text_requirement",
+      "content_key": "95_C1",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "Practice Code",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 95,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "95_C2_template",
+      "content_key": "95_C2",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "Practice Code",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 95,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "95_C3_template_w_text",
+      "content_key": "95_C3",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "Practice Code",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 96,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "96_C1_text_requirement",
+      "content_key": "96_C1",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "ISO Standard",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "iso_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 96,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "96_C2_template",
+      "content_key": "96_C2",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "ISO Standard",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 96,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "96_C3_template_w_text",
+      "content_key": "96_C3",
+      "locale": "en",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "ISO Standard",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 97,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "97_C1_text_requirement",
+      "content_key": "97_C1",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "行业标准文本",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 97,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "97_C2_template",
+      "content_key": "97_C2",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "行业标准文本",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 97,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "97_C3_template_w_text",
+      "content_key": "97_C3",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "行业标准文本",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 98,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "98_C1_text_requirement",
+      "content_key": "98_C1",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "国家标准文本",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 98,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "98_C2_template",
+      "content_key": "98_C2",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "国家标准文本",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 98,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "98_C3_template_w_text",
+      "content_key": "98_C3",
+      "locale": "zh",
+      "domain_id": "standards_operations",
+      "fine_domain_id": "tech_standards",
+      "genre_display_name": "国家标准文本",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 99,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "99_C1_text_requirement",
+      "content_key": "99_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "ITT Package",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 99,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "99_C2_template",
+      "content_key": "99_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "ITT Package",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_outline_mixed"
+        }
+      }
+    },
+    {
+      "topic_id": 99,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "99_C3_template_w_text",
+      "content_key": "99_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "ITT Package",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_alpha"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 100,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "100_C1_text_requirement",
+      "content_key": "100_C1",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "RFP Package",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 100,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "100_C2_template",
+      "content_key": "100_C2",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "RFP Package",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 100,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "100_C3_template_w_text",
+      "content_key": "100_C3",
+      "locale": "en",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "RFP Package",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_alpha_outline"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 101,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "101_C1_text_requirement",
+      "content_key": "101_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程项目招标文件",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 101,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "101_C2_template",
+      "content_key": "101_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程项目招标文件",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 101,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "101_C3_template_w_text",
+      "content_key": "101_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程项目招标文件",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 102,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "102_C1_text_requirement",
+      "content_key": "102_C1",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程总承包招标文件",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": false
+      }
+    },
+    {
+      "topic_id": 102,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "102_C2_template",
+      "content_key": "102_C2",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程总承包招标文件",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_gov_legal"
+        }
+      }
+    },
+    {
+      "topic_id": 102,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "102_C3_template_w_text",
+      "content_key": "102_C3",
+      "locale": "zh",
+      "domain_id": "commercial_filings",
+      "fine_domain_id": "tender_docs",
+      "genre_display_name": "工程总承包招标文件",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 103,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "103_C1_text_requirement",
+      "content_key": "103_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Master's Thesis",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 103,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "103_C2_template",
+      "content_key": "103_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Master's Thesis",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 103,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "103_C3_template_w_text",
+      "content_key": "103_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Master's Thesis",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 104,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "104_C1_text_requirement",
+      "content_key": "104_C1",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Research Monograph",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": false
+      }
+    },
+    {
+      "topic_id": 104,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "104_C2_template",
+      "content_key": "104_C2",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Research Monograph",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 104,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "104_C3_template_w_text",
+      "content_key": "104_C3",
+      "locale": "en",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "Research Monograph",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "en_chapter_section"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 105,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "105_C1_text_requirement",
+      "content_key": "105_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "博士学位论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 105,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "105_C2_template",
+      "content_key": "105_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "博士学位论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 105,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "105_C3_template_w_text",
+      "content_key": "105_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "博士学位论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 106,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "106_C1_text_requirement",
+      "content_key": "106_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "硕士学位论文",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": true,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 106,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "106_C2_template",
+      "content_key": "106_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "硕士学位论文",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      }
+    },
+    {
+      "topic_id": 106,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "106_C3_template_w_text",
+      "content_key": "106_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "硕士学位论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_section_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    },
+    {
+      "topic_id": 107,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "107_C1_text_requirement",
+      "content_key": "107_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "学术专著式研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 107,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "107_C2_template",
+      "content_key": "107_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "学术专著式研究报告",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 107,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "107_C3_template_w_text",
+      "content_key": "107_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "学术专著式研究报告",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 108,
+      "complexity": "C1",
+      "input_mode": "text_requirement",
+      "sample_key": "108_C1_text_requirement",
+      "content_key": "108_C1",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "本科毕业论文",
+      "init": {
+        "heading_styles": true,
+        "numbering": {
+          "enabled": false,
+          "scheme_id": null
+        }
+      },
+      "text": {
+        "target_notes": true
+      }
+    },
+    {
+      "topic_id": 108,
+      "complexity": "C2",
+      "input_mode": "template",
+      "sample_key": "108_C2_template",
+      "content_key": "108_C2",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "本科毕业论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_section_decimal"
+        }
+      }
+    },
+    {
+      "topic_id": 108,
+      "complexity": "C3",
+      "input_mode": "template_w_text",
+      "sample_key": "108_C3_template_w_text",
+      "content_key": "108_C3",
+      "locale": "zh",
+      "domain_id": "academic_research",
+      "fine_domain_id": "theses",
+      "genre_display_name": "本科毕业论文",
+      "init": {
+        "heading_styles": false,
+        "numbering": {
+          "enabled": true,
+          "scheme_id": "zh_chapter_cn_decimal"
+        }
+      },
+      "text": {
+        "target_notes": false,
+        "numbering_note": true
+      }
+    }
+  ]
+}

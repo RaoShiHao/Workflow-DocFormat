@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autodatabuild.local/schemas/outline_bind.schema.json",
+  "title": "OutlineBind",
+  "description": "有序文档对象表 + 每对象 role 绑定。格式调整 Seed 的结构入口。",
+  "type": "object",
+  "required": ["meta", "objects"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["seed_id", "genre", "locale"],
+      "properties": {
+        "seed_id": { "type": "string" },
+        "genre": { "type": "string" },
+        "locale": { "type": "string" },
+        "theme": { "type": "string" },
+        "parent_seed_id": { "type": ["string", "null"], "description": "同构仿写时指向母本" },
+        "notes": { "type": "string" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "可选：节级元信息；对象仍扁平在 objects 里用 section_id 归属",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "role_id"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "role_id": { "type": "string" },
+          "title": { "type": "string" }
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["index", "object_id", "kind", "role_id"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 0 },
+          "object_id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["section_break", "paragraph", "table", "image", "cell", "run_anchor"]
+          },
+          "role_id": { "type": "string" },
+          "section_id": { "type": "string" },
+          "path": { "type": "string" },
+          "main_point": { "type": "string", "description": "本对象要写什么（仿写可改）" },
+          "parent_object_id": {
+            "type": ["string", "null"],
+            "description": "cell/run_anchor 指向宿主表或段"
+          },
+          "cells": {
+            "type": "array",
+            "description": "仅 table：逻辑格位与单元格段落角色",
+            "items": {
+              "type": "object",
+              "required": ["pos", "role_id"],
+              "properties": {
+                "pos": { "type": "string" },
+                "role_id": { "type": "string" },
+                "main_point": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

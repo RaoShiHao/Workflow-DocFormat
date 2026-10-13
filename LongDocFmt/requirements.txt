@@ -1,0 +1,19 @@
+# LongDocFmt Python dependencies
+# Python >= 3.11 recommended
+#
+# Prefer the combined file one level up:
+#   pip install -r requirements.txt
+# That also installs LongDocFmtEval. The formatter imports
+# LongDocFmtEval.common.officecli_runner, so the repository root must be on PYTHONPATH.
+#
+# System tools (not installed via pip):
+#   - officecli == 1.0.145 for formatter runs and evaluation
+#   - LibreOffice (soffice): optional docx -> pdf
+#   - poppler-utils: optional pdf2image page rendering
+
+langgraph>=0.2.0
+openai>=1.0.0
+zai-sdk>=0.2.0
+pdfplumber>=0.11.0
+PyYAML>=6.0
+pdf2image>=1.17.0
